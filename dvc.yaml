@@ -1,0 +1,781 @@
+stages:
+  ## TEXT CLASSIFICATION PIPELINES
+
+  ### DATASETS
+  dyk_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd:  PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds dyk --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/dyk.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/dyk/${item}/
+
+  dyk_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds dyk --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/dyk.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/dyk/${item}
+      outs:
+        - data/datasets/dyk/${item}_hps/
+
+  abusive_clauses_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds abusive_clauses --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/abusive_clauses.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/abusive_clauses/${item}/
+
+  abusive_clauses_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds abusive_clauses --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/abusive_clauses.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/abusive_clauses/${item}
+      outs:
+        - data/datasets/abusive_clauses/${item}_hps/
+
+  cdsc_e_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds cdsc_e --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/cdsc_e.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/cdsc_e/${item}/
+
+  cdsc_e_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds cdsc_e --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/cdsc_e.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/cdsc_e/${item}
+      outs:
+        - data/datasets/cdsc_e/${item}_hps/
+  polemo2_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2 --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/polemo2.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/polemo2/${item}/
+
+  polemo2_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2 --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/polemo2.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/polemo2/${item}
+      outs:
+        - data/datasets/polemo2/${item}_hps/
+
+  polemo2_in_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd:  PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_in --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/polemo2_in.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/polemo2_in/${item}/
+
+  polemo2_in_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_in --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/polemo2_in.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/polemo2_in/${item}
+      outs:
+        - data/datasets/polemo2_in/${item}_hps/
+
+  polemo2_out_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd:  PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_out --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/polemo2_out.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/polemo2_out/${item}/
+
+  polemo2_out_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_out --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/polemo2_out.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/polemo2_out/${item}
+      outs:
+        - data/datasets/polemo2_out/${item}_hps/
+
+  psc_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds psc --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/psc.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/psc/${item}/
+
+  psc_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds psc --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/psc.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/psc/${item}
+      outs:
+        - data/datasets/psc/${item}_hps/
+
+  ### HPS
+  lightning_hps_dyk:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py --ds dyk --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning.yaml
+      deps:
+        - experiments/configs/hps/lightning.yaml
+        - experiments/scripts/hps/optimize_lightning_classification.py
+        - data/datasets/dyk/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/dyk/best_params.yaml
+        - data/hps/lightning/${item}/dyk/hps_log.pickle
+
+  lightning_hps_abusive_clauses:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py --ds abusive_clauses --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning.yaml
+      deps:
+        - experiments/configs/hps/lightning.yaml
+        - experiments/scripts/hps/optimize_lightning_classification.py
+        - data/datasets/abusive_clauses/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/abusive_clauses/best_params.yaml
+        - data/hps/lightning/${item}/abusive_clauses/hps_log.pickle
+
+  lightning_hps_cdsc_e:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py --ds cdsc_e --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning.yaml
+      deps:
+        - experiments/configs/hps/lightning.yaml
+        - experiments/scripts/hps/optimize_lightning_classification.py
+        - data/datasets/cdsc_e/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/cdsc_e/best_params.yaml
+        - data/hps/lightning/${item}/cdsc_e/hps_log.pickle
+
+  lightning_hps_polemo2:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py --ds polemo2 --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+      deps:
+        - experiments/configs/hps/lightning_seq_512.yaml
+        - experiments/scripts/hps/optimize_lightning_classification.py
+        - data/datasets/polemo2/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/polemo2/best_params.yaml
+        - data/hps/lightning/${item}/polemo2/hps_log.pickle
+
+  lightning_hps_polemo2_in:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py --ds polemo2_in --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+      deps:
+        - experiments/configs/hps/lightning_seq_512.yaml
+        - experiments/scripts/hps/optimize_lightning_classification.py
+        - data/datasets/polemo2_in/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/polemo2_in/best_params.yaml
+        - data/hps/lightning/${item}/polemo2_in/hps_log.pickle
+
+  lightning_hps_polemo2_out:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py --ds polemo2_out --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+      deps:
+        - experiments/configs/hps/lightning_seq_512.yaml
+        - experiments/scripts/hps/optimize_lightning_classification.py
+        - data/datasets/polemo2_out/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/polemo2_out/best_params.yaml
+        - data/hps/lightning/${item}/polemo2_out/hps_log.pickle
+
+  lightning_hps_psc:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py --ds psc --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+      deps:
+        - experiments/configs/hps/lightning_seq_512.yaml
+        - experiments/scripts/hps/optimize_lightning_classification.py
+        - data/datasets/psc/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/psc/best_params.yaml
+        - data/hps/lightning/${item}/psc/hps_log.pickle
+
+  ### MODELS
+  lightning_dyk:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py --ds dyk --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_classification.py
+        - data/datasets/dyk/lightning
+        - data/hps/lightning/${item}/dyk/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/dyk/
+
+  lightning_abusive_clauses:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py --ds abusive_clauses --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_classification.py
+        - data/datasets/abusive_clauses/lightning
+        - data/hps/lightning/${item}/abusive_clauses/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/abusive_clauses/
+
+  lightning_cdsc_e:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py --ds cdsc_e --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_classification.py
+        - data/datasets/cdsc_e/lightning
+        - data/hps/lightning/${item}/cdsc_e/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/cdsc_e/
+
+  lightning_polemo2:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py --ds polemo2 --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_classification.py
+        - data/datasets/polemo2/lightning
+        - data/hps/lightning/${item}/polemo2/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/polemo2/
+
+  lightning_polemo2_in:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py --ds polemo2_in --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_classification.py
+        - data/datasets/polemo2_in/lightning
+        - data/hps/lightning/${item}/polemo2_in/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/polemo2_in/
+
+  lightning_polemo2_out:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py --ds polemo2_out --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_classification.py
+        - data/datasets/polemo2_out/lightning
+        - data/hps/lightning/${item}/polemo2_out/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/polemo2_out/
+
+  lightning_psc:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py --ds psc --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_classification.py
+        - data/datasets/psc/lightning
+        - data/hps/lightning/${item}/psc/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/psc/
+
+## SEQUENCE LABELING PIPELINES
+### DATASETS
+
+  aspectemo_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd:  PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds aspectemo --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/aspectemo.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/aspectemo/${item}/
+
+  aspectemo_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds aspectemo --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/aspectemo.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/aspectemo/${item}
+      outs:
+        - data/datasets/aspectemo/${item}_hps/
+
+  kpwr_ner_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds kpwr_ner --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/kpwr_ner.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/kpwr_ner/${item}/
+
+  kpwr_ner_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds kpwr_ner --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/kpwr_ner.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/kpwr_ner/${item}
+      outs:
+        - data/datasets/kpwr_ner/${item}_hps/
+
+  punctuation_restoration_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd:  PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds punctuation_restoration --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/punctuation_restoration.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/punctuation_restoration/${item}/
+
+  punctuation_restoration_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds punctuation_restoration --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/punctuation_restoration.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/punctuation_restoration/${item}
+      outs:
+        - data/datasets/punctuation_restoration/${item}_hps/
+
+  political_advertising_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds political_advertising --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/political_advertising.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/political_advertising/${item}/
+
+  political_advertising_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds political_advertising --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/political_advertising.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/political_advertising/${item}
+      outs:
+        - data/datasets/political_advertising/${item}_hps/
+
+  nkjp_pos_preprocess_dataset:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds nkjp_pos --cfg-type ${item}
+      params:
+        - experiments/configs/datasets/nkjp_pos.yaml:
+            - common_args
+            - datasets.${item}
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+      outs:
+        - data/datasets/nkjp_pos/${item}/
+
+  nkjp_pos_preprocess_dataset_hps:
+    foreach:
+      - lightning
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds nkjp_pos --cfg-type ${item} --is-hps
+      params:
+        - experiments/configs/datasets/nkjp_pos.yaml:
+            - common_args
+            - datasets.${item}_hps
+      deps:
+        - experiments/scripts/preprocess_dataset.py
+        - data/datasets/nkjp_pos/${item}
+      outs:
+        - data/datasets/nkjp_pos/${item}_hps/
+
+### HPS
+  lightning_hps_aspectemo:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py --ds aspectemo --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+
+      deps:
+        - experiments/configs/hps/lightning_seq_512.yaml
+        - experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+        - data/datasets/aspectemo/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/aspectemo/best_params.yaml
+        - data/hps/lightning/${item}/aspectemo/hps_log.pickle
+
+  lightning_hps_kpwr_ner:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py --ds kpwr_ner --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+      deps:
+        - experiments/configs/hps/lightning_seq_512.yaml
+        - experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+        - data/datasets/kpwr_ner/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/kpwr_ner/best_params.yaml
+        - data/hps/lightning/${item}/kpwr_ner/hps_log.pickle
+
+  lightning_hps_punctuation_restoration:
+      foreach:
+        - allegro__herbert-base-cased
+        - allegro__herbert-large-cased
+        - dkleczek__bert-base-polish-uncased-v1
+        - dkleczek__bert-base-polish-cased-v1
+        - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      do:
+        cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py --ds punctuation_restoration --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+        deps:
+          - experiments/configs/hps/lightning_seq_512.yaml
+          - experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+          - data/datasets/punctuation_restoration/lightning_hps/
+        outs:
+          - data/hps/lightning/${item}/punctuation_restoration/best_params.yaml
+          - data/hps/lightning/${item}/punctuation_restoration/hps_log.pickle
+
+  lightning_hps_political_advertising:
+      foreach:
+        - allegro__herbert-base-cased
+        - allegro__herbert-large-cased
+        - dkleczek__bert-base-polish-uncased-v1
+        - dkleczek__bert-base-polish-cased-v1
+        - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      do:
+        cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py --ds political_advertising --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+        deps:
+          - experiments/configs/hps/lightning_seq_512.yaml
+          - experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+          - data/datasets/political_advertising/lightning_hps/
+        outs:
+          - data/hps/lightning/${item}/political_advertising/best_params.yaml
+          - data/hps/lightning/${item}/political_advertising/hps_log.pickle
+   
+  lightning_hps_nkjp_pos:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py --ds nkjp_pos --embedding-path ${item} --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+      deps:
+        - experiments/configs/hps/lightning_seq_512.yaml
+        - experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+        - data/datasets/nkjp_pos/lightning_hps/
+      outs:
+        - data/hps/lightning/${item}/nkjp_pos/best_params.yaml
+        - data/hps/lightning/${item}/nkjp_pos/hps_log.pickle
+
+### MODELS
+  lightning_aspectemo:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py --ds aspectemo --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+        - data/datasets/aspectemo/lightning/
+        - data/hps/lightning/${item}/aspectemo/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/aspectemo/
+
+  lightning_kpwr_ner:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py --ds kpwr_ner --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+        - data/datasets/kpwr_ner/lightning/
+        - data/hps/lightning/${item}/kpwr_ner/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/kpwr_ner/
+
+  lightning_punctuation_restoration:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py --ds punctuation_restoration --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+        - data/datasets/punctuation_restoration/lightning/
+        - data/hps/lightning/${item}/punctuation_restoration/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/punctuation_restoration/
+
+  lightning_political_advertising:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py --ds political_advertising --embedding-path ${item} --retrains 5
+      deps:
+        - experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+        - data/datasets/political_advertising/lightning/
+        - data/hps/lightning/${item}/political_advertising/best_params.yaml
+      outs:
+        - data/models/lightning/${item}/political_advertising/
+
+  lightning_nkjp_pos:
+      foreach:
+        - allegro__herbert-base-cased
+        - allegro__herbert-large-cased
+        - dkleczek__bert-base-polish-uncased-v1
+        - dkleczek__bert-base-polish-cased-v1
+        - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      do:
+        cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py --ds nkjp_pos --embedding-path ${item} --retrains 5
+        deps:
+          - experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+          - data/datasets/nkjp_pos/lightning/
+          - data/hps/lightning/${item}/nkjp_pos/best_params.yaml
+        outs:
+          - data/models/lightning/${item}/nkjp_pos/
+
+
+  ## SUBMISSIONS
+  lightning_prepare_submissions:
+    foreach:
+      - allegro__herbert-base-cased
+      - allegro__herbert-large-cased
+      - dkleczek__bert-base-polish-uncased-v1
+      - dkleczek__bert-base-polish-cased-v1
+      - sentence-transformers__paraphrase-xlm-r-multilingual-v1
+    do:
+      cmd: PYTHONPATH=. python3 experiments/scripts/prepare_submissions.py --model ${item} --library lightning
+      deps:
+        - data/models/lightning/${item}
+        - data/hps/lightning/${item}
+        - experiments/scripts/prepare_submissions.py
+      outs:
+        - data/submissions/${item}
+
+  prepare_results_tables:
+    cmd: PYTHONPATH=. python3 experiments/scripts/convert_submissions_to_result_tables.py
+    deps:
+      - data/submissions/
+      - experiments/scripts/convert_submissions_to_result_tables.py
+    outs:
+      - data/tables/results.pkl
+      - data/tables/results.tex

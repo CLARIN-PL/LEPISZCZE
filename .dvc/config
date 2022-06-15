@@ -1,0 +1,3 @@
+[core]
+    remote = remote
+    autostage = false

@@ -1,0 +1,12 @@
+git
+wget
+tmux
+htop
+vim
+less
+gcc
+software-properties-common
+cmake
+libncurses5-dev
+libncursesw5-dev
+mc

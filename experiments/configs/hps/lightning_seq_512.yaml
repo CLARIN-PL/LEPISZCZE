@@ -1,0 +1,124 @@
+default_parameters: &default_parameters
+  max_seq_length:
+    name: max_seq_length
+    param_type: constant
+    value: 512
+  adam_epsilon:
+    choices:
+      - 0.00000001
+      - 0.0000001
+      - 0.000001
+      - 0.00001
+      - 0.0001
+    name: adam_epsilon
+    param_type: searchable
+    type: categorical
+  classifier_dropout:
+    choices:
+      - 0.0
+      - 0.1
+      - 0.2
+      - 0.3
+      - 0.4
+      - 0.5
+    name: classifier_dropout
+    param_type: searchable
+    type: categorical
+  finetune_last_n_layers:
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+    name: finetune_last_n_layers
+    param_type: searchable
+    type: categorical
+  learning_rate:
+    choices:
+      - 0.000001
+      - 0.000005
+      - 0.00001
+      - 0.00005
+      - 0.0001
+      - 0.0005
+      - 0.001
+      - 0.005
+    name: learning_rate
+    param_type: searchable
+    type: categorical
+  max_epochs:
+    choices:
+      - 2
+      - 3
+      - 5
+      - 10
+      - 15
+      - 20
+    name: max_epochs
+    param_type: searchable
+    type: categorical
+  mini_batch_size:
+    choices:
+      - 16
+      - 32
+      - 64
+    name: batch_size
+    param_type: searchable
+    type: categorical
+  optimizer:
+    choices:
+      - Adam
+      - AdamW
+    name: optimizer
+    param_type: searchable
+    type: categorical
+  use_scheduler:
+    choices:
+      - false
+      - true
+    name: use_scheduler
+    param_type: searchable
+    type: categorical
+  warmup_steps:
+    choices:
+      - 0
+      - 25
+      - 50
+      - 100
+      - 200
+    name: warmup_steps
+    param_type: searchable
+    type: categorical
+  weight_decay:
+    choices:
+      - 0
+      - 0.1
+      - 0.01
+      - 0.001
+      - 0.0001
+    name: weight_decay
+    param_type: searchable
+    type: categorical
+
+
+classification:
+  devices: auto
+  accelerator: auto
+  parameters:
+    <<: *default_parameters
+
+sequence_labeling:
+  devices: auto
+  accelerator: auto
+  parameters:
+    <<: *default_parameters
+    label_all_tokens:
+      name: label_all_tokens
+      param_type: constant
+      value: false
+
+early_stopping_kwargs:
+  monitor: val/Loss
+  patience: 3
+  mode: min
