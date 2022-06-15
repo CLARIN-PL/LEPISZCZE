@@ -1,0 +1,67 @@
+name: polemo2
+
+common_args:
+    dataset_name: &dataset_name clarin-pl/polemo2-official
+    input_column_names: &input_column_names text
+    target_column_name: &target_column_name target
+    sample_missing_splits: &sample_missing_splits null
+    sample_missing_splits_hps: &sample_missing_splits_hps null
+    downsample_splits: &downsample_splits null
+    load_dataset_kwargs: &load_dataset_kwargs null
+    seed: &seed 441
+    encode_labels: &encode_labels False
+
+paths:
+    flair: &flair_ds_path data/datasets/polemo2/flair/polemo2.pkl
+    flair_hps: &flair_hps_ds_path data/datasets/polemo2/flair_hps/polemo2.pkl
+    lightning: &lightning_ds_path data/datasets/polemo2/lightning/
+    lightning_hps: &lightning_hps_ds_path data/datasets/polemo2/lightning_hps/
+
+datasets:
+    flair:
+        pipeline_cls: embeddings.pipeline.flair_preprocessing_pipeline.FlairTextPairClassificationPreprocessingPipeline
+        pipeline_args:
+            dataset_name_or_path: *dataset_name
+            input_column_name: *input_column_names
+            target_column_name: *target_column_name
+            sample_missing_splits: *sample_missing_splits
+            ignore_test_subset: False
+            seed: *seed
+            load_dataset_kwargs: *load_dataset_kwargs
+            downsample_splits: *downsample_splits
+            encode_labels: *encode_labels
+        output: *flair_ds_path
+
+    flair_hps:
+        pipeline_cls: embeddings.pipeline.flair_preprocessing_pipeline.FlairTextPairClassificationPreprocessingPipeline
+        pipeline_args:
+            dataset_name_or_path: *flair_ds_path
+            input_column_name: *input_column_names
+            target_column_name: *target_column_name
+            sample_missing_splits: *sample_missing_splits_hps
+            ignore_test_subset: True
+            seed: *seed
+            load_dataset_kwargs: *load_dataset_kwargs
+            encode_labels: False
+        output: *flair_hps_ds_path
+
+    lightning:
+        pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+        pipeline_args:
+            dataset_name: *dataset_name
+            sample_missing_splits: *sample_missing_splits
+            ignore_test_subset: False
+            load_dataset_kwargs: *load_dataset_kwargs
+            seed: *seed
+            downsample_splits: *downsample_splits
+        output: *lightning_ds_path
+
+    lightning_hps:
+        pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+        pipeline_args:
+            dataset_name: *lightning_ds_path
+            sample_missing_splits:  *sample_missing_splits_hps
+            ignore_test_subset: True
+            load_dataset_kwargs: *load_dataset_kwargs
+            seed: *seed
+        output:  *lightning_hps_ds_path

@@ -1,0 +1,3582 @@
+schema: '2.0'
+stages:
+  dyk_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds dyk --cfg-type
+      lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/dyk.yaml:
+        common_args:
+          dataset_name: allegro/klej-dyk
+          input_column_names:
+          - question
+          - answer
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: allegro/klej-dyk
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/dyk/lightning/
+    outs:
+    - path: data/datasets/dyk/lightning/
+      md5: 6572752f77d3b558949982f4fd7fdd51.dir
+      size: 1748002
+      nfiles: 7
+  dyk_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds dyk --cfg-type
+      lightning --is-hps
+    deps:
+    - path: data/datasets/dyk/lightning
+      md5: 6572752f77d3b558949982f4fd7fdd51.dir
+      size: 1748002
+      nfiles: 7
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/dyk.yaml:
+        common_args:
+          dataset_name: allegro/klej-dyk
+          input_column_names:
+          - question
+          - answer
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps: &id001
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/dyk/lightning/
+            sample_missing_splits: *id001
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/dyk/lightning_hps/
+    outs:
+    - path: data/datasets/dyk/lightning_hps/
+      md5: 026637885e865423d29d5ed2dc840f3c.dir
+      size: 1395489
+      nfiles: 7
+  lightning_hps_dyk@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds dyk --embedding-path allegro__herbert-base-cased --hps-config-path experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/dyk/lightning_hps/
+      md5: 026637885e865423d29d5ed2dc840f3c.dir
+      size: 1395489
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/dyk/best_params.yaml
+      md5: 8c11c83a6c6779ff2329da2fef8f8781
+      size: 985
+    - path: data/hps/lightning/allegro__herbert-base-cased/dyk/hps_log.pickle
+      md5: 93267e0c95c32baf1abc4aed0aa3ac73
+      size: 13607
+  lightning_hps_dyk@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds dyk --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/dyk/lightning_hps/
+      md5: 026637885e865423d29d5ed2dc840f3c.dir
+      size: 1395489
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/dyk/best_params.yaml
+      md5: ee285cfabcaeb74a7575c4a46762426c
+      size: 1008
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/dyk/hps_log.pickle
+      md5: 921864931aa0aef394335c12635752c8
+      size: 13617
+  lightning_hps_dyk@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds dyk --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/dyk/lightning_hps/
+      md5: 026637885e865423d29d5ed2dc840f3c.dir
+      size: 1395489
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/dyk/best_params.yaml
+      md5: c6e18352c8c72a662e3b06611186900b
+      size: 1004
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/dyk/hps_log.pickle
+      md5: 1ec5f8f65171a0280049534494469432
+      size: 13615
+  lightning_dyk@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds dyk --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains 5
+    deps:
+    - path: data/datasets/dyk/lightning
+      md5: 6572752f77d3b558949982f4fd7fdd51.dir
+      size: 1748002
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/dyk/best_params.yaml
+      md5: c6e18352c8c72a662e3b06611186900b
+      size: 1004
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/dyk/
+      md5: f27966c04fb577a96e1d856c068d861a.dir
+      size: 3801401015
+      nfiles: 20
+  lightning_dyk@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds dyk --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains 5
+    deps:
+    - path: data/datasets/dyk/lightning
+      md5: 6572752f77d3b558949982f4fd7fdd51.dir
+      size: 1748002
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/dyk/best_params.yaml
+      md5: ee285cfabcaeb74a7575c4a46762426c
+      size: 1008
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/dyk/
+      md5: 2337b0844795746f65bd13cc15a3f73a.dir
+      size: 3801398665
+      nfiles: 20
+  lightning_dyk@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds dyk --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/dyk/lightning
+      md5: 6572752f77d3b558949982f4fd7fdd51.dir
+      size: 1748002
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-base-cased/dyk/best_params.yaml
+      md5: 8c11c83a6c6779ff2329da2fef8f8781
+      size: 985
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/dyk/
+      md5: 7908b81aa04e64c2413ca2eebab351db.dir
+      size: 3647830007
+      nfiles: 20
+  abusive_clauses_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds abusive_clauses
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/abusive_clauses.yaml:
+        common_args:
+          dataset_name: laugustyniak/abusive-clauses-pl
+          input_column_names: text
+          target_column_name: class
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: laugustyniak/abusive-clauses-pl
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/abusive_clauses/lightning/
+    outs:
+    - path: data/datasets/abusive_clauses/lightning/
+      md5: c77c778fd615c258bd05ee7d867169a6.dir
+      size: 2225350
+      nfiles: 10
+  abusive_clauses_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds abusive_clauses
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/abusive_clauses/lightning
+      md5: c77c778fd615c258bd05ee7d867169a6.dir
+      size: 2225350
+      nfiles: 10
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/abusive_clauses.yaml:
+        common_args:
+          dataset_name: laugustyniak/abusive-clauses-pl
+          input_column_names: text
+          target_column_name: class
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/abusive_clauses/lightning/
+            sample_missing_splits:
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/abusive_clauses/lightning_hps/
+    outs:
+    - path: data/datasets/abusive_clauses/lightning_hps/
+      md5: 593b89eda1225232a05093c5418f618d.dir
+      size: 1432202
+      nfiles: 7
+  cdsc_e_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds cdsc_e
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/cdsc_e.yaml:
+        common_args:
+          dataset_name: allegro/klej-cdsc-e
+          input_column_names:
+          - sentence_A
+          - sentence_B
+          target_column_name: entailment_judgment
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: allegro/klej-cdsc-e
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/cdsc_e/lightning/
+    outs:
+    - path: data/datasets/cdsc_e/lightning/
+      md5: 0f66ebde284d93913a8d7e5a28344c95.dir
+      size: 1825784
+      nfiles: 10
+  cdsc_e_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds cdsc_e
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/cdsc_e/lightning
+      md5: 0f66ebde284d93913a8d7e5a28344c95.dir
+      size: 1825784
+      nfiles: 10
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/cdsc_e.yaml:
+        common_args:
+          dataset_name: allegro/klej-cdsc-e
+          input_column_names:
+          - sentence_A
+          - sentence_B
+          target_column_name: entailment_judgment
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/cdsc_e/lightning/
+            sample_missing_splits:
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/cdsc_e/lightning_hps/
+    outs:
+    - path: data/datasets/cdsc_e/lightning_hps/
+      md5: d0197aa3a7b768001a6bee463a617cd0.dir
+      size: 1635134
+      nfiles: 7
+  polemo2_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/polemo2.yaml:
+        common_args:
+          dataset_name: clarin-pl/polemo2-official
+          input_column_names: text
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: clarin-pl/polemo2-official
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/polemo2/lightning/
+    outs:
+    - path: data/datasets/polemo2/lightning/
+      md5: 6540fa07fbcd023f00449b9d6b535042.dir
+      size: 6617292
+      nfiles: 10
+  polemo2_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/polemo2/lightning
+      md5: 6540fa07fbcd023f00449b9d6b535042.dir
+      size: 6617292
+      nfiles: 10
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/polemo2.yaml:
+        common_args:
+          dataset_name: clarin-pl/polemo2-official
+          input_column_names: text
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/polemo2/lightning/
+            sample_missing_splits:
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/polemo2/lightning_hps/
+    outs:
+    - path: data/datasets/polemo2/lightning_hps/
+      md5: d34e7050ba6c7e8e39ecf21405850af2.dir
+      size: 5972854
+      nfiles: 7
+  polemo2_in_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_in
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/polemo2_in.yaml:
+        common_args:
+          dataset_name: allegro/klej-polemo2-in
+          input_column_names: sentence
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: allegro/klej-polemo2-in
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/polemo2_in/lightning/
+    outs:
+    - path: data/datasets/polemo2_in/lightning/
+      md5: d15c0be7e805cfe42dc504922c8057c0.dir
+      size: 6106126
+      nfiles: 10
+  polemo2_in_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_in
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/polemo2_in/lightning
+      md5: d15c0be7e805cfe42dc504922c8057c0.dir
+      size: 6106126
+      nfiles: 10
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/polemo2_in.yaml:
+        common_args:
+          dataset_name: allegro/klej-polemo2-in
+          input_column_names: sentence
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/polemo2_in/lightning/
+            sample_missing_splits:
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/polemo2_in/lightning_hps/
+    outs:
+    - path: data/datasets/polemo2_in/lightning_hps/
+      md5: 5bf19be872b9b19bab1cc88793780576.dir
+      size: 5510066
+      nfiles: 7
+  polemo2_out_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_out
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/polemo2_out.yaml:
+        common_args:
+          dataset_name: allegro/klej-polemo2-out
+          input_column_names: sentence
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: allegro/klej-polemo2-out
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/polemo2_out/lightning/
+    outs:
+    - path: data/datasets/polemo2_out/lightning/
+      md5: 244a8f87d1bf01eecaf76a8b329c6d88.dir
+      size: 5543970
+      nfiles: 10
+  polemo2_out_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds polemo2_out
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/polemo2_out/lightning
+      md5: 244a8f87d1bf01eecaf76a8b329c6d88.dir
+      size: 5543970
+      nfiles: 10
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/polemo2_out.yaml:
+        common_args:
+          dataset_name: allegro/klej-polemo2-out
+          input_column_names: sentence
+          target_column_name: target
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/polemo2_out/lightning/
+            sample_missing_splits:
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/polemo2_out/lightning_hps/
+    outs:
+    - path: data/datasets/polemo2_out/lightning_hps/
+      md5: 84c12a8002a17c7991762c48f6224e31.dir
+      size: 5223858
+      nfiles: 7
+  psc_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds psc --cfg-type
+      lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/psc.yaml:
+        common_args:
+          dataset_name: allegro/klej-psc
+          input_column_names:
+          - extract_text
+          - summary_text
+          target_column_name: label
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: allegro/klej-psc
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/psc/lightning/
+    outs:
+    - path: data/datasets/psc/lightning/
+      md5: 58e2bc776bdb058364640e199e3508ff.dir
+      size: 6323916
+      nfiles: 7
+  psc_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds psc --cfg-type
+      lightning --is-hps
+    deps:
+    - path: data/datasets/psc/lightning
+      md5: 58e2bc776bdb058364640e199e3508ff.dir
+      size: 6323916
+      nfiles: 7
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/psc.yaml:
+        common_args:
+          dataset_name: allegro/klej-psc
+          input_column_names:
+          - extract_text
+          - summary_text
+          target_column_name: label
+          sample_missing_splits:
+          sample_missing_splits_hps: &id002
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: true
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/psc/lightning/
+            sample_missing_splits: *id002
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/psc/lightning_hps/
+    outs:
+    - path: data/datasets/psc/lightning_hps/
+      md5: 66425952472fa651964d314f75324ef1.dir
+      size: 5032699
+      nfiles: 7
+  lightning_hps_cdsc_e@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds cdsc_e --embedding-path allegro__herbert-base-cased --hps-config-path experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/cdsc_e/lightning_hps/
+      md5: d0197aa3a7b768001a6bee463a617cd0.dir
+      size: 1635134
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/cdsc_e/best_params.yaml
+      md5: ea0212e8a5e0a964f7687f0ee9ab0a74
+      size: 1004
+    - path: data/hps/lightning/allegro__herbert-base-cased/cdsc_e/hps_log.pickle
+      md5: 4a68608d6a995371713e4160d0725f99
+      size: 13607
+  lightning_cdsc_e@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds cdsc_e --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/cdsc_e/lightning
+      md5: 0f66ebde284d93913a8d7e5a28344c95.dir
+      size: 1825784
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-base-cased/cdsc_e/best_params.yaml
+      md5: ea0212e8a5e0a964f7687f0ee9ab0a74
+      size: 1004
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/cdsc_e/
+      md5: e11789f1a0d5e29eb2a8440f497f5e66.dir
+      size: 3648023516
+      nfiles: 20
+  lightning_hps_abusive_clauses@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds abusive_clauses --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/abusive_clauses/lightning_hps/
+      md5: 593b89eda1225232a05093c5418f618d.dir
+      size: 1432202
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/abusive_clauses/best_params.yaml
+      md5: 6d7cdb61285154cfe9498b9724af754b
+      size: 984
+    - path: data/hps/lightning/allegro__herbert-base-cased/abusive_clauses/hps_log.pickle
+      md5: 6b57dfa4b4903d6aa53b4295ab4f01ef
+      size: 13607
+  lightning_abusive_clauses@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds abusive_clauses --embedding-path allegro__herbert-base-cased --retrains
+      5
+    deps:
+    - path: data/datasets/abusive_clauses/lightning
+      md5: c77c778fd615c258bd05ee7d867169a6.dir
+      size: 2225350
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-base-cased/abusive_clauses/best_params.yaml
+      md5: 6d7cdb61285154cfe9498b9724af754b
+      size: 984
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/abusive_clauses/
+      md5: bb694b664faf125ab2c9edc60fa1c25b.dir
+      size: 3648949753
+      nfiles: 20
+  lightning_hps_cdsc_e@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds cdsc_e --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/cdsc_e/lightning_hps/
+      md5: d0197aa3a7b768001a6bee463a617cd0.dir
+      size: 1635134
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/cdsc_e/best_params.yaml
+      md5: 694ba0158467dfe965bdb7f509f4cc76
+      size: 1029
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/cdsc_e/hps_log.pickle
+      md5: cc0df34f8d24b147fedb5bad97fe97a9
+      size: 13617
+  lightning_hps_polemo2_in@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_in --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_in/lightning_hps/
+      md5: 5bf19be872b9b19bab1cc88793780576.dir
+      size: 5510066
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2_in/best_params.yaml
+      md5: 3755a9574e6a3508a745430774d1021f
+      size: 978
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2_in/hps_log.pickle
+      md5: 8e1250c08d8a808b610752758d9e1412
+      size: 13612
+  lightning_polemo2_in@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_in --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/polemo2_in/lightning
+      md5: d15c0be7e805cfe42dc504922c8057c0.dir
+      size: 6106126
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2_in/best_params.yaml
+      md5: 3755a9574e6a3508a745430774d1021f
+      size: 978
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/polemo2_in/
+      md5: 090844479aab153f6fa97e3690c2b1ac.dir
+      size: 3648007704
+      nfiles: 20
+  lightning_hps_abusive_clauses@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds abusive_clauses --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/abusive_clauses/lightning_hps/
+      md5: 593b89eda1225232a05093c5418f618d.dir
+      size: 1432202
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/abusive_clauses/best_params.yaml
+      md5: 27fd9b1d91a4d187766ab90e84e6349f
+      size: 996
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/abusive_clauses/hps_log.pickle
+      md5: b01f264d861e3744df09e4a3df190bbd
+      size: 13615
+  lightning_hps_polemo2@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2 --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2/lightning_hps/
+      md5: d34e7050ba6c7e8e39ecf21405850af2.dir
+      size: 5972854
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2/best_params.yaml
+      md5: ee75534b977078c0489289d462436232
+      size: 974
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2/hps_log.pickle
+      md5: a60136645dfbb8cdf027f8979a6172e1
+      size: 13607
+  lightning_polemo2@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2 --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/polemo2/lightning
+      md5: 6540fa07fbcd023f00449b9d6b535042.dir
+      size: 6617292
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2/best_params.yaml
+      md5: ee75534b977078c0489289d462436232
+      size: 974
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/polemo2/
+      md5: d8fbd848236902bf381c18c784b06c9f.dir
+      size: 3364523301
+      nfiles: 20
+  lightning_hps_cdsc_e@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds cdsc_e --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/cdsc_e/lightning_hps/
+      md5: d0197aa3a7b768001a6bee463a617cd0.dir
+      size: 1635134
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/cdsc_e/best_params.yaml
+      md5: 92e586ab553dee00cf641a9c385363d6
+      size: 1021
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/cdsc_e/hps_log.pickle
+      md5: 2b5911939e8c0d4cb7aa0e20b035032f
+      size: 13615
+  lightning_cdsc_e@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds cdsc_e --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/cdsc_e/lightning
+      md5: 0f66ebde284d93913a8d7e5a28344c95.dir
+      size: 1825784
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/cdsc_e/best_params.yaml
+      md5: 694ba0158467dfe965bdb7f509f4cc76
+      size: 1029
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/cdsc_e/
+      md5: 76b763ecc2705572feccb222ef9494f7.dir
+      size: 3801591458
+      nfiles: 20
+  lightning_cdsc_e@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds cdsc_e --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/cdsc_e/lightning
+      md5: 0f66ebde284d93913a8d7e5a28344c95.dir
+      size: 1825784
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/cdsc_e/best_params.yaml
+      md5: 92e586ab553dee00cf641a9c385363d6
+      size: 1021
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/cdsc_e/
+      md5: dfe3952dd882c53663efb48f6ac5edb2.dir
+      size: 3801595380
+      nfiles: 20
+  lightning_hps_polemo2_out@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_out --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_out/lightning_hps/
+      md5: 84c12a8002a17c7991762c48f6224e31.dir
+      size: 5223858
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2_out/best_params.yaml
+      md5: bd9476a861a271d4473bc966b46c21cd
+      size: 986
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2_out/hps_log.pickle
+      md5: 7597d6b3222ff2ad64847efe17be7034
+      size: 13612
+  lightning_polemo2_out@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_out --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/polemo2_out/lightning
+      md5: 244a8f87d1bf01eecaf76a8b329c6d88.dir
+      size: 5543970
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-base-cased/polemo2_out/best_params.yaml
+      md5: bd9476a861a271d4473bc966b46c21cd
+      size: 986
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/polemo2_out/
+      md5: 36227d2241f2a24b224c782c40aef92b.dir
+      size: 3647831931
+      nfiles: 20
+  lightning_hps_abusive_clauses@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds abusive_clauses --embedding-path dkleczek__bert-base-polish-uncased-v1
+      --hps-config-path experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/abusive_clauses/lightning_hps/
+      md5: 593b89eda1225232a05093c5418f618d.dir
+      size: 1432202
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/abusive_clauses/best_params.yaml
+      md5: b79d2007f93376991fa2716ef540e281
+      size: 1000
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/abusive_clauses/hps_log.pickle
+      md5: cfaf1432938eaf4edd4f2a1a94b8d374
+      size: 13617
+  lightning_abusive_clauses@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds abusive_clauses --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/abusive_clauses/lightning
+      md5: c77c778fd615c258bd05ee7d867169a6.dir
+      size: 2225350
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/abusive_clauses/best_params.yaml
+      md5: 27fd9b1d91a4d187766ab90e84e6349f
+      size: 996
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/abusive_clauses/
+      md5: 67fd3130661cca23115f14f05d302c35.dir
+      size: 3802519916
+      nfiles: 20
+  lightning_abusive_clauses@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds abusive_clauses --embedding-path dkleczek__bert-base-polish-uncased-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/abusive_clauses/lightning
+      md5: c77c778fd615c258bd05ee7d867169a6.dir
+      size: 2225350
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/abusive_clauses/best_params.yaml
+      md5: b79d2007f93376991fa2716ef540e281
+      size: 1000
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/abusive_clauses/
+      md5: 4072022c9e493ebd31ffba7a37ff540d.dir
+      size: 3802519989
+      nfiles: 20
+  lightning_hps_polemo2_in@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_in --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_in/lightning_hps/
+      md5: 5bf19be872b9b19bab1cc88793780576.dir
+      size: 5510066
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_in/best_params.yaml
+      md5: 7b8c131882d16d49f4a18e356bc3a907
+      size: 998
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_in/hps_log.pickle
+      md5: e73936afbd2a286ae92275f881426699
+      size: 14322
+  lightning_hps_psc@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds psc --embedding-path allegro__herbert-base-cased --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/psc/lightning_hps/
+      md5: 66425952472fa651964d314f75324ef1.dir
+      size: 5032699
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/psc/best_params.yaml
+      md5: 2be1c831cb33be49c3e30a6349b29d4e
+      size: 992
+    - path: data/hps/lightning/allegro__herbert-base-cased/psc/hps_log.pickle
+      md5: 275c611a7fc4da84b8a2b1fc66cdbc9c
+      size: 14307
+  lightning_psc@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds psc --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/psc/lightning
+      md5: 58e2bc776bdb058364640e199e3508ff.dir
+      size: 6323916
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-base-cased/psc/best_params.yaml
+      md5: 2be1c831cb33be49c3e30a6349b29d4e
+      size: 992
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/psc/
+      md5: 18236d04a09cc948cc75be9c879935f0.dir
+      size: 3080730444
+      nfiles: 20
+  lightning_hps_polemo2_out@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_out --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_out/lightning_hps/
+      md5: 84c12a8002a17c7991762c48f6224e31.dir
+      size: 5223858
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_out/best_params.yaml
+      md5: 77fc4ef823ea4a7069ad510892e29de0
+      size: 1001
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_out/hps_log.pickle
+      md5: 9292402d3e3dd624a0c6e8f36b0132df
+      size: 14317
+  lightning_polemo2_out@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_out --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/polemo2_out/lightning
+      md5: 244a8f87d1bf01eecaf76a8b329c6d88.dir
+      size: 5543970
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_out/best_params.yaml
+      md5: 77fc4ef823ea4a7069ad510892e29de0
+      size: 1001
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_out/
+      md5: 42fb9d4003c826b6824ad7cdd25e2811.dir
+      size: 3517838911
+      nfiles: 20
+  lightning_hps_polemo2@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2 --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2/lightning_hps/
+      md5: d34e7050ba6c7e8e39ecf21405850af2.dir
+      size: 5972854
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2/best_params.yaml
+      md5: a17e02283d897db73591a8f97203db2e
+      size: 990
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2/hps_log.pickle
+      md5: 73e1fbc00b65061dec7ae0ef2d96fa1b
+      size: 14322
+  lightning_polemo2@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2 --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/polemo2/lightning
+      md5: 6540fa07fbcd023f00449b9d6b535042.dir
+      size: 6617292
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2/best_params.yaml
+      md5: a17e02283d897db73591a8f97203db2e
+      size: 990
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2/
+      md5: f802635c95679facf9b02a59846ce12a.dir
+      size: 3801661254
+      nfiles: 20
+  lightning_hps_abusive_clauses@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds abusive_clauses --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/abusive_clauses/lightning_hps/
+      md5: 593b89eda1225232a05093c5418f618d.dir
+      size: 1432202
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/abusive_clauses/best_params.yaml
+      md5: ea6e4e91ea5eb2a8a973bb12ee233948
+      size: 987
+    - path: data/hps/lightning/allegro__herbert-large-cased/abusive_clauses/hps_log.pickle
+      md5: 4413f10a9380dccd8efd05e693572871
+      size: 13613
+  lightning_abusive_clauses@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds abusive_clauses --embedding-path allegro__herbert-large-cased --retrains
+      5
+    deps:
+    - path: data/datasets/abusive_clauses/lightning
+      md5: c77c778fd615c258bd05ee7d867169a6.dir
+      size: 2225350
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-large-cased/abusive_clauses/best_params.yaml
+      md5: ea6e4e91ea5eb2a8a973bb12ee233948
+      size: 987
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/abusive_clauses/
+      md5: 51da0ff86770e14e90fbd58e9753fe80.dir
+      size: 9162021307
+      nfiles: 20
+  lightning_hps_psc@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds psc --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/psc/lightning_hps/
+      md5: 66425952472fa651964d314f75324ef1.dir
+      size: 5032699
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/psc/best_params.yaml
+      md5: 4d56e3c2f0ebdf5049ad279d25128d25
+      size: 1018
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/psc/hps_log.pickle
+      md5: 96649dc97718b98eee3a052d2f172c48
+      size: 14317
+  lightning_hps_polemo2_in@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_in --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_in/lightning_hps/
+      md5: 5bf19be872b9b19bab1cc88793780576.dir
+      size: 5510066
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_in/best_params.yaml
+      md5: eb8e8ff7523a896695ba5cd59a7318cf
+      size: 999
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_in/hps_log.pickle
+      md5: 5b8470e70d869ed28c215bce01ff5adc
+      size: 14315
+  lightning_polemo2_in@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_in --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/polemo2_in/lightning
+      md5: d15c0be7e805cfe42dc504922c8057c0.dir
+      size: 6106126
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_in/best_params.yaml
+      md5: eb8e8ff7523a896695ba5cd59a7318cf
+      size: 999
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_in/
+      md5: 74fd26ba8ae166a719a855200673f842.dir
+      size: 3801576913
+      nfiles: 20
+  lightning_polemo2_in@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_in --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/polemo2_in/lightning
+      md5: d15c0be7e805cfe42dc504922c8057c0.dir
+      size: 6106126
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_in/best_params.yaml
+      md5: 7b8c131882d16d49f4a18e356bc3a907
+      size: 998
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/polemo2_in/
+      md5: c50a1b68477ca6e278c9a2939d06269f.dir
+      size: 3801582402
+      nfiles: 20
+  lightning_hps_polemo2_out@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_out --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_out/lightning_hps/
+      md5: 84c12a8002a17c7991762c48f6224e31.dir
+      size: 5223858
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_out/best_params.yaml
+      md5: 3b0dcbac362d73a6be7a73adb625ffc4
+      size: 1000
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_out/hps_log.pickle
+      md5: 69638d1197038a082b9610b623b27f2d
+      size: 14315
+  lightning_polemo2_out@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_out --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/polemo2_out/lightning
+      md5: 244a8f87d1bf01eecaf76a8b329c6d88.dir
+      size: 5543970
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_out/best_params.yaml
+      md5: 3b0dcbac362d73a6be7a73adb625ffc4
+      size: 1000
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/polemo2_out/
+      md5: fbb96c8d1c9dd400f275abbedc0e554b.dir
+      size: 3801399719
+      nfiles: 20
+  lightning_hps_polemo2@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2 --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2/lightning_hps/
+      md5: d34e7050ba6c7e8e39ecf21405850af2.dir
+      size: 5972854
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2/best_params.yaml
+      md5: 51cd9833f03a54bfafca7d3ea16b6729
+      size: 990
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2/hps_log.pickle
+      md5: 54872d42d48fd38af62ef545c3dd284d
+      size: 14320
+  lightning_polemo2@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2 --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/polemo2/lightning
+      md5: 6540fa07fbcd023f00449b9d6b535042.dir
+      size: 6617292
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/polemo2/best_params.yaml
+      md5: 51cd9833f03a54bfafca7d3ea16b6729
+      size: 990
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/polemo2/
+      md5: f6164331b068b68984ca699beae5ca3b.dir
+      size: 3518095015
+      nfiles: 20
+  lightning_hps_cdsc_e@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds cdsc_e --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/cdsc_e/lightning_hps/
+      md5: d0197aa3a7b768001a6bee463a617cd0.dir
+      size: 1635134
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/cdsc_e/best_params.yaml
+      md5: 5e1359781b70fb4d8c57f4a3301131b8
+      size: 1008
+    - path: data/hps/lightning/allegro__herbert-large-cased/cdsc_e/hps_log.pickle
+      md5: 28a68a3047176d27103b137b9e6eb173
+      size: 13608
+  lightning_cdsc_e@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds cdsc_e --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/cdsc_e/lightning
+      md5: 0f66ebde284d93913a8d7e5a28344c95.dir
+      size: 1825784
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-large-cased/cdsc_e/best_params.yaml
+      md5: 5e1359781b70fb4d8c57f4a3301131b8
+      size: 1008
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/cdsc_e/
+      md5: a2a99e077aebc6b2dd1641ba951ee733.dir
+      size: 9161102481
+      nfiles: 20
+  lightning_hps_psc@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds psc --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/psc/lightning_hps/
+      md5: 66425952472fa651964d314f75324ef1.dir
+      size: 5032699
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/psc/best_params.yaml
+      md5: 05966b3524827cdc14411cb4f535103a
+      size: 1009
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/psc/hps_log.pickle
+      md5: b43ffc7a94294fffa9c942c2bef8b712
+      size: 14315
+  lightning_psc@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds psc --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains 5
+    deps:
+    - path: data/datasets/psc/lightning
+      md5: 58e2bc776bdb058364640e199e3508ff.dir
+      size: 6323916
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/psc/best_params.yaml
+      md5: 05966b3524827cdc14411cb4f535103a
+      size: 1009
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/psc/
+      md5: bf901ef0c0504495cd415833462b0157.dir
+      size: 3517860270
+      nfiles: 20
+  lightning_psc@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds psc --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains 5
+    deps:
+    - path: data/datasets/psc/lightning
+      md5: 58e2bc776bdb058364640e199e3508ff.dir
+      size: 6323916
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/psc/best_params.yaml
+      md5: 4d56e3c2f0ebdf5049ad279d25128d25
+      size: 1018
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/psc/
+      md5: 1b3604c6098d777eae87dfed11a2f1da.dir
+      size: 3517855302
+      nfiles: 20
+  lightning_hps_dyk@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds dyk --embedding-path allegro__herbert-large-cased --hps-config-path experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/dyk/lightning_hps/
+      md5: 026637885e865423d29d5ed2dc840f3c.dir
+      size: 1395489
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/dyk/best_params.yaml
+      md5: e29c3b9f639bbe8061cccd05bafb0cf3
+      size: 988
+    - path: data/hps/lightning/allegro__herbert-large-cased/dyk/hps_log.pickle
+      md5: 2642b3f7f5c179031d6b3cc57c0c26f6
+      size: 13608
+  lightning_dyk@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds dyk --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/dyk/lightning
+      md5: 6572752f77d3b558949982f4fd7fdd51.dir
+      size: 1748002
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-large-cased/dyk/best_params.yaml
+      md5: e29c3b9f639bbe8061cccd05bafb0cf3
+      size: 988
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/dyk/
+      md5: 18e006b6802fb95fb6dacd287e4dc2d6.dir
+      size: 9160890311
+      nfiles: 20
+  lightning_hps_polemo2_out@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_out --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_out/lightning_hps/
+      md5: 84c12a8002a17c7991762c48f6224e31.dir
+      size: 5223858
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2_out/best_params.yaml
+      md5: 5b178c69cb3bb36ddb1cc563c4c32e62
+      size: 980
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2_out/hps_log.pickle
+      md5: d39fbff820b5c834b6cabf5d46063fef
+      size: 14308
+  lightning_polemo2_out@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_out --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/polemo2_out/lightning
+      md5: 244a8f87d1bf01eecaf76a8b329c6d88.dir
+      size: 5543970
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2_out/best_params.yaml
+      md5: 5b178c69cb3bb36ddb1cc563c4c32e62
+      size: 980
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/polemo2_out/
+      md5: 8b2da0216f6669aa4c671660ad4617fd.dir
+      size: 8153131996
+      nfiles: 20
+  lightning_hps_polemo2@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2 --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2/lightning_hps/
+      md5: d34e7050ba6c7e8e39ecf21405850af2.dir
+      size: 5972854
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2/best_params.yaml
+      md5: 0bd5d3566f1c0da5383736b65cca00da
+      size: 975
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2/hps_log.pickle
+      md5: 1d27edc3dc1ffdbf7275ec0d2f0b93b9
+      size: 14313
+  lightning_polemo2@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2 --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/polemo2/lightning
+      md5: 6540fa07fbcd023f00449b9d6b535042.dir
+      size: 6617292
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2/best_params.yaml
+      md5: 0bd5d3566f1c0da5383736b65cca00da
+      size: 975
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/polemo2/
+      md5: 5bdb3b48af789b14004e3c9c420b5815.dir
+      size: 9161186431
+      nfiles: 20
+  lightning_hps_cdsc_e@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds cdsc_e --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/cdsc_e/lightning_hps/
+      md5: d0197aa3a7b768001a6bee463a617cd0.dir
+      size: 1635134
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/cdsc_e/best_params.yaml
+      md5: 30c3d04f31260af197d2c9bcef8d1145
+      size: 1061
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/cdsc_e/hps_log.pickle
+      md5: 552fc16410d38950b9d7f22a32cc7117
+      size: 13640
+  lightning_cdsc_e@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds cdsc_e --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/cdsc_e/lightning
+      md5: 0f66ebde284d93913a8d7e5a28344c95.dir
+      size: 1825784
+      nfiles: 10
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/cdsc_e/best_params.yaml
+      md5: 30c3d04f31260af197d2c9bcef8d1145
+      size: 1061
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/cdsc_e/
+      md5: 48f59e3aad4ee2537ac4b56bede0e669.dir
+      size: 6720044027
+      nfiles: 20
+  lightning_hps_dyk@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds dyk --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/dyk/lightning_hps/
+      md5: 026637885e865423d29d5ed2dc840f3c.dir
+      size: 1395489
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/dyk/best_params.yaml
+      md5: f46742aae8cebfcd13aca2846b65b0e6
+      size: 1041
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/dyk/hps_log.pickle
+      md5: 542a20cd53c46dcc21c37408c774e793
+      size: 13635
+  lightning_hps_polemo2_in@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_in --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_in/lightning_hps/
+      md5: 5bf19be872b9b19bab1cc88793780576.dir
+      size: 5510066
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2_in/best_params.yaml
+      md5: f8c4966108f7801b039e958200cee702
+      size: 987
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2_in/hps_log.pickle
+      md5: 52458d44524f0feb2ad506cd01ee2212
+      size: 14313
+  lightning_polemo2_in@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_in --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/polemo2_in/lightning
+      md5: d15c0be7e805cfe42dc504922c8057c0.dir
+      size: 6106126
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-large-cased/polemo2_in/best_params.yaml
+      md5: f8c4966108f7801b039e958200cee702
+      size: 987
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/polemo2_in/
+      md5: 63570c09a160043fd8442e9a8fd19676.dir
+      size: 9161106639
+      nfiles: 20
+  lightning_hps_abusive_clauses@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds abusive_clauses --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning.yaml
+    deps:
+    - path: data/datasets/abusive_clauses/lightning_hps/
+      md5: 593b89eda1225232a05093c5418f618d.dir
+      size: 1432202
+      nfiles: 7
+    - path: experiments/configs/hps/lightning.yaml
+      md5: 14edb0fa2b718a0a44f7653fe0814b24
+      size: 2123
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/abusive_clauses/best_params.yaml
+      md5: 8577ee41af524908ccf1a08ca639dd3e
+      size: 1040
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/abusive_clauses/hps_log.pickle
+      md5: 97e7c56072c459cbeecc1cd3072d4979
+      size: 13635
+  lightning_abusive_clauses@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds abusive_clauses --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/abusive_clauses/lightning
+      md5: c77c778fd615c258bd05ee7d867169a6.dir
+      size: 2225350
+      nfiles: 10
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/abusive_clauses/best_params.yaml
+      md5: 8577ee41af524908ccf1a08ca639dd3e
+      size: 1040
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/abusive_clauses/
+      md5: c68ff57b8ce8990a6b83fbd92a6f4d66.dir
+      size: 6437407062
+      nfiles: 20
+  lightning_dyk@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds dyk --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/dyk/lightning
+      md5: 6572752f77d3b558949982f4fd7fdd51.dir
+      size: 1748002
+      nfiles: 7
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/dyk/best_params.yaml
+      md5: f46742aae8cebfcd13aca2846b65b0e6
+      size: 1041
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/dyk/
+      md5: 37edad4e65bad1ef3e6d1808590062d5.dir
+      size: 6719843945
+      nfiles: 20
+  lightning_hps_polemo2@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2 --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2/lightning_hps/
+      md5: d34e7050ba6c7e8e39ecf21405850af2.dir
+      size: 5972854
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2/best_params.yaml
+      md5: 62a68656d0e49cb2632c32fbf01b15b7
+      size: 1026
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2/hps_log.pickle
+      md5: e829fd507a5200ee193e0720523ada86
+      size: 14335
+  lightning_polemo2@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2 --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/polemo2/lightning
+      md5: 6540fa07fbcd023f00449b9d6b535042.dir
+      size: 6617292
+      nfiles: 10
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2/best_params.yaml
+      md5: 62a68656d0e49cb2632c32fbf01b15b7
+      size: 1026
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2/
+      md5: 16e0817775cdc14f3f949ea884709bfb.dir
+      size: 6720103716
+      nfiles: 20
+  lightning_hps_polemo2_out@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_out --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_out/lightning_hps/
+      md5: 84c12a8002a17c7991762c48f6224e31.dir
+      size: 5223858
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_out/best_params.yaml
+      md5: 8ad79bb24b707302091b495e18b02ab5
+      size: 1038
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_out/hps_log.pickle
+      md5: 0bbb4bfc5e3c3058070b9bcfc18e05ef
+      size: 14340
+  lightning_polemo2_out@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_out --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/polemo2_out/lightning
+      md5: 244a8f87d1bf01eecaf76a8b329c6d88.dir
+      size: 5543970
+      nfiles: 10
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_out/best_params.yaml
+      md5: 8ad79bb24b707302091b495e18b02ab5
+      size: 1038
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_out/
+      md5: 901fdcfde56f3cb37aaf380282393682.dir
+      size: 5869160992
+      nfiles: 20
+  lightning_hps_polemo2_in@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds polemo2_in --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/polemo2_in/lightning_hps/
+      md5: 5bf19be872b9b19bab1cc88793780576.dir
+      size: 5510066
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_in/best_params.yaml
+      md5: 41a435b971075fa04f32d36700634f97
+      size: 1035
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_in/hps_log.pickle
+      md5: 3e91aac68430b684c9a5ac0583956258
+      size: 14335
+  lightning_polemo2_in@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds polemo2_in --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/polemo2_in/lightning
+      md5: d15c0be7e805cfe42dc504922c8057c0.dir
+      size: 6106126
+      nfiles: 10
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_in/best_params.yaml
+      md5: 41a435b971075fa04f32d36700634f97
+      size: 1035
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/polemo2_in/
+      md5: 97cc8303cdc3b12068f869d1bb7923db.dir
+      size: 6720027941
+      nfiles: 20
+  lightning_hps_psc@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds psc --embedding-path allegro__herbert-large-cased --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/psc/lightning_hps/
+      md5: 66425952472fa651964d314f75324ef1.dir
+      size: 5032699
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/psc/best_params.yaml
+      md5: ee3b2b0379435559ace98671e0ef29ca
+      size: 998
+    - path: data/hps/lightning/allegro__herbert-large-cased/psc/hps_log.pickle
+      md5: 11cd1379d4257fc4d8c8dedc1100fa98
+      size: 14308
+  lightning_psc@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds psc --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/psc/lightning
+      md5: 58e2bc776bdb058364640e199e3508ff.dir
+      size: 6323916
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-large-cased/psc/best_params.yaml
+      md5: ee3b2b0379435559ace98671e0ef29ca
+      size: 998
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/psc/
+      md5: de91cbc3ff34b3ebf7ca49a6078b3032.dir
+      size: 9160922382
+      nfiles: 20
+  lightning_hps_psc@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_classification.py
+      --ds psc --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml
+    deps:
+    - path: data/datasets/psc/lightning_hps/
+      md5: 66425952472fa651964d314f75324ef1.dir
+      size: 5032699
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_classification.py
+      md5: 0f3379305ecae33d05b054f0009011f8
+      size: 2365
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/psc/best_params.yaml
+      md5: 3c685dea3871b230651e533fce6410cc
+      size: 1047
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/psc/hps_log.pickle
+      md5: 84244d155dd061d28d72ebd969185567
+      size: 14335
+  lightning_psc@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_classification.py
+      --ds psc --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/psc/lightning
+      md5: 58e2bc776bdb058364640e199e3508ff.dir
+      size: 6323916
+      nfiles: 7
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/psc/best_params.yaml
+      md5: 3c685dea3871b230651e533fce6410cc
+      size: 1047
+    - path: experiments/scripts/tasks/evaluate_lightning_classification.py
+      md5: dc7ddecf351e0aa47ef93d92f770128d
+      size: 2394
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/psc/
+      md5: 6a6ebbbe1fd16e6d8f3f965ca2668092.dir
+      size: 6719877575
+      nfiles: 20
+  aspectemo_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds aspectemo
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/aspectemo.yaml:
+        common_args:
+          dataset_name: clarin-pl/aspectemo
+          input_column_names: tokens
+          target_column_name: labels
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: clarin-pl/aspectemo
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/aspectemo/lightning/
+    outs:
+    - path: data/datasets/aspectemo/lightning/
+      md5: 85834c9c0ac7be4f65c598e8e84e2360.dir
+      size: 2927028
+      nfiles: 7
+  aspectemo_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds aspectemo
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/aspectemo/lightning
+      md5: 85834c9c0ac7be4f65c598e8e84e2360.dir
+      size: 2927028
+      nfiles: 7
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/aspectemo.yaml:
+        common_args:
+          dataset_name: clarin-pl/aspectemo
+          input_column_names: tokens
+          target_column_name: labels
+          sample_missing_splits:
+          sample_missing_splits_hps: &id003
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/aspectemo/lightning/
+            sample_missing_splits: *id003
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/aspectemo/lightning_hps/
+    outs:
+    - path: data/datasets/aspectemo/lightning_hps/
+      md5: 241b9fd9f7230b1b306d3dc14f3ab919.dir
+      size: 2293067
+      nfiles: 7
+  kpwr_ner_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds kpwr_ner
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/kpwr_ner.yaml:
+        common_args:
+          dataset_name: clarin-pl/kpwr-ner
+          input_column_names: tokens
+          target_column_name: ner
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: clarin-pl/kpwr-ner
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/kpwr_ner/lightning/
+    outs:
+    - path: data/datasets/kpwr_ner/lightning/
+      md5: 9e8bb2ae40354b9f213e8555b3876cea.dir
+      size: 13238778
+      nfiles: 7
+  kpwr_ner_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds kpwr_ner
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/kpwr_ner/lightning
+      md5: 9e8bb2ae40354b9f213e8555b3876cea.dir
+      size: 13238778
+      nfiles: 7
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/kpwr_ner.yaml:
+        common_args:
+          dataset_name: clarin-pl/kpwr-ner
+          input_column_names: tokens
+          target_column_name: ner
+          sample_missing_splits:
+          sample_missing_splits_hps: &id004
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/kpwr_ner/lightning/
+            sample_missing_splits: *id004
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/kpwr_ner/lightning_hps/
+    outs:
+    - path: data/datasets/kpwr_ner/lightning_hps/
+      md5: 8288d561a81de0c26c5c9b100cd9346d.dir
+      size: 9947321
+      nfiles: 7
+  lightning_hps_aspectemo@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/aspectemo/lightning_hps/
+      md5: 241b9fd9f7230b1b306d3dc14f3ab919.dir
+      size: 2293067
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/aspectemo/best_params.yaml
+      md5: 1be0af941aba60d780aa24ec5760f885
+      size: 1121
+    - path: data/hps/lightning/allegro__herbert-base-cased/aspectemo/hps_log.pickle
+      md5: 81bef981ada3ae7750babcd3c71665cb
+      size: 14437
+  lightning_aspectemo@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/aspectemo/lightning/
+      md5: 85834c9c0ac7be4f65c598e8e84e2360.dir
+      size: 2927028
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-base-cased/aspectemo/best_params.yaml
+      md5: 1be0af941aba60d780aa24ec5760f885
+      size: 1121
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/aspectemo/
+      md5: 04a89e84c3758b121755c0a6b1be699b.dir
+      size: 3663846263
+      nfiles: 20
+  lightning_hps_aspectemo@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/aspectemo/lightning_hps/
+      md5: 241b9fd9f7230b1b306d3dc14f3ab919.dir
+      size: 2293067
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/aspectemo/best_params.yaml
+      md5: 9689b44cc42cee737f702d2e86f5c9e7
+      size: 1141
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/aspectemo/hps_log.pickle
+      md5: 620c8e9232f9ffa044caa2d23be7f705
+      size: 14447
+  lightning_aspectemo@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/aspectemo/lightning/
+      md5: 85834c9c0ac7be4f65c598e8e84e2360.dir
+      size: 2927028
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/aspectemo/best_params.yaml
+      md5: 9689b44cc42cee737f702d2e86f5c9e7
+      size: 1141
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/aspectemo/
+      md5: 5379e2687a71534dd2e8ba274ec9dff9.dir
+      size: 3817487274
+      nfiles: 20
+  lightning_hps_aspectemo@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/aspectemo/lightning_hps/
+      md5: 241b9fd9f7230b1b306d3dc14f3ab919.dir
+      size: 2293067
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/aspectemo/best_params.yaml
+      md5: cdc059d9ded80fb85435f3e2aaa46ce9
+      size: 1142
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/aspectemo/hps_log.pickle
+      md5: db16c0181e69e22654ad1e1eea98f52c
+      size: 14445
+  lightning_aspectemo@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/aspectemo/lightning/
+      md5: 85834c9c0ac7be4f65c598e8e84e2360.dir
+      size: 2927028
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/aspectemo/best_params.yaml
+      md5: cdc059d9ded80fb85435f3e2aaa46ce9
+      size: 1142
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/aspectemo/
+      md5: bb716af407ebf9dad2197b7b8e0436d3.dir
+      size: 3817374483
+      nfiles: 20
+  lightning_hps_aspectemo@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      unit
+    deps:
+    - path: data/datasets/aspectemo/lightning_hps/
+      md5: 241b9fd9f7230b1b306d3dc14f3ab919.dir
+      size: 2293067
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/aspectemo/best_params.yaml
+      md5: 4be46e3c696388a7f6da83122d3a5540
+      size: 1178
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/aspectemo/hps_log.pickle
+      md5: 29447ec1556e5fcf8d90216f68f9f9f3
+      size: 14465
+  lightning_aspectemo@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/aspectemo/lightning/
+      md5: 85834c9c0ac7be4f65c598e8e84e2360.dir
+      size: 2927028
+      nfiles: 7
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/aspectemo/best_params.yaml
+      md5: 4be46e3c696388a7f6da83122d3a5540
+      size: 1178
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/aspectemo/
+      md5: f105087590b41661826dc1963c0b0f12.dir
+      size: 6735185118
+      nfiles: 20
+  lightning_hps_aspectemo@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/aspectemo/lightning_hps/
+      md5: 241b9fd9f7230b1b306d3dc14f3ab919.dir
+      size: 2293067
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/aspectemo/best_params.yaml
+      md5: 730d9ba026eef304cd22897b6bd74208
+      size: 1128
+    - path: data/hps/lightning/allegro__herbert-large-cased/aspectemo/hps_log.pickle
+      md5: 7fa8028de22603d823a29ecef2b1d71f
+      size: 14438
+  lightning_aspectemo@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds aspectemo --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/aspectemo/lightning/
+      md5: 85834c9c0ac7be4f65c598e8e84e2360.dir
+      size: 2927028
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-large-cased/aspectemo/best_params.yaml
+      md5: 730d9ba026eef304cd22897b6bd74208
+      size: 1128
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/aspectemo/
+      md5: eff585938e8fdd44b2b444343c0c4fb2.dir
+      size: 9149644363
+      nfiles: 20
+  lightning_hps_kpwr_ner@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+    deps:
+    - path: data/datasets/kpwr_ner/lightning_hps/
+      md5: 8288d561a81de0c26c5c9b100cd9346d.dir
+      size: 9947321
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/kpwr_ner/best_params.yaml
+      md5: 3eaf644e70e2397ca01a04dd3a28ca3e
+      size: 1123
+    - path: data/hps/lightning/allegro__herbert-base-cased/kpwr_ner/hps_log.pickle
+      md5: 26d387ed6b9c3a5372bc0a2c20b94058
+      size: 14437
+  lightning_kpwr_ner@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/kpwr_ner/lightning/
+      md5: 9e8bb2ae40354b9f213e8555b3876cea.dir
+      size: 13238778
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-base-cased/kpwr_ner/best_params.yaml
+      md5: 3eaf644e70e2397ca01a04dd3a28ca3e
+      size: 1123
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/kpwr_ner/
+      md5: 3c76a4ff74716c595d96a3d1a9f2e43e.dir
+      size: 5618187927
+      nfiles: 20
+  lightning_hps_kpwr_ner@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+    deps:
+    - path: data/datasets/kpwr_ner/lightning_hps/
+      md5: 8288d561a81de0c26c5c9b100cd9346d.dir
+      size: 9947321
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/kpwr_ner/best_params.yaml
+      md5: 0f04b01eca21dfda343eb218a240fd7a
+      size: 1133
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/kpwr_ner/hps_log.pickle
+      md5: e54180018bd7979cb34f3e61ebdb2c98
+      size: 14445
+  lightning_kpwr_ner@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/kpwr_ner/lightning/
+      md5: 9e8bb2ae40354b9f213e8555b3876cea.dir
+      size: 13238778
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/kpwr_ner/best_params.yaml
+      md5: 0f04b01eca21dfda343eb218a240fd7a
+      size: 1133
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/kpwr_ner/
+      md5: 45f7d6731fe8c79cd7c1e2a9fce01510.dir
+      size: 5778685621
+      nfiles: 20
+  lightning_hps_kpwr_ner@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+    deps:
+    - path: data/datasets/kpwr_ner/lightning_hps/
+      md5: 8288d561a81de0c26c5c9b100cd9346d.dir
+      size: 9947321
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/kpwr_ner/best_params.yaml
+      md5: 42159d51ade2080faa701cd7b508ed02
+      size: 1140
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/kpwr_ner/hps_log.pickle
+      md5: 457a6b1c1d76d98104f21a7a774d1b4f
+      size: 14447
+  lightning_kpwr_ner@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/kpwr_ner/lightning/
+      md5: 9e8bb2ae40354b9f213e8555b3876cea.dir
+      size: 13238778
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/kpwr_ner/best_params.yaml
+      md5: 42159d51ade2080faa701cd7b508ed02
+      size: 1140
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/kpwr_ner/
+      md5: 140f37e5eab8f3e63deae28cd63e4bee.dir
+      size: 5780461666
+      nfiles: 20
+  lightning_hps_kpwr_ner@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      conll
+    deps:
+    - path: data/datasets/kpwr_ner/lightning_hps/
+      md5: 8288d561a81de0c26c5c9b100cd9346d.dir
+      size: 9947321
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/kpwr_ner/best_params.yaml
+      md5: faf1a6df7289a6f670ff8de712c371d7
+      size: 1176
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/kpwr_ner/hps_log.pickle
+      md5: 4f4436017db24f8ea6d27e5a2f1ab367
+      size: 14465
+  lightning_kpwr_ner@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/kpwr_ner/lightning/
+      md5: 9e8bb2ae40354b9f213e8555b3876cea.dir
+      size: 13238778
+      nfiles: 7
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/kpwr_ner/best_params.yaml
+      md5: faf1a6df7289a6f670ff8de712c371d7
+      size: 1176
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/kpwr_ner/
+      md5: 3e2b8e6c3a4ba895416d17a98e9b4532.dir
+      size: 8705512907
+      nfiles: 20
+  lightning_hps_kpwr_ner@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+    deps:
+    - path: data/datasets/kpwr_ner/lightning_hps/
+      md5: 8288d561a81de0c26c5c9b100cd9346d.dir
+      size: 9947321
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/kpwr_ner/best_params.yaml
+      md5: ac74eabfa63ddf08b27a2ccff4371495
+      size: 1122
+    - path: data/hps/lightning/allegro__herbert-large-cased/kpwr_ner/hps_log.pickle
+      md5: bfa8fc6576f332fb26666e9d9e794ec6
+      size: 14438
+  lightning_kpwr_ner@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds kpwr_ner --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/kpwr_ner/lightning/
+      md5: 9e8bb2ae40354b9f213e8555b3876cea.dir
+      size: 13238778
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-large-cased/kpwr_ner/best_params.yaml
+      md5: ac74eabfa63ddf08b27a2ccff4371495
+      size: 1122
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/kpwr_ner/
+      md5: f27a1a643a420e039ac8b55ad9aef52c.dir
+      size: 11112433311
+      nfiles: 20
+  punctuation_restoration_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds punctuation_restoration
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/punctuation_restoration.yaml:
+        common_args:
+          dataset_name: clarin-pl/2021-punctuation-restoration
+          input_column_names: tokens
+          target_column_name: tags
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs: &id005
+            use_auth_token: true
+          seed: 441
+          encode_labels: true
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: clarin-pl/2021-punctuation-restoration
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs: *id005
+            seed: 441
+            downsample_splits:
+          output: data/datasets/punctuation_restoration/lightning/
+    outs:
+    - path: data/datasets/punctuation_restoration/lightning/
+      md5: ebe249471252d558810170707f862691.dir
+      size: 6749480
+      nfiles: 7
+  punctuation_restoration_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds punctuation_restoration
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning
+      md5: ebe249471252d558810170707f862691.dir
+      size: 6749480
+      nfiles: 7
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/punctuation_restoration.yaml:
+        common_args:
+          dataset_name: clarin-pl/2021-punctuation-restoration
+          input_column_names: tokens
+          target_column_name: tags
+          sample_missing_splits:
+          sample_missing_splits_hps: &id006
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs: &id007
+            use_auth_token: true
+          seed: 441
+          encode_labels: true
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/punctuation_restoration/lightning/
+            sample_missing_splits: *id006
+            ignore_test_subset: true
+            load_dataset_kwargs: *id007
+            seed: 441
+          output: data/datasets/punctuation_restoration/lightning_hps/
+    outs:
+    - path: data/datasets/punctuation_restoration/lightning_hps/
+      md5: 4604644393552354117fa89f9430b643.dir
+      size: 5405759
+      nfiles: 7
+  lightning_hps_punctuation_restoration@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning_hps/
+      md5: 4604644393552354117fa89f9430b643.dir
+      size: 5405759
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/punctuation_restoration/best_params.yaml
+      md5: aa1ae96b4af1b8e4b266d1ee97f47bea
+      size: 1136
+    - path: data/hps/lightning/allegro__herbert-large-cased/punctuation_restoration/hps_log.pickle
+      md5: 43937cc8f9d98fc77725ace674f3c17f
+      size: 14438
+  political-advertising_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds political-advertising
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: f68d97c5982de74887cf6746e2cd9492
+      size: 1192
+    params:
+      experiments/configs/datasets/political-advertising.yaml:
+        common_args:
+          dataset_name: laugustyniak/political-advertising-pl
+          input_column_names: tokens
+          target_column_name: tags
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: laugustyniak/political-advertising-pl
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/political-advertising/lightning/
+    outs:
+    - path: data/datasets/political-advertising/lightning/
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+  political-advertising_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds political-advertising
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/political-advertising/lightning
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: f68d97c5982de74887cf6746e2cd9492
+      size: 1192
+    params:
+      experiments/configs/datasets/political-advertising.yaml:
+        common_args:
+          dataset_name: laugustyniak/political-advertising-pl
+          input_column_names: tokens
+          target_column_name: tags
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/political-advertising/lightning/
+            sample_missing_splits:
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/political-advertising/lightning_hps/
+    outs:
+    - path: data/datasets/political-advertising/lightning_hps/
+      md5: d466d9b21d77c83dbd7329db7d8eff6d.dir
+      size: 817550
+      nfiles: 7
+  political_advertising_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds political_advertising
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/political_advertising.yaml:
+        common_args:
+          dataset_name: laugustyniak/political-advertising-pl
+          input_column_names: tokens
+          target_column_name: tags
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: laugustyniak/political-advertising-pl
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/political_advertising/lightning/
+    outs:
+    - path: data/datasets/political_advertising/lightning/
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+  political_advertising_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds political_advertising
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/political_advertising/lightning
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/political_advertising.yaml:
+        common_args:
+          dataset_name: laugustyniak/political-advertising-pl
+          input_column_names: tokens
+          target_column_name: tags
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/political_advertising/lightning/
+            sample_missing_splits:
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/political_advertising/lightning_hps/
+    outs:
+    - path: data/datasets/political_advertising/lightning_hps/
+      md5: d466d9b21d77c83dbd7329db7d8eff6d.dir
+      size: 817550
+      nfiles: 7
+  lightning_hps_punctuation_restoration@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path dkleczek__bert-base-polish-cased-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      unit
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning_hps/
+      md5: 4604644393552354117fa89f9430b643.dir
+      size: 5405759
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/punctuation_restoration/best_params.yaml
+      md5: bdac80160b5d71ef4313c9f2d93d4684
+      size: 1155
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/punctuation_restoration/hps_log.pickle
+      md5: 2812b08da6104cea779b2f7b82e2eb00
+      size: 14445
+  lightning_hps_punctuation_restoration@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning_hps/
+      md5: 4604644393552354117fa89f9430b643.dir
+      size: 5405759
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/punctuation_restoration/best_params.yaml
+      md5: 021efbe2860c772ef6f133d21d78827e
+      size: 1137
+    - path: data/hps/lightning/allegro__herbert-base-cased/punctuation_restoration/hps_log.pickle
+      md5: 4da91a9da4b1d36966fbc5d259566fa3
+      size: 14437
+  lightning_hps_punctuation_restoration@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      unit
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning_hps/
+      md5: 4604644393552354117fa89f9430b643.dir
+      size: 5405759
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/punctuation_restoration/best_params.yaml
+      md5: bf0d3d46ffe23c49493017330ddae09f
+      size: 1188
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/punctuation_restoration/hps_log.pickle
+      md5: 5942997f2fe7b564802f9a1f1445628f
+      size: 14465
+  lightning_hps_punctuation_restoration@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path dkleczek__bert-base-polish-uncased-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      unit
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning_hps/
+      md5: 4604644393552354117fa89f9430b643.dir
+      size: 5405759
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/punctuation_restoration/best_params.yaml
+      md5: 472ac958b413e3b6063f9b2c0de45e0b
+      size: 1159
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/punctuation_restoration/hps_log.pickle
+      md5: 8adf64ac9bbfbb8fd49ebb82d1bd6174
+      size: 14447
+  lightning_hps_political_advertising@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+    deps:
+    - path: data/datasets/political_advertising/lightning_hps/
+      md5: d466d9b21d77c83dbd7329db7d8eff6d.dir
+      size: 817550
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/political_advertising/best_params.yaml
+      md5: 00478e68c48cc8ba860d7cbc2223d0cc
+      size: 1137
+    - path: data/hps/lightning/allegro__herbert-base-cased/political_advertising/hps_log.pickle
+      md5: 5d47c8630fce483099c4944e5bf3ad5d
+      size: 14442
+  lightning_hps_political_advertising@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path dkleczek__bert-base-polish-uncased-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      conll
+    deps:
+    - path: data/datasets/political_advertising/lightning_hps/
+      md5: d466d9b21d77c83dbd7329db7d8eff6d.dir
+      size: 817550
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/political_advertising/best_params.yaml
+      md5: 05ff146b2a20ba2de1173e170eb728ce
+      size: 1156
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/political_advertising/hps_log.pickle
+      md5: 0e6ce75d227ec0a645399fcb99383006
+      size: 14447
+  lightning_punctuation_restoration@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning/
+      md5: ebe249471252d558810170707f862691.dir
+      size: 6749480
+      nfiles: 7
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/punctuation_restoration/best_params.yaml
+      md5: bf0d3d46ffe23c49493017330ddae09f
+      size: 1188
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/punctuation_restoration/
+      md5: 8a2236d1cdd83d2594b55820a82c8fe5.dir
+      size: 6179949829
+      nfiles: 20
+  lightning_punctuation_restoration@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path allegro__herbert-large-cased --retrains
+      5
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning/
+      md5: ebe249471252d558810170707f862691.dir
+      size: 6749480
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-large-cased/punctuation_restoration/best_params.yaml
+      md5: aa1ae96b4af1b8e4b266d1ee97f47bea
+      size: 1136
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/punctuation_restoration/
+      md5: ced11928cfbf2c30047e092d2435cf4c.dir
+      size: 9161034968
+      nfiles: 20
+  lightning_punctuation_restoration@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path dkleczek__bert-base-polish-cased-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning/
+      md5: ebe249471252d558810170707f862691.dir
+      size: 6749480
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/punctuation_restoration/best_params.yaml
+      md5: bdac80160b5d71ef4313c9f2d93d4684
+      size: 1155
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/punctuation_restoration/
+      md5: e27e665b5f0381d4629c0a70822ebf78.dir
+      size: 3829038276
+      nfiles: 20
+  lightning_punctuation_restoration@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path allegro__herbert-base-cased --retrains
+      5
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning/
+      md5: ebe249471252d558810170707f862691.dir
+      size: 6749480
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-base-cased/punctuation_restoration/best_params.yaml
+      md5: 021efbe2860c772ef6f133d21d78827e
+      size: 1137
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/punctuation_restoration/
+      md5: 8fe9d7180364341f880016e1e38b3979.dir
+      size: 3675517786
+      nfiles: 20
+  lightning_punctuation_restoration@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds punctuation_restoration --embedding-path dkleczek__bert-base-polish-uncased-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/punctuation_restoration/lightning/
+      md5: ebe249471252d558810170707f862691.dir
+      size: 6749480
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/punctuation_restoration/best_params.yaml
+      md5: 472ac958b413e3b6063f9b2c0de45e0b
+      size: 1159
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/punctuation_restoration/
+      md5: 754952f57b516274cd7c3b0ab05446ba.dir
+      size: 3829040671
+      nfiles: 20
+  lightning_hps_political_advertising@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path dkleczek__bert-base-polish-cased-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      conll
+    deps:
+    - path: data/datasets/political_advertising/lightning_hps/
+      md5: d466d9b21d77c83dbd7329db7d8eff6d.dir
+      size: 817550
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/political_advertising/best_params.yaml
+      md5: c9d8538f0e0974d8806078d4432bdd86
+      size: 1151
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/political_advertising/hps_log.pickle
+      md5: 35ec5b0c42f1cc0c983b5bcd1a3caec8
+      size: 14445
+  lightning_hps_political_advertising@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      conll
+    deps:
+    - path: data/datasets/political_advertising/lightning_hps/
+      md5: d466d9b21d77c83dbd7329db7d8eff6d.dir
+      size: 817550
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/political_advertising/best_params.yaml
+      md5: 36cd932e70bda9df6b4f5438583beb03
+      size: 1192
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/political_advertising/hps_log.pickle
+      md5: 3c57f0119b3ff83a8b54e437bc78d760
+      size: 14465
+  lightning_hps_political_advertising@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode conll
+    deps:
+    - path: data/datasets/political_advertising/lightning_hps/
+      md5: d466d9b21d77c83dbd7329db7d8eff6d.dir
+      size: 817550
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/political_advertising/best_params.yaml
+      md5: d89419961d69db4285fb0ede864e1489
+      size: 1140
+    - path: data/hps/lightning/allegro__herbert-large-cased/political_advertising/hps_log.pickle
+      md5: 5a36f33e441b48dd369e13f745bc8b6b
+      size: 14438
+  lightning_political_advertising@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path dkleczek__bert-base-polish-uncased-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/political_advertising/lightning/
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/political_advertising/best_params.yaml
+      md5: 05ff146b2a20ba2de1173e170eb728ce
+      size: 1156
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/political_advertising/
+      md5: f1d56871b7c6034c3e5ed0f7d6a43c46.dir
+      size: 3801339541
+      nfiles: 20
+  lightning_political_advertising@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path dkleczek__bert-base-polish-cased-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/political_advertising/lightning/
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/political_advertising/best_params.yaml
+      md5: c9d8538f0e0974d8806078d4432bdd86
+      size: 1151
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/political_advertising/
+      md5: 93c734ae5513887f97cf3225fa0452a2.dir
+      size: 3801375522
+      nfiles: 20
+  lightning_political_advertising@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path allegro__herbert-large-cased --retrains
+      5
+    deps:
+    - path: data/datasets/political_advertising/lightning/
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-large-cased/political_advertising/best_params.yaml
+      md5: d89419961d69db4285fb0ede864e1489
+      size: 1140
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/political_advertising/
+      md5: 59822ed6684da725c2c76b062651fa16.dir
+      size: 9133552245
+      nfiles: 20
+  lightning_political_advertising@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/political_advertising/lightning/
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/political_advertising/best_params.yaml
+      md5: 36cd932e70bda9df6b4f5438583beb03
+      size: 1192
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/political_advertising/
+      md5: 4895fc26591dceda62f1c0aaa1a864f4.dir
+      size: 6719767544
+      nfiles: 20
+  lightning_political_advertising@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds political_advertising --embedding-path allegro__herbert-base-cased --retrains
+      5
+    deps:
+    - path: data/datasets/political_advertising/lightning/
+      md5: b1580b60fb865b19c42df96e436f51f4.dir
+      size: 1017356
+      nfiles: 10
+    - path: data/hps/lightning/allegro__herbert-base-cased/political_advertising/best_params.yaml
+      md5: 00478e68c48cc8ba860d7cbc2223d0cc
+      size: 1137
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/political_advertising/
+      md5: 7b822b21e6537c36bc1da0feda9e9c10.dir
+      size: 3364205153
+      nfiles: 20
+  nkjp_pos_preprocess_dataset@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds nkjp_pos
+      --cfg-type lightning
+    deps:
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/nkjp_pos.yaml:
+        common_args:
+          dataset_name: clarin-pl/nkjp-pos
+          input_column_names: tokens
+          target_column_name: pos_tags
+          sample_missing_splits:
+          sample_missing_splits_hps:
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: clarin-pl/nkjp-pos
+            sample_missing_splits:
+            ignore_test_subset: false
+            load_dataset_kwargs:
+            seed: 441
+            downsample_splits:
+          output: data/datasets/nkjp_pos/lightning/
+    outs:
+    - path: data/datasets/nkjp_pos/lightning/
+      md5: 792f8633e4e1ed1dfddb37edd03fdb34.dir
+      size: 24122782
+      nfiles: 7
+  nkjp_pos_preprocess_dataset_hps@lightning:
+    cmd: PYTHONPATH=. python3 experiments/scripts/preprocess_dataset.py --ds nkjp_pos
+      --cfg-type lightning --is-hps
+    deps:
+    - path: data/datasets/nkjp_pos/lightning
+      md5: 792f8633e4e1ed1dfddb37edd03fdb34.dir
+      size: 24122782
+      nfiles: 7
+    - path: experiments/scripts/preprocess_dataset.py
+      md5: 189ff898f469d39b0636e633d8223073
+      size: 1186
+    params:
+      experiments/configs/datasets/nkjp_pos.yaml:
+        common_args:
+          dataset_name: clarin-pl/nkjp-pos
+          input_column_names: tokens
+          target_column_name: pos_tags
+          sample_missing_splits:
+          sample_missing_splits_hps: &id008
+          - 0.1
+          - 
+          downsample_splits:
+          load_dataset_kwargs:
+          seed: 441
+          encode_labels: false
+        datasets.lightning_hps:
+          pipeline_cls: embeddings.pipeline.hf_preprocessing_pipeline.HuggingFacePreprocessingPipeline
+          pipeline_args:
+            dataset_name: data/datasets/nkjp_pos/lightning/
+            sample_missing_splits: *id008
+            ignore_test_subset: true
+            load_dataset_kwargs:
+            seed: 441
+          output: data/datasets/nkjp_pos/lightning_hps/
+    outs:
+    - path: data/datasets/nkjp_pos/lightning_hps/
+      md5: 93433fea9ee50069492c686451ecf404.dir
+      size: 22035189
+      nfiles: 7
+  lightning_hps_nkjp_pos@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path dkleczek__bert-base-polish-uncased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/nkjp_pos/lightning_hps/
+      md5: 93433fea9ee50069492c686451ecf404.dir
+      size: 22035189
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/nkjp_pos/best_params.yaml
+      md5: b64dea2f957342aef25e6b98fc56b45e
+      size: 1144
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/nkjp_pos/hps_log.pickle
+      md5: 062972ad0e1ec6ca863a7811e94f445b
+      size: 14447
+  lightning_hps_nkjp_pos@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path dkleczek__bert-base-polish-cased-v1 --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/nkjp_pos/lightning_hps/
+      md5: 93433fea9ee50069492c686451ecf404.dir
+      size: 22035189
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/nkjp_pos/best_params.yaml
+      md5: c783baadd66b65ae9a1fc4874720f8da
+      size: 1137
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/nkjp_pos/hps_log.pickle
+      md5: 87859c433f39b2897ab1b05ed28ac4f3
+      size: 14445
+  lightning_hps_nkjp_pos@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path allegro__herbert-base-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/nkjp_pos/lightning_hps/
+      md5: 93433fea9ee50069492c686451ecf404.dir
+      size: 22035189
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-base-cased/nkjp_pos/best_params.yaml
+      md5: 6a2b56ef3542f5b69da882ad94ca8fc2
+      size: 1121
+    - path: data/hps/lightning/allegro__herbert-base-cased/nkjp_pos/hps_log.pickle
+      md5: e90ad65c564ad6c0155459a3f3f76102
+      size: 14437
+  lightning_hps_nkjp_pos@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --hps-config-path experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode
+      unit
+    deps:
+    - path: data/datasets/nkjp_pos/lightning_hps/
+      md5: 93433fea9ee50069492c686451ecf404.dir
+      size: 22035189
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/nkjp_pos/best_params.yaml
+      md5: cfded012336761329f6fef4c67860a12
+      size: 1180
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/nkjp_pos/hps_log.pickle
+      md5: 1e4dd6074b8901787fc4915361a20766
+      size: 14465
+  lightning_hps_nkjp_pos@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path allegro__herbert-large-cased --hps-config-path
+      experiments/configs/hps/lightning_seq_512.yaml --evaluation-mode unit
+    deps:
+    - path: data/datasets/nkjp_pos/lightning_hps/
+      md5: 93433fea9ee50069492c686451ecf404.dir
+      size: 22035189
+      nfiles: 7
+    - path: experiments/configs/hps/lightning_seq_512.yaml
+      md5: 29da4b9cf27feb17ffb872d74f544194
+      size: 2122
+    - path: experiments/scripts/hps/optimize_lightning_sequence_labeling.py
+      md5: be7da77088ac92f3ab284dc3adddf8a6
+      size: 2769
+    outs:
+    - path: data/hps/lightning/allegro__herbert-large-cased/nkjp_pos/best_params.yaml
+      md5: 7c10265483615d0110c1f83e141a251b
+      size: 1124
+    - path: data/hps/lightning/allegro__herbert-large-cased/nkjp_pos/hps_log.pickle
+      md5: 3af757aebe394f8a97600fcd44321eac
+      size: 14438
+  lightning_nkjp_pos@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path dkleczek__bert-base-polish-uncased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/nkjp_pos/lightning/
+      md5: 792f8633e4e1ed1dfddb37edd03fdb34.dir
+      size: 24122782
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1/nkjp_pos/best_params.yaml
+      md5: b64dea2f957342aef25e6b98fc56b45e
+      size: 1144
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1/nkjp_pos/
+      md5: 1a710bbc28fe382fea84caf7ded20cdb.dir
+      size: 4398026836
+      nfiles: 20
+  lightning_nkjp_pos@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path allegro__herbert-large-cased --retrains 5
+    deps:
+    - path: data/datasets/nkjp_pos/lightning/
+      md5: 792f8633e4e1ed1dfddb37edd03fdb34.dir
+      size: 24122782
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-large-cased/nkjp_pos/best_params.yaml
+      md5: 7c10265483615d0110c1f83e141a251b
+      size: 1124
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-large-cased/nkjp_pos/
+      md5: f03788b8805c2068f64598c8b64cab17.dir
+      size: 9728905932
+      nfiles: 20
+  lightning_nkjp_pos@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path allegro__herbert-base-cased --retrains 5
+    deps:
+    - path: data/datasets/nkjp_pos/lightning/
+      md5: 792f8633e4e1ed1dfddb37edd03fdb34.dir
+      size: 24122782
+      nfiles: 7
+    - path: data/hps/lightning/allegro__herbert-base-cased/nkjp_pos/best_params.yaml
+      md5: 6a2b56ef3542f5b69da882ad94ca8fc2
+      size: 1121
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/allegro__herbert-base-cased/nkjp_pos/
+      md5: 155460e934343db73fae3a77a3e5fe70.dir
+      size: 4242345225
+      nfiles: 20
+  lightning_nkjp_pos@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path dkleczek__bert-base-polish-cased-v1 --retrains
+      5
+    deps:
+    - path: data/datasets/nkjp_pos/lightning/
+      md5: 792f8633e4e1ed1dfddb37edd03fdb34.dir
+      size: 24122782
+      nfiles: 7
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1/nkjp_pos/best_params.yaml
+      md5: c783baadd66b65ae9a1fc4874720f8da
+      size: 1137
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1/nkjp_pos/
+      md5: 72c1fdad88d4e8cf1642297caa7ef451.dir
+      size: 4398327930
+      nfiles: 20
+  lightning_nkjp_pos@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      --ds nkjp_pos --embedding-path sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --retrains 5
+    deps:
+    - path: data/datasets/nkjp_pos/lightning/
+      md5: 792f8633e4e1ed1dfddb37edd03fdb34.dir
+      size: 24122782
+      nfiles: 7
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/nkjp_pos/best_params.yaml
+      md5: cfded012336761329f6fef4c67860a12
+      size: 1180
+    - path: experiments/scripts/tasks/evaluate_lightning_sequence_labeling.py
+      md5: e2fa82f04a52dfcefd5a4127f47e7a55
+      size: 2401
+    outs:
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1/nkjp_pos/
+      md5: fe8cbb77e1f68fcf51fda93b0c87a091.dir
+      size: 7315916795
+      nfiles: 20
+  lightning_prepare_submissions@dkleczek__bert-base-polish-uncased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/prepare_submissions.py --model dkleczek__bert-base-polish-uncased-v1
+      --library lightning
+    deps:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-uncased-v1
+      md5: 6e895941a602532526ab7a342491a084.dir
+      size: 183556
+      nfiles: 36
+    - path: data/models/lightning/dkleczek__bert-base-polish-uncased-v1
+      md5: ff687bfff4d94e92790ef9a41b7a9e1e.dir
+      size: 47670804117
+      nfiles: 241
+    - path: experiments/scripts/prepare_submissions.py
+      md5: dc4df8bc5f40f7168077eea260e370ca
+      size: 2355
+    outs:
+    - path: data/submissions/dkleczek__bert-base-polish-uncased-v1
+      md5: 87c13ddeccb52f64c11558a962f4218c.dir
+      size: 718856760
+      nfiles: 24
+  lightning_prepare_submissions@sentence-transformers__paraphrase-xlm-r-multilingual-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/prepare_submissions.py --model sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      --library lightning
+    deps:
+    - path: data/hps/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      md5: b262d66eccd165398e7a055bd5068ccd.dir
+      size: 184190
+      nfiles: 36
+    - path: data/models/lightning/sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      md5: 5649d43fb294e25ef27974bb0092dbc3.dir
+      size: 81562797599
+      nfiles: 241
+    - path: experiments/scripts/prepare_submissions.py
+      md5: dc4df8bc5f40f7168077eea260e370ca
+      size: 2355
+    outs:
+    - path: data/submissions/sentence-transformers__paraphrase-xlm-r-multilingual-v1
+      md5: b06509eb11e0dfe98da77ccfcbb750bd.dir
+      size: 713875871
+      nfiles: 24
+  lightning_prepare_submissions@allegro__herbert-large-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/prepare_submissions.py --model allegro__herbert-large-cased
+      --library lightning
+    deps:
+    - path: data/hps/lightning/allegro__herbert-large-cased
+      md5: 528a4bc0b2a3bea7358e582c74b08fd3.dir
+      size: 183242
+      nfiles: 36
+    - path: data/models/lightning/allegro__herbert-large-cased
+      md5: ce5132967ab30e495635b964f99b17b1.dir
+      size: 111405932514
+      nfiles: 241
+    - path: experiments/scripts/prepare_submissions.py
+      md5: dc4df8bc5f40f7168077eea260e370ca
+      size: 2355
+    outs:
+    - path: data/submissions/allegro__herbert-large-cased
+      md5: d2f58d3633564289000d3d2e63b660ad.dir
+      size: 727811664
+      nfiles: 24
+  lightning_prepare_submissions@dkleczek__bert-base-polish-cased-v1:
+    cmd: PYTHONPATH=. python3 experiments/scripts/prepare_submissions.py --model dkleczek__bert-base-polish-cased-v1
+      --library lightning
+    deps:
+    - path: data/hps/lightning/dkleczek__bert-base-polish-cased-v1
+      md5: ed8710d1c0907a135215d2a649219dee.dir
+      size: 183480
+      nfiles: 36
+    - path: data/models/lightning/dkleczek__bert-base-polish-cased-v1
+      md5: 8ce196522c8e03c3c4d6b1e300d1bb96.dir
+      size: 47669250208
+      nfiles: 241
+    - path: experiments/scripts/prepare_submissions.py
+      md5: dc4df8bc5f40f7168077eea260e370ca
+      size: 2355
+    outs:
+    - path: data/submissions/dkleczek__bert-base-polish-cased-v1
+      md5: 9917667a646617781de9eaff2e8050c8.dir
+      size: 723733338
+      nfiles: 24
+  lightning_prepare_submissions@allegro__herbert-base-cased:
+    cmd: PYTHONPATH=. python3 experiments/scripts/prepare_submissions.py --model allegro__herbert-base-cased
+      --library lightning
+    deps:
+    - path: data/hps/lightning/allegro__herbert-base-cased
+      md5: cb8fe0a1a66652f4022f71232d8f12e9.dir
+      size: 181099
+      nfiles: 36
+    - path: data/models/lightning/allegro__herbert-base-cased
+      md5: 3c5e4bd83cd60310a53548ad29fe4971.dir
+      size: 45249999158
+      nfiles: 241
+    - path: experiments/scripts/prepare_submissions.py
+      md5: dc4df8bc5f40f7168077eea260e370ca
+      size: 2355
+    outs:
+    - path: data/submissions/allegro__herbert-base-cased
+      md5: 2e90f40af61ffb9b3d506be4b578a662.dir
+      size: 716010698
+      nfiles: 24
+  prepare_results_tables:
+    cmd: PYTHONPATH=. python3 experiments/scripts/convert_submissions_to_result_tables.py
+    deps:
+    - path: data/submissions/
+      md5: c09e4dd1a8df724eb9ddf98674cc4bc7.dir
+      size: 3600288523
+      nfiles: 121
+    - path: experiments/scripts/convert_submissions_to_result_tables.py
+      md5: 346f049d3a36ceb6ae9f51fa770d11b7
+      size: 3461
+    outs:
+    - path: data/tables/results.pkl
+      md5: d6380e53c2112000c89399daf4caddd4
+      size: 2107
+    - path: data/tables/results.tex
+      md5: 9e217b1bdbfdc91bda9096da22954f19
+      size: 1718
