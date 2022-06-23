@@ -58,9 +58,9 @@ conda activate LEPISZCZE
 
 ## Reproducibility
 
-Our experiments can be easily reproducible with [DVC](https://dvc.org) repro & [W&B](https://wandb.ai) logging. Using `dvc repro` command and with W&B token setup. 
+Our experiments can be easily reproduced with [DVC](https://dvc.org) repro & [W&B](https://wandb.ai) logging. Using `dvc repro` command and with W&B token setup. 
 
-**DISCLAIMER** Reproduction of full pipeline could take above 2000 hours to compelete on a single GPU device. We advise to execute stages in parallel on mutiple GPU  computing devices.
+**DISCLAIMER** Reproduction of full pipeline could take above 2000 hours to compelete on a single GPU device. We advise to execute stages in parallel on mutiple GPU computing devices.
 
 ### Access to DVC remote repository
 
