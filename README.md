@@ -23,6 +23,15 @@ LEPISZCZE benchmark resources
 
 TBA
 
+## Contact
+
+In case of any question or concerns about LEPISZCZE benchmark feel free to contact us:
+- Łukasz <lukasz.augustyniak@pwr.edu.pl>
+- Kamil <kamil.tagowski@pwr.edu.pl>
+- Albert <albert.sawczyn@pwr.edu.pl>
+- Denis <denis.janiak@pwr.edu.pl>
+
+**DVC Repository Access** Due to the size of pipeline outputs data, we do not provide public access to our DVC Remote Repository. However, if you are interested in any kinds of data artifacts, don't hesitate to get in touch with us.
 ## Installation
 
 Repository can be setup via [poetry](https://python-poetry.org) or via [docker](https://www.docker.com). 
@@ -62,11 +71,6 @@ Our experiments can be easily reproduced with [DVC](https://dvc.org) repro & [W&
 
 **DISCLAIMER** Reproduction of full pipeline could take above 2000 hours to compelete on a single GPU device. We advise to execute stages in parallel on mutiple GPU computing devices.
 
-### Access to DVC remote repository
-
-Due to the size of pipeline outputs data, we do not provide public access to our DVC Remote Repository. However, if you are interested in any kinds of data artifacts, don't hesitate to get in touch with us:
-- Łukasz <lukasz.augustyniak@pwr.edu.pl>
-- Kamil <kamil.tagowski@pwr.edu.pl>
 
 ## Experiments
 
