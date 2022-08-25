@@ -10,13 +10,13 @@ Mikołaj Morzy, Tomasz Kajdanowicz, Maciej Piasecki).
 
 LEPISZCZE benchmark resources
 
-| Name                  | Description                                                                                                                                      | URL                                              |
-|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| Name                  | Description                                                                                                                                      | URL                                                |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Libary                | **clarin-pl/embeddings** Our library with pre-defined NLP pipelines for text classification, pair text classification and sequence labeling taks | [GitHub](https://github.com/cLARIN-PL/embeddings/) |
-| Experiments dashboard | Weight&Biases dashboard with our experiments                                                                                                     | [W&B](https://wandb.ai/embeddings/LEPISZCZE)     |
-| Leaderboard           | LEPISZCZE Leaderboard                                                                                                                            | TBA                                              |
- | Datasets              | LEPISZCZE Datasets are accessible through our HuggingFace Hub organization page.                                                                 | [HuggingFace](https://huggingface.co/clarin-pl) | 
- | KLEJ-Datasets         | Datasets for KLEJ benchmark are accessible through Allegro HuggingFace organization page.                                                        | [HuggingFace](https://huggingface.co/allegro) ||               |                                                                                                                                                  |                                                    |
+| Experiments dashboard | Weight&Biases dashboard with our experiments                                                                                                     | [W&B](https://wandb.ai/embeddings/LEPISZCZE)       |
+| Leaderboard           | LEPISZCZE Leaderboard                                                                                                                            | [LEPISZCZE.ml](https://lepiszcze.ml)               |
+ | Datasets              | LEPISZCZE Datasets are accessible through our HuggingFace Hub organization page.                                                                 | [HuggingFace](https://huggingface.co/clarin-pl)    | 
+ | KLEJ-Datasets         | Datasets for KLEJ benchmark are accessible through Allegro HuggingFace organization page.                                                        | [HuggingFace](https://huggingface.co/allegro)      ||               |                                                                                                                                                  |                                                    |
 
 
 ## Citation
