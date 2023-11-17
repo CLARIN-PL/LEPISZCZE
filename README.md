@@ -1,6 +1,6 @@
 # LEPISZCZE
-This is the official code implementation for the LEPISZCZE benchmark experiments  
-**"This is the way: designing and compiling LEPISZCZE, a comprehensive NLP benchmark for Polish"**
+This is the official code implementation for the LEPISZCZE benchmark experiments.
+**"This is the way: designing and compiling LEPISZCZE, a comprehensive NLP benchmark for Polish"** (NeurIPS 2022)
 (Łukasz Augustyniak, Kamil Tagowski, Albert Sawczyn, 
 Denis Janiak, Roman Bartusiak, Adrian Szymczak, 
 Marcin Wątroba, Arkadiusz Janz, Piotr Szymański, 
@@ -12,7 +12,7 @@ LEPISZCZE benchmark resources
 
 | Name                  | Description                                                                                                                                      | URL                                                |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| **Leaderboard**           | **LEPISZCZE** Leaderboard                                                                                                                            | [**LEPISZCZE**](https://lepiszcze.clarin-pl.eu/)               |
+| **Leaderboard**           | **LEPISZCZE Leaderboard**                                                                                                                            | [**LEPISZCZE**](https://lepiszcze.clarin-pl.eu/)               |
 | Libary                | **clarin-pl/embeddings** Our library with pre-defined NLP pipelines for text classification, pair text classification and sequence labeling taks | [GitHub](https://github.com/cLARIN-PL/embeddings/) |
 | Experiments dashboard | Weight&Biases dashboard with our experiments                                                                                                     | [W&B](https://wandb.ai/embeddings/LEPISZCZE)       |
  | Datasets              | LEPISZCZE Datasets are accessible through our HuggingFace Hub organization page.                                                                 | [HuggingFace](https://huggingface.co/clarin-pl)    | 
@@ -21,8 +21,8 @@ LEPISZCZE benchmark resources
 
 ## Citation
 
-```biblatex
-@inproceedings{augustyniak2023lepiszcze,
+```bibtex
+@inproceedings{augustyniak2022lepiszcze,
  author = {Augustyniak, Lukasz and Tagowski, Kamil and Sawczyn, Albert and Janiak, Denis and Bartusiak, Roman and Szymczak, Adrian and Janz, Arkadiusz and Szyma\'{n}ski, Piotr and W\k{a}troba, Marcin and Morzy, Miko\l aj and Kajdanowicz, Tomasz and Piasecki, Maciej},
  booktitle = {Advances in Neural Information Processing Systems},
  editor = {S. Koyejo and S. Mohamed and A. Agarwal and D. Belgrave and K. Cho and A. Oh},
@@ -33,6 +33,7 @@ LEPISZCZE benchmark resources
  volume = {35},
  year = {2022}
 }
+
 ```
 
 ## Contact
