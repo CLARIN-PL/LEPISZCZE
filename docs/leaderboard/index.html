@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leaderboard — LEPISZCZE</title>
+    <meta
+      name="description"
+      content="Interactive results for the LEPISZCZE Polish NLP benchmark and the Expansio extractive question answering track."
+    />
+    <meta name="theme-color" content="#101b36" />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href="https://clarin-pl.github.io/LEPISZCZE/leaderboard/" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/leaderboard.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LEPISZCZE" />
+    <meta property="og:title" content="LEPISZCZE Leaderboard" />
+    <meta
+      property="og:description"
+      content="Compare model results across the LEPISZCZE benchmark and Expansio QA datasets."
+    />
+    <meta property="og:url" content="https://clarin-pl.github.io/LEPISZCZE/leaderboard/" />
+    <meta property="og:image" content="https://clarin-pl.github.io/LEPISZCZE/assets/og.png" />
+  </head>
+  <body class="leaderboard-page">
+    <a class="skip-link" href="#leaderboard">Skip to leaderboard</a>
+
+    <header class="site-header leaderboard-header" data-header>
+      <div class="shell header-inner">
+        <a class="brand" href="../" aria-label="LEPISZCZE home">
+          <span class="brand-mark" aria-hidden="true">L</span>
+          <span>LEPISZCZE</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="../#benchmark">Benchmark</a>
+          <a href="../#datasets">Datasets</a>
+          <a href="./" aria-current="page">Leaderboard</a>
+          <a href="../#citation">Citation</a>
+        </nav>
+        <a class="header-link" href="https://github.com/CLARIN-PL/LEPISZCZE">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="leaderboard-hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="shell leaderboard-hero-layout">
+          <div>
+            <p class="eyebrow"><span></span> Public experiment results</p>
+            <h1>LEPISZCZE<br /><em>Leaderboard.</em></h1>
+            <p>
+              Compare Polish language models across the original benchmark and the related
+              Expansio extractive question answering datasets.
+            </p>
+          </div>
+          <div class="leaderboard-summary" role="group" aria-label="Leaderboard summary">
+            <div><strong data-summary="results">—</strong><span>evaluations</span></div>
+            <div><strong data-summary="datasets">—</strong><span>datasets</span></div>
+            <div><strong data-summary="models">—</strong><span>models</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section leaderboard-section" id="leaderboard" aria-labelledby="leaderboard-title">
+        <div class="shell">
+          <div class="section-heading leaderboard-heading">
+            <div>
+              <p class="kicker">Explore results</p>
+              <h2 id="leaderboard-title">Rank models.<br />Inspect every metric.</h2>
+            </div>
+            <p>
+              Rankings are recalculated in your browser. Choose a track, dataset and ranking
+              metric; click any metric header to sort the table directly.
+            </p>
+          </div>
+
+          <div class="track-switcher" role="group" aria-label="Leaderboard track">
+            <button class="track-button is-active" type="button" data-track="benchmark" aria-pressed="true">
+              <span>Original benchmark</span><small>13 datasets · NeurIPS 2022</small>
+            </button>
+            <button class="track-button" type="button" data-track="expansio" aria-pressed="false">
+              <span>Expansio QA</span><small>4 dataset views · extractive QA</small>
+            </button>
+          </div>
+
+          <div class="leaderboard-panel" aria-busy="true" data-leaderboard-panel>
+            <div class="leaderboard-status" data-status role="status">
+              <span class="status-spinner" aria-hidden="true"></span>
+              Loading verified results…
+            </div>
+
+            <div class="leaderboard-content" data-content hidden>
+              <div class="controls" role="group" aria-label="Leaderboard controls">
+                <label>
+                  <span>Dataset</span>
+                  <select data-dataset></select>
+                </label>
+                <label>
+                  <span>Rank by</span>
+                  <select data-metric></select>
+                </label>
+                <label class="search-control">
+                  <span>Find a model</span>
+                  <input data-search type="search" placeholder="e.g. HerBERT" autocomplete="off" />
+                </label>
+                <div class="control-actions">
+                  <button type="button" data-share>Copy view link</button>
+                  <button type="button" data-export="csv">CSV</button>
+                  <button type="button" data-export="json">JSON</button>
+                </div>
+              </div>
+
+              <div class="view-context">
+                <div>
+                  <p data-task-label>—</p>
+                  <h3 data-dataset-label>—</h3>
+                </div>
+                <p data-result-count>—</p>
+              </div>
+
+              <div class="table-scroll" tabindex="0" aria-label="Scrollable leaderboard results">
+                <table class="results-table">
+                  <thead data-table-head></thead>
+                  <tbody data-table-body></tbody>
+                </table>
+              </div>
+              <p class="empty-state" data-empty hidden>No models match this search.</p>
+
+              <div class="methodology-note">
+                <div>
+                  <strong>How to read the table</strong>
+                  <p>
+                    Values show the mean over repeated evaluations; <span aria-hidden="true">±</span>
+                    denotes standard deviation where available. Higher values rank first for all
+                    published metrics.
+                  </p>
+                </div>
+                <div>
+                  <strong>Data provenance</strong>
+                  <p>
+                    This is a minimal, immutable snapshot of the historical leaderboard. Full
+                    experiment configurations remain in the source repository.
+                    <a data-source-link href="https://github.com/CLARIN-PL/embeddings">Inspect source ↗</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="leaderboard-cta">
+        <div class="shell">
+          <p class="kicker kicker-light">Reproducible by design</p>
+          <div>
+            <h2>Results with an audit trail.</h2>
+            <p>
+              The public dataset contains only model identity, dataset metadata and aggregate
+              metrics. Source commit and schema are validated during every Pages deployment.
+            </p>
+            <a class="button button-secondary" href="https://github.com/CLARIN-PL/LEPISZCZE/tree/main/docs/data">View leaderboard data ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <div class="footer-top">
+          <div>
+            <a class="brand brand-footer" href="../"><span class="brand-mark" aria-hidden="true">L</span><span>LEPISZCZE</span></a>
+            <p>A comprehensive benchmark for Polish natural language processing.</p>
+          </div>
+          <div class="footer-links">
+            <div><strong>Project</strong><a href="../#benchmark">Benchmark</a><a href="../#datasets">Datasets</a><a href="./">Leaderboard</a></div>
+            <div><strong>External</strong><a href="https://github.com/CLARIN-PL/LEPISZCZE">GitHub ↗</a><a href="https://huggingface.co/clarin-pl">Hugging Face ↗</a></div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2022–2026 LEPISZCZE contributors</span>
+          <span>MIT License · Built for open research</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/site.js" defer></script>
+    <script src="../assets/leaderboard.js" defer></script>
+  </body>
+</html>
