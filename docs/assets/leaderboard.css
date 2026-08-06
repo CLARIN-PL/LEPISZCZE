@@ -102,6 +102,11 @@
   .control-actions button:first-child { flex-basis: 100%; }
   .view-context { align-items: flex-start; flex-direction: column; gap: 12px; padding: 24px 18px 18px; }
   .table-scroll, .empty-state { margin-inline: 14px; }
+  .results-table th:nth-child(1), .results-table td:nth-child(1) { position: sticky; left: 0; z-index: 2; width: 42px; min-width: 42px; padding-inline: 7px; background: var(--paper-bright); }
+  .results-table th:nth-child(2), .results-table td:nth-child(2) { position: sticky; left: 42px; z-index: 2; min-width: 190px; max-width: 190px; background: var(--paper-bright); box-shadow: 8px 0 14px -12px rgba(16,27,54,.55); }
+  .results-table th:nth-child(1), .results-table th:nth-child(2) { z-index: 3; background: #e5e9f1; }
+  .results-table tbody tr:hover td:nth-child(1), .results-table tbody tr:hover td:nth-child(2) { background: #f2f5fa; }
+  .model-name { max-width: 160px; }
   .methodology-note { gap: 20px; padding-inline: 20px; }
 }
 

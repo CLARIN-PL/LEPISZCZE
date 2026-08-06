@@ -32,7 +32,10 @@
           <span class="brand-mark" aria-hidden="true">L</span>
           <span>LEPISZCZE</span>
         </a>
-        <nav class="site-nav" aria-label="Primary navigation">
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">
+          Menu
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Primary navigation">
           <a href="../#benchmark">Benchmark</a>
           <a href="../#datasets">Datasets</a>
           <a href="./" aria-current="page">Leaderboard</a>
@@ -116,6 +119,7 @@
 
               <div class="table-scroll" tabindex="0" aria-label="Scrollable leaderboard results">
                 <table class="results-table">
+                  <caption class="sr-only" data-table-caption>LEPISZCZE model results</caption>
                   <thead data-table-head></thead>
                   <tbody data-table-body></tbody>
                 </table>

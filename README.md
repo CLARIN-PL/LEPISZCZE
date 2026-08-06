@@ -13,10 +13,10 @@ LEPISZCZE benchmark resources
 | Name                  | Description                                                                                                                                      | URL                                                |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | **Leaderboard**           | **Interactive results across all LEPISZCZE tasks, including extractive QA**                                                                           | [**LEPISZCZE**](https://clarin-pl.github.io/LEPISZCZE/leaderboard/) |
-| Libary                | **clarin-pl/embeddings** Our library with pre-defined NLP pipelines for text classification, pair text classification and sequence labeling taks | [GitHub](https://github.com/cLARIN-PL/embeddings/) |
-| Experiments dashboard | Weight&Biases dashboard with our experiments                                                                                                     | [W&B](https://wandb.ai/embeddings/LEPISZCZE)       |
+| Library               | **clarin-pl/embeddings** Our library with predefined NLP pipelines for text classification, pair classification and sequence labeling tasks       | [GitHub](https://github.com/CLARIN-PL/embeddings/) |
+| Experiments dashboard | Weights & Biases dashboard with our experiments                                                                                                  | [W&B](https://wandb.ai/embeddings/LEPISZCZE)       |
  | Datasets              | LEPISZCZE Datasets are accessible through our HuggingFace Hub organization page.                                                                 | [HuggingFace](https://huggingface.co/clarin-pl)    | 
-| KLEJ-Datasets         | Datasets for KLEJ benchmark are accessible through Allegro HuggingFace organization page.                                                        | [HuggingFace](https://huggingface.co/allegro)      ||               |                                                                                                                                                  |                                                    |
+ | KLEJ-Datasets         | Datasets for the KLEJ benchmark are accessible through the Allegro Hugging Face organization page.                                               | [HuggingFace](https://huggingface.co/allegro)      |
 
 ### Updating the leaderboard
 
@@ -64,7 +64,7 @@ In case of any question or concerns about LEPISZCZE benchmark feel free to conta
 **DVC Repository Access** Due to the size of pipeline outputs data, we do not provide public access to our DVC Remote Repository. However, if you are interested in any kinds of data artifacts, don't hesitate to get in touch with us.
 ## Installation
 
-Repository can be setup via [poetry](https://python-poetry.org) or via [docker](https://www.docker.com). 
+The repository can be set up via [Poetry](https://python-poetry.org) or [Docker](https://www.docker.com).
 
 ### Requirements installation and environment setup via poetry 
 
@@ -99,7 +99,7 @@ conda activate LEPISZCZE
 
 Our experiments can be easily reproduced with [DVC](https://dvc.org) repro & [W&B](https://wandb.ai) logging. Using `dvc repro` command and with W&B token setup. 
 
-**DISCLAIMER** Reproduction of full pipeline could take above 2000 hours to compelete on a single GPU device. We advise to execute stages in parallel on mutiple GPU computing devices.
+**DISCLAIMER** Reproducing the full pipeline can take more than 2,000 hours on a single GPU. We recommend executing stages in parallel across multiple GPUs.
 
 
 ## Experiments
@@ -108,7 +108,7 @@ Experiments configs can be found under [configs](experiments/configs)
 
 **DISCLAIMER** For some of the dataset we had to limit manually maximum sequence length to `512` for Hyper Parameter Search.
 
-Models hyperparameters configuations can be accessed via W&B dashboard. Example: [[LINK]](https://wandb.ai/embeddings/LEPISZCZE/runs/2v6gyxjy/overview?workspace=user-)
+Model hyperparameter configurations can be accessed via the W&B dashboard. Example: [[LINK]](https://wandb.ai/embeddings/LEPISZCZE/runs/2v6gyxjy/overview?workspace=user-)
 
 ### Datasets configurations
 

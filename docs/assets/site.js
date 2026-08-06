@@ -6,6 +6,38 @@ if (header) {
   window.addEventListener("scroll", updateHeader, { passive: true });
 }
 
+const navToggle = document.querySelector("[data-nav-toggle]");
+
+if (header && navToggle) {
+  const closeNavigation = () => {
+    header.classList.remove("is-menu-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.textContent = "Menu";
+  };
+
+  navToggle.addEventListener("click", () => {
+    const open = !header.classList.contains("is-menu-open");
+    header.classList.toggle("is-menu-open", open);
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.textContent = open ? "Close" : "Menu";
+  });
+
+  header.querySelectorAll(".site-nav a").forEach((link) => {
+    link.addEventListener("click", closeNavigation);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && header.classList.contains("is-menu-open")) {
+      closeNavigation();
+      navToggle.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 960) closeNavigation();
+  });
+}
+
 const copyButton = document.querySelector("[data-copy-button]");
 const citation = document.querySelector("#bibtex");
 
@@ -23,8 +55,10 @@ if (copyButton && citation) {
       const selection = window.getSelection();
       const range = document.createRange();
       range.selectNodeContents(citation);
-      selection.removeAllRanges();
-      selection.addRange(range);
+      if (selection) {
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
       if (label) label.textContent = "Select & copy";
     }
   });
