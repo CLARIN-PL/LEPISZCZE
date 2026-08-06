@@ -139,8 +139,8 @@ button { font: inherit; }
 .section { padding: 116px 0; }
 .section-heading { margin-bottom: 58px; }
 .split-heading { display: grid; grid-template-columns: 1fr .72fr; gap: 90px; align-items: end; }
-.section-heading h2, .related-copy h2, .citation-layout h2 { margin: 0; font-size: clamp(42px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -.045em; }
-.section-heading > p, .split-heading > p, .related-copy > p, .citation-layout > div > p:last-child { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.75; }
+.section-heading h2, .qa-copy h2, .citation-layout h2 { margin: 0; font-size: clamp(42px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -.045em; }
+.section-heading > p, .split-heading > p, .qa-copy > p, .citation-layout > div > p:last-child { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.75; }
 .kicker { color: var(--red-dark); }
 .principles-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 16px; }
 .principle-card { position: relative; min-height: 286px; padding: 34px; background: var(--paper-bright); border: 1px solid var(--line); }
@@ -173,15 +173,15 @@ button { font: inherit; }
 .more-datasets-grid strong { font-size: 13px; }
 .more-datasets-grid span { color: #8f9bb2; font-size: 11px; }
 
-.related-section { background: #dce8ff; }
-.related-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 96px; align-items: start; }
-.related-copy > p { margin-top: 25px; color: var(--ink-soft); }
-.related-cards { display: grid; gap: 12px; }
-.related-cards a { position: relative; display: grid; grid-template-columns: 110px 1fr auto; align-items: center; min-height: 104px; padding: 22px 24px; background: rgba(255,255,255,.66); border: 1px solid rgba(16,27,54,.13); transition: transform 160ms ease, background 160ms ease; }
-.related-cards a:hover { transform: translateX(5px); background: var(--white); }
-.related-cards span { color: var(--red-dark); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.related-cards strong { font-size: 21px; }
-.related-cards small { color: var(--muted); }
+.qa-section { background: #dce8ff; }
+.qa-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 96px; align-items: start; }
+.qa-copy > p { margin-top: 25px; color: var(--ink-soft); }
+.qa-cards { display: grid; gap: 12px; }
+.qa-cards a { position: relative; display: grid; grid-template-columns: 110px 1fr auto; align-items: center; min-height: 104px; padding: 22px 24px; background: rgba(255,255,255,.66); border: 1px solid rgba(16,27,54,.13); transition: transform 160ms ease, background 160ms ease; }
+.qa-cards a:hover { transform: translateX(5px); background: var(--white); }
+.qa-cards span { color: var(--red-dark); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.qa-cards strong { font-size: 21px; }
+.qa-cards small { color: var(--muted); }
 
 .resources-section { background: var(--paper-bright); }
 .resource-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
@@ -225,11 +225,11 @@ button { font: inherit; }
   .hero { min-height: 0; }
   .hero-layout { grid-template-columns: 1fr; }
   .hero-panel { max-width: 620px; }
-  .split-heading, .datasets-heading, .related-layout, .citation-layout { grid-template-columns: 1fr; gap: 34px; }
+  .split-heading, .datasets-heading, .qa-layout, .citation-layout { grid-template-columns: 1fr; gap: 34px; }
   .principles-grid { grid-template-columns: 1fr 1fr; }
   .principle-featured { grid-column: span 2; grid-row: auto; min-height: 420px; }
   .principle-card:nth-child(3) { grid-column: auto; }
-  .related-cards { margin-top: 20px; }
+  .qa-cards { margin-top: 20px; }
 }
 
 @media (max-width: 720px) {
@@ -251,7 +251,7 @@ button { font: inherit; }
   .proof-grid div:nth-child(4) { border-top: 1px solid var(--line); }
   .section { padding: 80px 0; }
   .section-heading { margin-bottom: 38px; }
-  .section-heading h2, .related-copy h2, .citation-layout h2 { font-size: 40px; }
+  .section-heading h2, .qa-copy h2, .citation-layout h2 { font-size: 40px; }
   .principles-grid, .resource-grid { grid-template-columns: 1fr; }
   .principle-featured { grid-column: auto; min-height: 390px; }
   .dataset-row { grid-template-columns: 36px 1fr auto; padding: 18px 0; }
@@ -260,8 +260,8 @@ button { font: inherit; }
   .dataset-row a::after { content: "↗"; font-size: 15px; }
   .more-datasets-grid { grid-template-columns: 1fr; }
   .more-datasets-grid a { flex-direction: column; gap: 6px; }
-  .related-cards a { grid-template-columns: 78px 1fr; }
-  .related-cards small { grid-column: 2; margin-top: 7px; }
+  .qa-cards a { grid-template-columns: 78px 1fr; }
+  .qa-cards small { grid-column: 2; margin-top: 7px; }
   .resource-card { min-height: 210px; }
   .repro-note { grid-template-columns: 1fr; gap: 10px; }
   .citation-card pre { min-width: 620px; padding: 58px 24px 28px; }

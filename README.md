@@ -12,7 +12,7 @@ LEPISZCZE benchmark resources
 
 | Name                  | Description                                                                                                                                      | URL                                                |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| **Leaderboard**           | **Interactive LEPISZCZE and Expansio QA results**                                                                                                    | [**LEPISZCZE**](https://clarin-pl.github.io/LEPISZCZE/leaderboard/) |
+| **Leaderboard**           | **Interactive results across all LEPISZCZE tasks, including extractive QA**                                                                           | [**LEPISZCZE**](https://clarin-pl.github.io/LEPISZCZE/leaderboard/) |
 | Libary                | **clarin-pl/embeddings** Our library with pre-defined NLP pipelines for text classification, pair text classification and sequence labeling taks | [GitHub](https://github.com/cLARIN-PL/embeddings/) |
 | Experiments dashboard | Weight&Biases dashboard with our experiments                                                                                                     | [W&B](https://wandb.ai/embeddings/LEPISZCZE)       |
  | Datasets              | LEPISZCZE Datasets are accessible through our HuggingFace Hub organization page.                                                                 | [HuggingFace](https://huggingface.co/clarin-pl)    | 
@@ -111,6 +111,10 @@ Experiments configs can be found under [configs](experiments/configs)
 Models hyperparameters configuations can be accessed via W&B dashboard. Example: [[LINK]](https://wandb.ai/embeddings/LEPISZCZE/runs/2v6gyxjy/overview?workspace=user-)
 
 ### Datasets configurations
+
+The extractive QA datasets hosted under the `expansio` Hugging Face namespace are maintained as
+part of LEPISZCZE. They extend the benchmark beyond the dataset set described in the original
+NeurIPS 2022 paper.
 
 
 | dataset name                                                                                  | task type                                          | input_column_name(s) | target_column_name | description                                                                                                                                                                               |

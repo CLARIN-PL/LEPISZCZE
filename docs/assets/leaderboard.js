@@ -8,6 +8,7 @@
     panel,
     status: panel.querySelector("[data-status]"),
     content: panel.querySelector("[data-content]"),
+    task: panel.querySelector("[data-task]"),
     dataset: panel.querySelector("[data-dataset]"),
     metric: panel.querySelector("[data-metric]"),
     search: panel.querySelector("[data-search]"),
@@ -48,7 +49,7 @@
 
   const state = {
     data: null,
-    track: "benchmark",
+    task: "",
     dataset: "",
     metric: "",
     search: "",
@@ -71,8 +72,10 @@
     }).format(value);
   };
 
-  const datasetsForTrack = () => {
-    const entries = state.data.entries.filter((entry) => entry.track === state.track);
+  const tasks = () => [...new Set(state.data.entries.map((entry) => entry.task))].sort();
+
+  const datasetsForTask = () => {
+    const entries = state.data.entries.filter((entry) => entry.task === state.task);
     const datasets = new Map();
     entries.forEach((entry) => {
       if (!datasets.has(entry.dataset)) {
@@ -88,7 +91,7 @@
 
   const entriesForDataset = () =>
     state.data.entries.filter(
-      (entry) => entry.track === state.track && entry.dataset === state.dataset,
+      (entry) => entry.task === state.task && entry.dataset === state.dataset,
     );
 
   const metricsForDataset = () => {
@@ -101,7 +104,8 @@
 
   const readUrlState = () => {
     const params = new URLSearchParams(window.location.search);
-    if (["benchmark", "expansio"].includes(params.get("track"))) state.track = params.get("track");
+    state.task = params.get("task") || "";
+    if (!state.task && params.get("track") === "expansio") state.task = "Question Answering";
     state.dataset = params.get("dataset") || "";
     state.metric = params.get("metric") || "";
     state.search = params.get("q") || "";
@@ -109,7 +113,7 @@
 
   const writeUrlState = () => {
     const params = new URLSearchParams();
-    if (state.track !== "benchmark") params.set("track", state.track);
+    if (state.task) params.set("task", state.task);
     if (state.dataset) params.set("dataset", state.dataset);
     if (state.metric) params.set("metric", state.metric);
     if (state.search) params.set("q", state.search);
@@ -117,21 +121,22 @@
     window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
   };
 
-  const syncTrackButtons = () => {
-    document.querySelectorAll("[data-track]").forEach((button) => {
-      const active = button.dataset.track === state.track;
-      button.classList.toggle("is-active", active);
-      button.setAttribute("aria-pressed", String(active));
-    });
+  const refreshTaskOptions = () => {
+    const availableTasks = tasks();
+    if (!availableTasks.includes(state.task)) state.task = availableTasks[0] || "";
+    elements.task.replaceChildren(
+      ...availableTasks.map((task) => new Option(task, task)),
+    );
+    elements.task.value = state.task;
   };
 
   const refreshDatasetOptions = () => {
-    const datasets = datasetsForTrack();
+    const datasets = datasetsForTask();
     if (!datasets.some((dataset) => dataset.value === state.dataset)) {
       state.dataset = datasets[0]?.value || "";
     }
     elements.dataset.replaceChildren(
-      ...datasets.map((dataset) => new Option(`${dataset.label} — ${dataset.task}`, dataset.value)),
+      ...datasets.map((dataset) => new Option(dataset.label, dataset.value)),
     );
     elements.dataset.value = state.dataset;
   };
@@ -161,7 +166,7 @@
   const renderTable = () => {
     const metrics = metricsForDataset();
     const entries = rankedEntries();
-    const dataset = datasetsForTrack().find((item) => item.value === state.dataset);
+    const dataset = datasetsForTask().find((item) => item.value === state.dataset);
 
     elements.taskLabel.textContent = dataset?.task || "—";
     elements.datasetLabel.textContent = dataset?.label || "—";
@@ -227,7 +232,7 @@
   };
 
   const render = ({ resetDataset = false } = {}) => {
-    syncTrackButtons();
+    refreshTaskOptions();
     if (resetDataset) state.dataset = "";
     refreshDatasetOptions();
     refreshMetricOptions();
@@ -270,13 +275,11 @@
   };
 
   const bindEvents = () => {
-    document.querySelectorAll("[data-track]").forEach((button) => {
-      button.addEventListener("click", () => {
-        state.track = button.dataset.track;
-        state.metric = "";
-        state.direction = "desc";
-        render({ resetDataset: true });
-      });
+    elements.task.addEventListener("change", () => {
+      state.task = elements.task.value;
+      state.metric = "";
+      state.direction = "desc";
+      render({ resetDataset: true });
     });
     elements.dataset.addEventListener("change", () => {
       state.dataset = elements.dataset.value;
@@ -327,7 +330,7 @@
       const response = await fetch("../data/leaderboard.json");
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       state.data = await response.json();
-      if (state.data.schema_version !== 1 || !Array.isArray(state.data.entries)) {
+      if (state.data.schema_version !== 2 || !Array.isArray(state.data.entries)) {
         throw new Error("unsupported data schema");
       }
       readUrlState();

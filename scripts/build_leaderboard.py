@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 SOURCE_REPOSITORY = "https://github.com/CLARIN-PL/embeddings"
 DEFAULT_SOURCE_COMMIT = "a434193a871c7d1bccdb5fd9106be5a950e38aad"
 
@@ -28,10 +28,10 @@ DATASET_LABELS = {
     "clarin-pl/polemo2-official": "PolEmo 2.0",
     "laugustyniak/abusive-clauses-pl": "Abusive Clauses",
     "laugustyniak/political-advertising-pl": "Political Advertising",
-    "qa_all": "Expansio QA · Combined",
-    "qa_kpwr": "Expansio QA · KPWr",
-    "qa_nkjp": "Expansio QA · NKJP",
-    "qa_wikipedia": "Expansio QA · Wikipedia",
+    "qa_all": "QA · Combined",
+    "qa_kpwr": "QA · KPWr",
+    "qa_nkjp": "QA · NKJP",
+    "qa_wikipedia": "QA · Wikipedia",
 }
 
 
@@ -88,7 +88,6 @@ def build_snapshot(source_dir: Path, source_commit: str) -> dict[str, Any]:
         entries.append(
             {
                 "id": entry_id,
-                "track": "expansio" if task == "Question Answering" else "benchmark",
                 "task": task,
                 "dataset": dataset,
                 "dataset_label": DATASET_LABELS.get(dataset, dataset),
@@ -99,7 +98,14 @@ def build_snapshot(source_dir: Path, source_commit: str) -> dict[str, Any]:
             }
         )
 
-    entries.sort(key=lambda item: (item["track"], item["task"], item["dataset"], item["model"]))
+    entries.sort(
+        key=lambda item: (
+            item["task"] == "Question Answering",
+            item["task"],
+            item["dataset"],
+            item["model"],
+        )
+    )
     return {
         "schema_version": SCHEMA_VERSION,
         "source": {
@@ -132,7 +138,7 @@ def validate_snapshot(snapshot: dict[str, Any]) -> None:
         raise ValueError("Snapshot must contain at least one result")
 
     seen_ids: set[str] = set()
-    required = {"id", "track", "task", "dataset", "dataset_label", "model", "metrics"}
+    required = {"id", "task", "dataset", "dataset_label", "model", "metrics"}
     for index, entry in enumerate(entries):
         if not isinstance(entry, dict):
             raise ValueError(f"entries[{index}] must be an object")
@@ -142,8 +148,6 @@ def validate_snapshot(snapshot: dict[str, Any]) -> None:
         if entry["id"] in seen_ids:
             raise ValueError(f"Duplicate result id: {entry['id']}")
         seen_ids.add(entry["id"])
-        if entry["track"] not in {"benchmark", "expansio"}:
-            raise ValueError(f"Invalid track for {entry['id']}: {entry['track']}")
         if not isinstance(entry["metrics"], dict) or not entry["metrics"]:
             raise ValueError(f"No metrics for {entry['id']}")
         for metric_name, values in entry["metrics"].items():
