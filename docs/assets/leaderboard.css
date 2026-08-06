@@ -80,6 +80,7 @@
 .leaderboard-cta .shell > div { display: grid; grid-template-columns: 1fr .8fr; gap: 80px; align-items: end; }
 .leaderboard-cta h2 { margin: 0; font-size: clamp(42px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -.045em; }
 .leaderboard-cta p { margin: 0 0 25px; color: #aeb9d0; font-size: 15px; line-height: 1.7; }
+.leaderboard-cta-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
 @media (max-width: 1040px) {
   .controls { grid-template-columns: 1fr 1fr; }
