@@ -30,21 +30,13 @@
 .leaderboard-section { background: var(--paper-bright); }
 .leaderboard-heading { display: grid; grid-template-columns: 1fr .72fr; gap: 90px; align-items: end; }
 .leaderboard-heading > p { color: var(--muted); font-size: 17px; line-height: 1.75; }
-.track-switcher { display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 18px; border: 1px solid var(--line); }
-.track-button { display: flex; min-height: 88px; flex-direction: column; align-items: flex-start; justify-content: center; padding: 18px 24px; border: 0; border-right: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; text-align: left; transition: background 160ms ease, color 160ms ease; }
-.track-button:last-child { border-right: 0; }
-.track-button span { font-size: 15px; font-weight: 800; }
-.track-button small { margin-top: 6px; color: var(--muted); font-size: 11px; }
-.track-button.is-active { background: var(--ink); color: var(--white); }
-.track-button.is-active small { color: #aeb9d0; }
-
 .leaderboard-panel { min-height: 430px; border: 1px solid var(--line); background: var(--paper); }
 .leaderboard-status { display: flex; min-height: 430px; align-items: center; justify-content: center; gap: 12px; color: var(--muted); font-size: 14px; }
 .leaderboard-status.is-error { padding: 30px; color: var(--red-dark); text-align: center; }
 .status-spinner { width: 18px; height: 18px; border: 2px solid rgba(16, 27, 54, .14); border-top-color: var(--red); border-radius: 50%; animation: leaderboard-spin .8s linear infinite; }
 @keyframes leaderboard-spin { to { transform: rotate(360deg); } }
 
-.controls { display: grid; grid-template-columns: 1.2fr 1fr 1.2fr auto; gap: 12px; padding: 22px; border-bottom: 1px solid var(--line); background: #ebe9e2; }
+.controls { display: grid; grid-template-columns: 1fr 1.15fr .9fr 1.15fr auto; gap: 12px; padding: 22px; border-bottom: 1px solid var(--line); background: #ebe9e2; }
 .controls label { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
 .controls label > span { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .controls select, .controls input { width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid rgba(16, 27, 54, .2); border-radius: 2px; background: var(--paper-bright); color: var(--ink); font: inherit; font-size: 13px; }
@@ -105,9 +97,7 @@
   .leaderboard-hero h1 { font-size: clamp(47px, 14vw, 66px); }
   .leaderboard-summary div { min-height: 112px; padding: 15px; }
   .leaderboard-summary strong { font-size: 34px; }
-  .track-switcher, .controls, .methodology-note { grid-template-columns: 1fr; }
-  .track-button { border-right: 0; border-bottom: 1px solid var(--line); }
-  .track-button:last-child { border-bottom: 0; }
+  .controls, .methodology-note { grid-template-columns: 1fr; }
   .control-actions { flex-wrap: wrap; }
   .control-actions button:first-child { flex-basis: 100%; }
   .view-context { align-items: flex-start; flex-direction: column; gap: 12px; padding: 24px 18px 18px; }

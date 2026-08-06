@@ -6,7 +6,7 @@
     <title>LEPISZCZE — A comprehensive NLP benchmark for Polish</title>
     <meta
       name="description"
-      content="LEPISZCZE is a comprehensive benchmark for evaluating language models across diverse Polish NLP tasks, published at NeurIPS 2022."
+      content="LEPISZCZE is a comprehensive benchmark for Polish language models, introduced at NeurIPS 2022 and extended with extractive question answering datasets."
     />
     <meta name="theme-color" content="#101b36" />
     <meta name="color-scheme" content="light" />
@@ -17,7 +17,7 @@
     <meta property="og:title" content="LEPISZCZE — Polish NLP, measured with context" />
     <meta
       property="og:description"
-      content="A comprehensive benchmark for Polish language models. NeurIPS 2022 Datasets and Benchmarks Track."
+      content="A comprehensive and evolving benchmark for Polish language models, including extractive question answering."
     />
     <meta property="og:url" content="https://clarin-pl.github.io/LEPISZCZE/" />
     <meta property="og:image" content="https://clarin-pl.github.io/LEPISZCZE/assets/og.png" />
@@ -100,9 +100,9 @@
               <span>LE</span><span>PI</span><span>SZ</span><span>CZE</span>
             </div>
             <div class="panel-stats">
-              <div><strong>13</strong><span>task–dataset experiments</span></div>
-              <div><strong>5</strong><span>Polish language models</span></div>
-              <div><strong>8</strong><span>novel datasets</span></div>
+              <div><strong>17</strong><span>leaderboard dataset views</span></div>
+              <div><strong>10</strong><span>evaluated model setups</span></div>
+              <div><strong>12</strong><span>NLP task families</span></div>
             </div>
             <p class="panel-note">
               Built for extensibility, experiment tracking and versioned data pipelines.
@@ -175,8 +175,8 @@
               <h2>Tasks grounded in real Polish text.</h2>
             </div>
             <p>
-              The original benchmark spans legal language, reviews, news, Wikipedia, social media
-              and general-domain corpora.
+              The benchmark spans legal language, reviews, news, Wikipedia, social media,
+              general-domain corpora and extractive question answering.
             </p>
           </div>
 
@@ -218,7 +218,7 @@
               <a href="https://huggingface.co/datasets/clarin-pl/aspectemo" aria-label="AspectEmo on Hugging Face">View dataset ↗</a>
             </article>
             <details class="more-datasets">
-              <summary>Show six more benchmark datasets <span aria-hidden="true">＋</span></summary>
+              <summary>Show six more datasets <span aria-hidden="true">＋</span></summary>
               <div class="more-datasets-grid">
                 <a href="https://huggingface.co/datasets/clarin-pl/kpwr-ner"><strong>KPWr NER</strong><span>Named entity recognition</span></a>
                 <a href="https://huggingface.co/datasets/clarin-pl/nkjp-pos"><strong>NKJP POS</strong><span>Part-of-speech tagging</span></a>
@@ -232,18 +232,18 @@
         </div>
       </section>
 
-      <section class="section related-section">
-        <div class="shell related-layout">
-          <div class="related-copy">
-            <p class="kicker">Related resources</p>
-            <h2>Extractive QA datasets from Expansio.</h2>
+      <section class="section qa-section" id="question-answering">
+        <div class="shell qa-layout">
+          <div class="qa-copy">
+            <p class="kicker">LEPISZCZE · Question answering</p>
+            <h2>Extractive QA, inside LEPISZCZE.</h2>
             <p>
-              Three Polish SQuAD 2.0-style datasets complement the benchmark ecosystem with
-              answerable, paraphrased and unanswerable questions. They are listed as related
-              resources and are not part of the original 2022 evaluation pipeline.
+              Three Polish SQuAD 2.0-style datasets are part of the evolving LEPISZCZE benchmark,
+              adding answerable, paraphrased and unanswerable questions. Developed through
+              Expansio, they joined LEPISZCZE after the original 2022 publication.
             </p>
           </div>
-          <div class="related-cards">
+          <div class="qa-cards">
             <a href="https://huggingface.co/datasets/expansio/qa-wikipedia">
               <span>Wikipedia</span><strong>qa-wikipedia</strong><small>DOI 10.57967/hf/8855 ↗</small>
             </a>
@@ -266,12 +266,12 @@
             </div>
             <p>
               Read the methodology, inspect versioned experiment definitions, explore public
-              datasets and review tracked runs from the original benchmark.
+              datasets and review the published evaluation results.
             </p>
           </div>
           <div class="resource-grid">
             <a class="resource-card resource-dark" href="leaderboard/">
-              <span class="resource-type">Results</span><strong>Interactive leaderboard</strong><small>Compare models, tasks and Expansio QA results</small><i aria-hidden="true">→</i>
+              <span class="resource-type">Results</span><strong>Interactive leaderboard</strong><small>Compare models across every LEPISZCZE task</small><i aria-hidden="true">→</i>
             </a>
             <a class="resource-card" href="https://proceedings.neurips.cc/paper_files/paper/2022/file/890b206ebb79e550f3988cb8db936f42-Paper-Datasets_and_Benchmarks.pdf">
               <span class="resource-type">Publication</span><strong>NeurIPS paper</strong><small>Methodology, experiments and findings</small><i aria-hidden="true">↗</i>

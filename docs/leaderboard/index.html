@@ -6,7 +6,7 @@
     <title>Leaderboard — LEPISZCZE</title>
     <meta
       name="description"
-      content="Interactive results for the LEPISZCZE Polish NLP benchmark and the Expansio extractive question answering track."
+      content="Interactive results across the complete LEPISZCZE Polish NLP benchmark, including its extractive question answering datasets."
     />
     <meta name="theme-color" content="#101b36" />
     <meta name="color-scheme" content="light" />
@@ -18,7 +18,7 @@
     <meta property="og:title" content="LEPISZCZE Leaderboard" />
     <meta
       property="og:description"
-      content="Compare model results across the LEPISZCZE benchmark and Expansio QA datasets."
+      content="Compare model results across all LEPISZCZE tasks and datasets, including extractive question answering."
     />
     <meta property="og:url" content="https://clarin-pl.github.io/LEPISZCZE/leaderboard/" />
     <meta property="og:image" content="https://clarin-pl.github.io/LEPISZCZE/assets/og.png" />
@@ -50,13 +50,13 @@
             <p class="eyebrow"><span></span> Public experiment results</p>
             <h1>LEPISZCZE<br /><em>Leaderboard.</em></h1>
             <p>
-              Compare Polish language models across the original benchmark and the related
-              Expansio extractive question answering datasets.
+              Compare Polish language models across the complete benchmark — including the
+              extractive question answering datasets developed through Expansio.
             </p>
           </div>
           <div class="leaderboard-summary" role="group" aria-label="Leaderboard summary">
             <div><strong data-summary="results">—</strong><span>evaluations</span></div>
-            <div><strong data-summary="datasets">—</strong><span>datasets</span></div>
+            <div><strong data-summary="datasets">—</strong><span>dataset views</span></div>
             <div><strong data-summary="models">—</strong><span>models</span></div>
           </div>
         </div>
@@ -70,18 +70,9 @@
               <h2 id="leaderboard-title">Rank models.<br />Inspect every metric.</h2>
             </div>
             <p>
-              Rankings are recalculated in your browser. Choose a track, dataset and ranking
-              metric; click any metric header to sort the table directly.
+              Rankings are recalculated in your browser. Choose a task, dataset and ranking metric;
+              click any metric header to sort the table directly.
             </p>
-          </div>
-
-          <div class="track-switcher" role="group" aria-label="Leaderboard track">
-            <button class="track-button is-active" type="button" data-track="benchmark" aria-pressed="true">
-              <span>Original benchmark</span><small>13 datasets · NeurIPS 2022</small>
-            </button>
-            <button class="track-button" type="button" data-track="expansio" aria-pressed="false">
-              <span>Expansio QA</span><small>4 dataset views · extractive QA</small>
-            </button>
           </div>
 
           <div class="leaderboard-panel" aria-busy="true" data-leaderboard-panel>
@@ -92,6 +83,10 @@
 
             <div class="leaderboard-content" data-content hidden>
               <div class="controls" role="group" aria-label="Leaderboard controls">
+                <label>
+                  <span>Task</span>
+                  <select data-task></select>
+                </label>
                 <label>
                   <span>Dataset</span>
                   <select data-dataset></select>
@@ -139,8 +134,9 @@
                 <div>
                   <strong>Data provenance</strong>
                   <p>
-                    This is a minimal, immutable snapshot of the historical leaderboard. Full
-                    experiment configurations remain in the source repository.
+                    This is a minimal, immutable snapshot of the LEPISZCZE leaderboard. The QA
+                    datasets were incorporated after the 2022 paper; full experiment configurations
+                    remain in the source repository.
                     <a data-source-link href="https://github.com/CLARIN-PL/embeddings">Inspect source ↗</a>
                   </p>
                 </div>

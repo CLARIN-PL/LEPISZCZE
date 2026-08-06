@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "source": {
     "repository": "https://github.com/CLARIN-PL/embeddings",
     "commit": "a434193a871c7d1bccdb5fd9106be5a950e38aad",
@@ -15,7 +15,6 @@
   "entries": [
     {
       "id": "abusive_clauses_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Abusive Clauses Detection",
       "dataset": "laugustyniak/abusive-clauses-pl",
       "dataset_label": "Abusive Clauses",
@@ -67,7 +66,6 @@
     },
     {
       "id": "abusive_clauses_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Abusive Clauses Detection",
       "dataset": "laugustyniak/abusive-clauses-pl",
       "dataset_label": "Abusive Clauses",
@@ -119,7 +117,6 @@
     },
     {
       "id": "abusive_clauses_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Abusive Clauses Detection",
       "dataset": "laugustyniak/abusive-clauses-pl",
       "dataset_label": "Abusive Clauses",
@@ -171,7 +168,6 @@
     },
     {
       "id": "abusive_clauses_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Abusive Clauses Detection",
       "dataset": "laugustyniak/abusive-clauses-pl",
       "dataset_label": "Abusive Clauses",
@@ -223,7 +219,6 @@
     },
     {
       "id": "abusive_clauses_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Abusive Clauses Detection",
       "dataset": "laugustyniak/abusive-clauses-pl",
       "dataset_label": "Abusive Clauses",
@@ -275,7 +270,6 @@
     },
     {
       "id": "aspectemo_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Aspect-based Sentiment Analysis",
       "dataset": "clarin-pl/aspectemo",
       "dataset_label": "AspectEmo",
@@ -327,7 +321,6 @@
     },
     {
       "id": "aspectemo_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Aspect-based Sentiment Analysis",
       "dataset": "clarin-pl/aspectemo",
       "dataset_label": "AspectEmo",
@@ -379,7 +372,6 @@
     },
     {
       "id": "aspectemo_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Aspect-based Sentiment Analysis",
       "dataset": "clarin-pl/aspectemo",
       "dataset_label": "AspectEmo",
@@ -431,7 +423,6 @@
     },
     {
       "id": "aspectemo_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Aspect-based Sentiment Analysis",
       "dataset": "clarin-pl/aspectemo",
       "dataset_label": "AspectEmo",
@@ -483,7 +474,6 @@
     },
     {
       "id": "aspectemo_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Aspect-based Sentiment Analysis",
       "dataset": "clarin-pl/aspectemo",
       "dataset_label": "AspectEmo",
@@ -535,7 +525,6 @@
     },
     {
       "id": "dialogue_acts_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Dialogue Acts Classification",
       "dataset": "clarin-pl/dialogue-acts",
       "dataset_label": "Dialogue Acts",
@@ -587,7 +576,6 @@
     },
     {
       "id": "dialogue_acts_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Dialogue Acts Classification",
       "dataset": "clarin-pl/dialogue-acts",
       "dataset_label": "Dialogue Acts",
@@ -639,7 +627,6 @@
     },
     {
       "id": "dialogue_acts_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Dialogue Acts Classification",
       "dataset": "clarin-pl/dialogue-acts",
       "dataset_label": "Dialogue Acts",
@@ -691,7 +678,6 @@
     },
     {
       "id": "dialogue_acts_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Dialogue Acts Classification",
       "dataset": "clarin-pl/dialogue-acts",
       "dataset_label": "Dialogue Acts",
@@ -743,7 +729,6 @@
     },
     {
       "id": "dialogue_acts_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Dialogue Acts Classification",
       "dataset": "clarin-pl/dialogue-acts",
       "dataset_label": "Dialogue Acts",
@@ -795,7 +780,6 @@
     },
     {
       "id": "cdsc_e_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Entailment Classification",
       "dataset": "allegro/klej-cdsc-e",
       "dataset_label": "CDSC-E",
@@ -847,7 +831,6 @@
     },
     {
       "id": "cdsc_e_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Entailment Classification",
       "dataset": "allegro/klej-cdsc-e",
       "dataset_label": "CDSC-E",
@@ -899,7 +882,6 @@
     },
     {
       "id": "cdsc_e_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Entailment Classification",
       "dataset": "allegro/klej-cdsc-e",
       "dataset_label": "CDSC-E",
@@ -951,7 +933,6 @@
     },
     {
       "id": "cdsc_e_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Entailment Classification",
       "dataset": "allegro/klej-cdsc-e",
       "dataset_label": "CDSC-E",
@@ -1003,7 +984,6 @@
     },
     {
       "id": "cdsc_e_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Entailment Classification",
       "dataset": "allegro/klej-cdsc-e",
       "dataset_label": "CDSC-E",
@@ -1055,7 +1035,6 @@
     },
     {
       "id": "kpwr_ner_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Named Entity Recognition",
       "dataset": "clarin-pl/kpwr-ner",
       "dataset_label": "KPWr NER",
@@ -1107,7 +1086,6 @@
     },
     {
       "id": "kpwr_ner_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Named Entity Recognition",
       "dataset": "clarin-pl/kpwr-ner",
       "dataset_label": "KPWr NER",
@@ -1159,7 +1137,6 @@
     },
     {
       "id": "kpwr_ner_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Named Entity Recognition",
       "dataset": "clarin-pl/kpwr-ner",
       "dataset_label": "KPWr NER",
@@ -1211,7 +1188,6 @@
     },
     {
       "id": "kpwr_ner_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Named Entity Recognition",
       "dataset": "clarin-pl/kpwr-ner",
       "dataset_label": "KPWr NER",
@@ -1263,7 +1239,6 @@
     },
     {
       "id": "kpwr_ner_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Named Entity Recognition",
       "dataset": "clarin-pl/kpwr-ner",
       "dataset_label": "KPWr NER",
@@ -1315,7 +1290,6 @@
     },
     {
       "id": "psc_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Paraphrase Classification",
       "dataset": "allegro/klej-psc",
       "dataset_label": "PSC",
@@ -1367,7 +1341,6 @@
     },
     {
       "id": "psc_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Paraphrase Classification",
       "dataset": "allegro/klej-psc",
       "dataset_label": "PSC",
@@ -1419,7 +1392,6 @@
     },
     {
       "id": "psc_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Paraphrase Classification",
       "dataset": "allegro/klej-psc",
       "dataset_label": "PSC",
@@ -1471,7 +1443,6 @@
     },
     {
       "id": "psc_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Paraphrase Classification",
       "dataset": "allegro/klej-psc",
       "dataset_label": "PSC",
@@ -1523,7 +1494,6 @@
     },
     {
       "id": "psc_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Paraphrase Classification",
       "dataset": "allegro/klej-psc",
       "dataset_label": "PSC",
@@ -1575,7 +1545,6 @@
     },
     {
       "id": "nkjp_pos_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Part-of-speech Tagging",
       "dataset": "clarin-pl/nkjp-pos",
       "dataset_label": "NKJP POS",
@@ -1627,7 +1596,6 @@
     },
     {
       "id": "nkjp_pos_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Part-of-speech Tagging",
       "dataset": "clarin-pl/nkjp-pos",
       "dataset_label": "NKJP POS",
@@ -1679,7 +1647,6 @@
     },
     {
       "id": "nkjp_pos_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Part-of-speech Tagging",
       "dataset": "clarin-pl/nkjp-pos",
       "dataset_label": "NKJP POS",
@@ -1731,7 +1698,6 @@
     },
     {
       "id": "nkjp_pos_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Part-of-speech Tagging",
       "dataset": "clarin-pl/nkjp-pos",
       "dataset_label": "NKJP POS",
@@ -1783,7 +1749,6 @@
     },
     {
       "id": "nkjp_pos_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Part-of-speech Tagging",
       "dataset": "clarin-pl/nkjp-pos",
       "dataset_label": "NKJP POS",
@@ -1835,7 +1800,6 @@
     },
     {
       "id": "political_advertising_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Political Advertising Detection",
       "dataset": "laugustyniak/political-advertising-pl",
       "dataset_label": "Political Advertising",
@@ -1887,7 +1851,6 @@
     },
     {
       "id": "political_advertising_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Political Advertising Detection",
       "dataset": "laugustyniak/political-advertising-pl",
       "dataset_label": "Political Advertising",
@@ -1939,7 +1902,6 @@
     },
     {
       "id": "political_advertising_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Political Advertising Detection",
       "dataset": "laugustyniak/political-advertising-pl",
       "dataset_label": "Political Advertising",
@@ -1991,7 +1953,6 @@
     },
     {
       "id": "political_advertising_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Political Advertising Detection",
       "dataset": "laugustyniak/political-advertising-pl",
       "dataset_label": "Political Advertising",
@@ -2043,7 +2004,6 @@
     },
     {
       "id": "political_advertising_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Political Advertising Detection",
       "dataset": "laugustyniak/political-advertising-pl",
       "dataset_label": "Political Advertising",
@@ -2095,7 +2055,6 @@
     },
     {
       "id": "punctuation_restoration_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Punctuation Restoration",
       "dataset": "clarin-pl/2021-punctuation-restoration",
       "dataset_label": "Punctuation Restoration",
@@ -2147,7 +2106,6 @@
     },
     {
       "id": "punctuation_restoration_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Punctuation Restoration",
       "dataset": "clarin-pl/2021-punctuation-restoration",
       "dataset_label": "Punctuation Restoration",
@@ -2199,7 +2157,6 @@
     },
     {
       "id": "punctuation_restoration_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Punctuation Restoration",
       "dataset": "clarin-pl/2021-punctuation-restoration",
       "dataset_label": "Punctuation Restoration",
@@ -2251,7 +2208,6 @@
     },
     {
       "id": "punctuation_restoration_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Punctuation Restoration",
       "dataset": "clarin-pl/2021-punctuation-restoration",
       "dataset_label": "Punctuation Restoration",
@@ -2303,7 +2259,6 @@
     },
     {
       "id": "punctuation_restoration_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Punctuation Restoration",
       "dataset": "clarin-pl/2021-punctuation-restoration",
       "dataset_label": "Punctuation Restoration",
@@ -2355,7 +2310,6 @@
     },
     {
       "id": "dyk_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Q&A Classification",
       "dataset": "allegro/klej-dyk",
       "dataset_label": "DYK",
@@ -2407,7 +2361,6 @@
     },
     {
       "id": "dyk_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Q&A Classification",
       "dataset": "allegro/klej-dyk",
       "dataset_label": "DYK",
@@ -2459,7 +2412,6 @@
     },
     {
       "id": "dyk_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Q&A Classification",
       "dataset": "allegro/klej-dyk",
       "dataset_label": "DYK",
@@ -2511,7 +2463,6 @@
     },
     {
       "id": "dyk_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Q&A Classification",
       "dataset": "allegro/klej-dyk",
       "dataset_label": "DYK",
@@ -2563,7 +2514,6 @@
     },
     {
       "id": "dyk_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Q&A Classification",
       "dataset": "allegro/klej-dyk",
       "dataset_label": "DYK",
@@ -2615,7 +2565,6 @@
     },
     {
       "id": "polemo2_in_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-in",
       "dataset_label": "PolEmo 2.0 In-Domain",
@@ -2667,7 +2616,6 @@
     },
     {
       "id": "polemo2_in_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-in",
       "dataset_label": "PolEmo 2.0 In-Domain",
@@ -2719,7 +2667,6 @@
     },
     {
       "id": "polemo2_in_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-in",
       "dataset_label": "PolEmo 2.0 In-Domain",
@@ -2771,7 +2718,6 @@
     },
     {
       "id": "polemo2_in_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-in",
       "dataset_label": "PolEmo 2.0 In-Domain",
@@ -2823,7 +2769,6 @@
     },
     {
       "id": "polemo2_in_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-in",
       "dataset_label": "PolEmo 2.0 In-Domain",
@@ -2875,7 +2820,6 @@
     },
     {
       "id": "polemo2_out_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-out",
       "dataset_label": "PolEmo 2.0 Out-of-Domain",
@@ -2927,7 +2871,6 @@
     },
     {
       "id": "polemo2_out_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-out",
       "dataset_label": "PolEmo 2.0 Out-of-Domain",
@@ -2979,7 +2922,6 @@
     },
     {
       "id": "polemo2_out_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-out",
       "dataset_label": "PolEmo 2.0 Out-of-Domain",
@@ -3031,7 +2973,6 @@
     },
     {
       "id": "polemo2_out_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-out",
       "dataset_label": "PolEmo 2.0 Out-of-Domain",
@@ -3083,7 +3024,6 @@
     },
     {
       "id": "polemo2_out_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "allegro/klej-polemo2-out",
       "dataset_label": "PolEmo 2.0 Out-of-Domain",
@@ -3135,7 +3075,6 @@
     },
     {
       "id": "baseline_xgboost_tfidf",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "clarin-pl/polemo2-official",
       "dataset_label": "PolEmo 2.0",
@@ -3187,7 +3126,6 @@
     },
     {
       "id": "polemo2_allegro__herbert-base-cased",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "clarin-pl/polemo2-official",
       "dataset_label": "PolEmo 2.0",
@@ -3239,7 +3177,6 @@
     },
     {
       "id": "polemo2_allegro__herbert-large-cased",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "clarin-pl/polemo2-official",
       "dataset_label": "PolEmo 2.0",
@@ -3291,7 +3228,6 @@
     },
     {
       "id": "polemo2_dkleczek__bert-base-polish-cased-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "clarin-pl/polemo2-official",
       "dataset_label": "PolEmo 2.0",
@@ -3343,7 +3279,6 @@
     },
     {
       "id": "polemo2_dkleczek__bert-base-polish-uncased-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "clarin-pl/polemo2-official",
       "dataset_label": "PolEmo 2.0",
@@ -3395,7 +3330,6 @@
     },
     {
       "id": "polemo2_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
-      "track": "benchmark",
       "task": "Sentiment Analysis",
       "dataset": "clarin-pl/polemo2-official",
       "dataset_label": "PolEmo 2.0",
@@ -3447,10 +3381,9 @@
     },
     {
       "id": "qa_all_Aleksandra__herbert-base-cased-finetuned-squad",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_all",
-      "dataset_label": "Expansio QA · Combined",
+      "dataset_label": "QA · Combined",
       "model": "Aleksandra/herbert-base-cased-finetuned-squad",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3479,10 +3412,9 @@
     },
     {
       "id": "qa_all_allegro__herbert-base-cased",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_all",
-      "dataset_label": "Expansio QA · Combined",
+      "dataset_label": "QA · Combined",
       "model": "allegro/herbert-base-cased",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3511,10 +3443,9 @@
     },
     {
       "id": "qa_all_clarin-knext__plt5-large-poquad__inference",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_all",
-      "dataset_label": "Expansio QA · Combined",
+      "dataset_label": "QA · Combined",
       "model": "clarin-knext/plt5-large-poquad__inference",
       "dataset_version": "0.0.0",
       "averaged_over": 1,
@@ -3543,10 +3474,9 @@
     },
     {
       "id": "qa_all_deepset__roberta-base-squad2",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_all",
-      "dataset_label": "Expansio QA · Combined",
+      "dataset_label": "QA · Combined",
       "model": "deepset/roberta-base-squad2",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3575,10 +3505,9 @@
     },
     {
       "id": "qa_all_xlm-roberta-base",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_all",
-      "dataset_label": "Expansio QA · Combined",
+      "dataset_label": "QA · Combined",
       "model": "xlm-roberta-base",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3607,10 +3536,9 @@
     },
     {
       "id": "qa_kpwr_Aleksandra__herbert-base-cased-finetuned-squad",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_kpwr",
-      "dataset_label": "Expansio QA · KPWr",
+      "dataset_label": "QA · KPWr",
       "model": "Aleksandra/herbert-base-cased-finetuned-squad",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3639,10 +3567,9 @@
     },
     {
       "id": "qa_kpwr_allegro__herbert-base-cased",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_kpwr",
-      "dataset_label": "Expansio QA · KPWr",
+      "dataset_label": "QA · KPWr",
       "model": "allegro/herbert-base-cased",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3671,10 +3598,9 @@
     },
     {
       "id": "qa_kpwr_clarin-knext__plt5-large-poquad__inference",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_kpwr",
-      "dataset_label": "Expansio QA · KPWr",
+      "dataset_label": "QA · KPWr",
       "model": "clarin-knext/plt5-large-poquad__inference",
       "dataset_version": "0.0.0",
       "averaged_over": 1,
@@ -3703,10 +3629,9 @@
     },
     {
       "id": "qa_kpwr_deepset__roberta-base-squad2",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_kpwr",
-      "dataset_label": "Expansio QA · KPWr",
+      "dataset_label": "QA · KPWr",
       "model": "deepset/roberta-base-squad2",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3735,10 +3660,9 @@
     },
     {
       "id": "qa_kpwr_xlm-roberta-base",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_kpwr",
-      "dataset_label": "Expansio QA · KPWr",
+      "dataset_label": "QA · KPWr",
       "model": "xlm-roberta-base",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3767,10 +3691,9 @@
     },
     {
       "id": "qa_nkjp_Aleksandra__herbert-base-cased-finetuned-squad",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_nkjp",
-      "dataset_label": "Expansio QA · NKJP",
+      "dataset_label": "QA · NKJP",
       "model": "Aleksandra/herbert-base-cased-finetuned-squad",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3799,10 +3722,9 @@
     },
     {
       "id": "qa_nkjp_allegro__herbert-base-cased",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_nkjp",
-      "dataset_label": "Expansio QA · NKJP",
+      "dataset_label": "QA · NKJP",
       "model": "allegro/herbert-base-cased",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3831,10 +3753,9 @@
     },
     {
       "id": "qa_nkjp_clarin-knext__plt5-large-poquad__inference",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_nkjp",
-      "dataset_label": "Expansio QA · NKJP",
+      "dataset_label": "QA · NKJP",
       "model": "clarin-knext/plt5-large-poquad__inference",
       "dataset_version": "0.0.0",
       "averaged_over": 1,
@@ -3863,10 +3784,9 @@
     },
     {
       "id": "qa_nkjp_deepset__roberta-base-squad2",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_nkjp",
-      "dataset_label": "Expansio QA · NKJP",
+      "dataset_label": "QA · NKJP",
       "model": "deepset/roberta-base-squad2",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3895,10 +3815,9 @@
     },
     {
       "id": "qa_nkjp_xlm-roberta-base",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_nkjp",
-      "dataset_label": "Expansio QA · NKJP",
+      "dataset_label": "QA · NKJP",
       "model": "xlm-roberta-base",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3927,10 +3846,9 @@
     },
     {
       "id": "qa_wikipedia_Aleksandra__herbert-base-cased-finetuned-squad",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_wikipedia",
-      "dataset_label": "Expansio QA · Wikipedia",
+      "dataset_label": "QA · Wikipedia",
       "model": "Aleksandra/herbert-base-cased-finetuned-squad",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3959,10 +3877,9 @@
     },
     {
       "id": "qa_wikipedia_allegro__herbert-base-cased",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_wikipedia",
-      "dataset_label": "Expansio QA · Wikipedia",
+      "dataset_label": "QA · Wikipedia",
       "model": "allegro/herbert-base-cased",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -3991,10 +3908,9 @@
     },
     {
       "id": "qa_wikipedia_clarin-knext__plt5-large-poquad__inference",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_wikipedia",
-      "dataset_label": "Expansio QA · Wikipedia",
+      "dataset_label": "QA · Wikipedia",
       "model": "clarin-knext/plt5-large-poquad__inference",
       "dataset_version": "0.0.0",
       "averaged_over": 1,
@@ -4023,10 +3939,9 @@
     },
     {
       "id": "qa_wikipedia_deepset__roberta-base-squad2",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_wikipedia",
-      "dataset_label": "Expansio QA · Wikipedia",
+      "dataset_label": "QA · Wikipedia",
       "model": "deepset/roberta-base-squad2",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
@@ -4055,10 +3970,9 @@
     },
     {
       "id": "qa_wikipedia_xlm-roberta-base",
-      "track": "expansio",
       "task": "Question Answering",
       "dataset": "qa_wikipedia",
-      "dataset_label": "Expansio QA · Wikipedia",
+      "dataset_label": "QA · Wikipedia",
       "model": "xlm-roberta-base",
       "dataset_version": "0.0.0",
       "averaged_over": 5,
