@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -92,7 +93,7 @@ def build_snapshot(source_dir: Path, source_commit: str) -> dict[str, Any]:
                 "dataset": dataset,
                 "dataset_label": DATASET_LABELS.get(dataset, dataset),
                 "model": str(raw["embedding_name"]),
-                "dataset_version": str(raw.get("dataset_version", "unknown")),
+                "dataset_version": str(raw.get("dataset_version") or "unknown"),
                 "averaged_over": raw.get("averaged_over"),
                 "metrics": metrics,
             }
@@ -132,6 +133,8 @@ def validate_snapshot(snapshot: dict[str, Any]) -> None:
     source = snapshot.get("source")
     if not isinstance(source, dict) or not source.get("repository") or not source.get("commit"):
         raise ValueError("Snapshot source metadata is incomplete")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(source["commit"])):
+        raise ValueError("Snapshot source commit must be a full lowercase Git SHA")
 
     entries = snapshot.get("entries")
     if not isinstance(entries, list) or not entries:
@@ -148,6 +151,11 @@ def validate_snapshot(snapshot: dict[str, Any]) -> None:
         if entry["id"] in seen_ids:
             raise ValueError(f"Duplicate result id: {entry['id']}")
         seen_ids.add(entry["id"])
+        if "track" in entry:
+            raise ValueError(f"Deprecated track field found in {entry['id']}")
+        for field in ("id", "task", "dataset", "dataset_label", "model"):
+            if not isinstance(entry[field], str) or not entry[field].strip():
+                raise ValueError(f"Invalid {field} for entries[{index}]")
         if not isinstance(entry["metrics"], dict) or not entry["metrics"]:
             raise ValueError(f"No metrics for {entry['id']}")
         for metric_name, values in entry["metrics"].items():
@@ -155,7 +163,9 @@ def validate_snapshot(snapshot: dict[str, Any]) -> None:
                 raise ValueError(f"Invalid metric {entry['id']}.{metric_name}")
             _finite_number(values["mean"], f"{entry['id']}.{metric_name}.mean")
             if values.get("std") is not None:
-                _finite_number(values["std"], f"{entry['id']}.{metric_name}.std")
+                std = _finite_number(values["std"], f"{entry['id']}.{metric_name}.std")
+                if std < 0:
+                    raise ValueError(f"Negative standard deviation for {entry['id']}.{metric_name}")
 
     summary = snapshot.get("summary", {})
     expected_summary = {

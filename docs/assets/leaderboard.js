@@ -15,6 +15,7 @@
     taskLabel: panel.querySelector("[data-task-label]"),
     datasetLabel: panel.querySelector("[data-dataset-label]"),
     resultCount: panel.querySelector("[data-result-count]"),
+    tableCaption: panel.querySelector("[data-table-caption]"),
     tableHead: panel.querySelector("[data-table-head]"),
     tableBody: panel.querySelector("[data-table-body]"),
     empty: panel.querySelector("[data-empty]"),
@@ -109,6 +110,7 @@
     state.dataset = params.get("dataset") || "";
     state.metric = params.get("metric") || "";
     state.search = params.get("q") || "";
+    state.direction = params.get("direction") === "asc" ? "asc" : "desc";
   };
 
   const writeUrlState = () => {
@@ -117,6 +119,7 @@
     if (state.dataset) params.set("dataset", state.dataset);
     if (state.metric) params.set("metric", state.metric);
     if (state.search) params.set("q", state.search);
+    if (state.direction === "asc") params.set("direction", "asc");
     const query = params.toString();
     window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
   };
@@ -156,8 +159,11 @@
     return entriesForDataset()
       .filter((entry) => !query || entry.model.toLocaleLowerCase().includes(query))
       .sort((a, b) => {
-        const aValue = a.metrics[state.metric]?.mean ?? Number.NEGATIVE_INFINITY;
-        const bValue = b.metrics[state.metric]?.mean ?? Number.NEGATIVE_INFINITY;
+        const aValue = a.metrics[state.metric]?.mean;
+        const bValue = b.metrics[state.metric]?.mean;
+        if (aValue === undefined && bValue === undefined) return a.model.localeCompare(b.model);
+        if (aValue === undefined) return 1;
+        if (bValue === undefined) return -1;
         if (aValue === bValue) return a.model.localeCompare(b.model);
         return (aValue - bValue) * direction;
       });
@@ -170,7 +176,11 @@
 
     elements.taskLabel.textContent = dataset?.task || "—";
     elements.datasetLabel.textContent = dataset?.label || "—";
-    elements.resultCount.textContent = `${entries.length} ${entries.length === 1 ? "model" : "models"}`;
+    const totalEntries = entriesForDataset().length;
+    elements.resultCount.textContent = state.search
+      ? `${entries.length} of ${totalEntries} models`
+      : `${entries.length} ${entries.length === 1 ? "model" : "models"}`;
+    elements.tableCaption.textContent = `${dataset?.label || "LEPISZCZE"} model results, sorted by ${metricLabel(state.metric)} ${state.direction === "desc" ? "descending" : "ascending"}`;
     elements.empty.hidden = entries.length !== 0;
 
     const headingRow = document.createElement("tr");
@@ -178,6 +188,9 @@
     metrics.forEach((metric) => {
       const th = document.createElement("th");
       th.scope = "col";
+      if (metric === state.metric) {
+        th.setAttribute("aria-sort", state.direction === "desc" ? "descending" : "ascending");
+      }
       const button = document.createElement("button");
       button.type = "button";
       button.className = `metric-sort${metric === state.metric ? " is-sorted" : ""}`;

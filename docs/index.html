@@ -53,7 +53,10 @@
           <span class="brand-mark" aria-hidden="true">L</span>
           <span>LEPISZCZE</span>
         </a>
-        <nav class="site-nav" aria-label="Primary navigation">
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">
+          Menu
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Primary navigation">
           <a href="#benchmark">Benchmark</a>
           <a href="#datasets">Datasets</a>
           <a href="leaderboard/">Leaderboard</a>
@@ -140,11 +143,11 @@
               <h3>Broad by design</h3>
               <p>
                 Classification, sequence labeling, entailment, sentiment, paraphrase, named
-                entities, part-of-speech tagging and punctuation restoration in one evaluation
-                framework.
+                entities, part-of-speech tagging, punctuation restoration and extractive question
+                answering in one evaluation framework.
               </p>
-              <div class="task-cloud" aria-label="Example benchmark tasks">
-                <span>NER</span><span>Sentiment</span><span>POS</span><span>Entailment</span><span>Q&amp;A</span>
+              <div class="task-cloud" role="list" aria-label="Example benchmark tasks">
+                <span role="listitem">NER</span><span role="listitem">Sentiment</span><span role="listitem">POS</span><span role="listitem">Entailment</span><span role="listitem">Q&amp;A</span>
               </div>
             </article>
             <article class="principle-card">
@@ -218,7 +221,7 @@
               <a href="https://huggingface.co/datasets/clarin-pl/aspectemo" aria-label="AspectEmo on Hugging Face">View dataset ↗</a>
             </article>
             <details class="more-datasets">
-              <summary>Show six more datasets <span aria-hidden="true">＋</span></summary>
+              <summary>Show seven more datasets <span aria-hidden="true">＋</span></summary>
               <div class="more-datasets-grid">
                 <a href="https://huggingface.co/datasets/clarin-pl/kpwr-ner"><strong>KPWr NER</strong><span>Named entity recognition</span></a>
                 <a href="https://huggingface.co/datasets/clarin-pl/nkjp-pos"><strong>NKJP POS</strong><span>Part-of-speech tagging</span></a>
@@ -226,6 +229,7 @@
                 <a href="https://huggingface.co/datasets/clarin-pl/2021-punctuation-restoration"><strong>Punctuation Restoration</strong><span>Sequence labeling</span></a>
                 <a href="https://huggingface.co/datasets/allegro/klej-polemo2-in"><strong>PolEmo 2.0 In-Domain</strong><span>Sentiment analysis</span></a>
                 <a href="https://huggingface.co/datasets/allegro/klej-polemo2-out"><strong>PolEmo 2.0 Out-of-Domain</strong><span>Sentiment analysis</span></a>
+                <div class="dataset-static"><strong>Dialogue Acts</strong><span>Dialogue act classification · archived</span></div>
               </div>
             </details>
           </div>
@@ -242,6 +246,7 @@
               adding answerable, paraphrased and unanswerable questions. Developed through
               Expansio, they joined LEPISZCZE after the original 2022 publication.
             </p>
+            <a class="inline-link" href="leaderboard/?task=Question+Answering">Compare QA results <span aria-hidden="true">→</span></a>
           </div>
           <div class="qa-cards">
             <a href="https://huggingface.co/datasets/expansio/qa-wikipedia">
@@ -270,7 +275,7 @@
             </p>
           </div>
           <div class="resource-grid">
-            <a class="resource-card resource-dark" href="leaderboard/">
+            <a class="resource-card resource-dark resource-featured" href="leaderboard/">
               <span class="resource-type">Results</span><strong>Interactive leaderboard</strong><small>Compare models across every LEPISZCZE task</small><i aria-hidden="true">→</i>
             </a>
             <a class="resource-card" href="https://proceedings.neurips.cc/paper_files/paper/2022/file/890b206ebb79e550f3988cb8db936f42-Paper-Datasets_and_Benchmarks.pdf">
@@ -279,8 +284,8 @@
             <a class="resource-card" href="https://github.com/CLARIN-PL/LEPISZCZE">
               <span class="resource-type">Implementation</span><strong>Source code</strong><small>DVC pipeline, configs and tooling</small><i aria-hidden="true">↗</i>
             </a>
-            <a class="resource-card" href="https://huggingface.co/clarin-pl">
-              <span class="resource-type">Data</span><strong>Hugging Face</strong><small>Public datasets from CLARIN-PL</small><i aria-hidden="true">↗</i>
+            <a class="resource-card" href="#datasets">
+              <span class="resource-type">Data</span><strong>Dataset catalogue</strong><small>LEPISZCZE datasets across Hugging Face namespaces</small><i aria-hidden="true">→</i>
             </a>
             <a class="resource-card" href="https://wandb.ai/embeddings/LEPISZCZE">
               <span class="resource-type">Experiments</span><strong>Weights &amp; Biases</strong><small>Tracked runs and model configurations</small><i aria-hidden="true">↗</i>
