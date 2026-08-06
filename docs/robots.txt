@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clarin-pl.github.io/LEPISZCZE/sitemap.xml

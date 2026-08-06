@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LEPISZCZE — A comprehensive NLP benchmark for Polish</title>
+    <meta
+      name="description"
+      content="LEPISZCZE is a comprehensive benchmark for evaluating language models across diverse Polish NLP tasks, published at NeurIPS 2022."
+    />
+    <meta name="theme-color" content="#101b36" />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href="https://clarin-pl.github.io/LEPISZCZE/" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LEPISZCZE" />
+    <meta property="og:title" content="LEPISZCZE — Polish NLP, measured with context" />
+    <meta
+      property="og:description"
+      content="A comprehensive benchmark for Polish language models. NeurIPS 2022 Datasets and Benchmarks Track."
+    />
+    <meta property="og:url" content="https://clarin-pl.github.io/LEPISZCZE/" />
+    <meta property="og:image" content="https://clarin-pl.github.io/LEPISZCZE/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LEPISZCZE — a comprehensive NLP benchmark for Polish" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LEPISZCZE — Polish NLP, measured with context" />
+    <meta
+      name="twitter:description"
+      content="A comprehensive benchmark for Polish language models, published at NeurIPS 2022."
+    />
+    <meta name="twitter:image" content="https://clarin-pl.github.io/LEPISZCZE/assets/og.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "name": "This is the way: designing and compiling LEPISZCZE, a comprehensive NLP benchmark for Polish",
+        "datePublished": "2022",
+        "isPartOf": "Advances in Neural Information Processing Systems 35",
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/890b206ebb79e550f3988cb8db936f42-Abstract-Datasets_and_Benchmarks.html",
+        "codeRepository": "https://github.com/CLARIN-PL/LEPISZCZE",
+        "license": "https://opensource.org/license/mit"
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="LEPISZCZE home">
+          <span class="brand-mark" aria-hidden="true">L</span>
+          <span>LEPISZCZE</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#benchmark">Benchmark</a>
+          <a href="#datasets">Datasets</a>
+          <a href="#resources">Resources</a>
+          <a href="#citation">Citation</a>
+        </nav>
+        <a class="header-link" href="https://github.com/CLARIN-PL/LEPISZCZE">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+        <div class="shell hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow"><span></span> NeurIPS 2022 · Datasets &amp; Benchmarks</p>
+            <h1>Polish NLP,<br /><em>measured with context.</em></h1>
+            <p class="hero-lead">
+              LEPISZCZE is a comprehensive benchmark designed to evaluate language models across
+              diverse Polish language understanding tasks — with reproducible experiments and a
+              blueprint for other underrepresented languages.
+            </p>
+            <div class="hero-actions">
+              <a
+                class="button button-primary"
+                href="https://proceedings.neurips.cc/paper_files/paper/2022/file/890b206ebb79e550f3988cb8db936f42-Paper-Datasets_and_Benchmarks.pdf"
+              >
+                Read the paper <span aria-hidden="true">↗</span>
+              </a>
+              <a class="button button-secondary" href="#datasets">Explore the benchmark</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Benchmark summary">
+            <div class="panel-topline">
+              <span>Benchmark profile</span>
+              <span class="live-dot"><i></i> Open source</span>
+            </div>
+            <div class="panel-wordmark" aria-hidden="true">
+              <span>LE</span><span>PI</span><span>SZ</span><span>CZE</span>
+            </div>
+            <div class="panel-stats">
+              <div><strong>13</strong><span>task–dataset experiments</span></div>
+              <div><strong>5</strong><span>Polish language models</span></div>
+              <div><strong>8</strong><span>novel datasets</span></div>
+            </div>
+            <p class="panel-note">
+              Built for extensibility, experiment tracking and versioned data pipelines.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Project highlights">
+        <div class="shell proof-grid">
+          <div><span>Published in</span><strong>NeurIPS 35</strong></div>
+          <div><span>Language</span><strong>Polish</strong></div>
+          <div><span>Tracking</span><strong>DVC + W&amp;B</strong></div>
+          <div><span>License</span><strong>MIT</strong></div>
+        </div>
+      </section>
+
+      <section class="section benchmark-section" id="benchmark">
+        <div class="shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="kicker">Why LEPISZCZE</p>
+              <h2>One benchmark.<br />A wider field of view.</h2>
+            </div>
+            <p>
+              Progress in language models should be visible across more than one narrow task.
+              LEPISZCZE combines established Polish benchmarks with new datasets to test how models
+              generalize across domains, structures and prediction problems.
+            </p>
+          </div>
+
+          <div class="principles-grid">
+            <article class="principle-card principle-featured">
+              <span class="card-index">01</span>
+              <h3>Broad by design</h3>
+              <p>
+                Classification, sequence labeling, entailment, sentiment, paraphrase, named
+                entities, part-of-speech tagging and punctuation restoration in one evaluation
+                framework.
+              </p>
+              <div class="task-cloud" aria-label="Example benchmark tasks">
+                <span>NER</span><span>Sentiment</span><span>POS</span><span>Entailment</span><span>Q&amp;A</span>
+              </div>
+            </article>
+            <article class="principle-card">
+              <span class="card-index">02</span>
+              <h3>Reproducible</h3>
+              <p>
+                Versioned pipelines, fixed experiment configurations and tracked runs make the
+                evaluation process inspectable rather than opaque.
+              </p>
+            </article>
+            <article class="principle-card">
+              <span class="card-index">03</span>
+              <h3>Extensible</h3>
+              <p>
+                Models, datasets and tasks are represented as configuration-driven pipeline stages,
+                lowering the cost of extending the benchmark.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section datasets-section" id="datasets">
+        <div class="shell">
+          <div class="section-heading datasets-heading">
+            <div>
+              <p class="kicker kicker-light">Benchmark coverage</p>
+              <h2>Tasks grounded in real Polish text.</h2>
+            </div>
+            <p>
+              The original benchmark spans legal language, reviews, news, Wikipedia, social media
+              and general-domain corpora.
+            </p>
+          </div>
+
+          <div class="dataset-list" role="list">
+            <article class="dataset-row" role="listitem">
+              <span class="dataset-number">01</span>
+              <div><h3>CDSC-E</h3><p>Image captions</p></div>
+              <span class="dataset-task">Entailment classification</span>
+              <a href="https://huggingface.co/datasets/allegro/klej-cdsc-e" aria-label="CDSC-E on Hugging Face">View dataset ↗</a>
+            </article>
+            <article class="dataset-row" role="listitem">
+              <span class="dataset-number">02</span>
+              <div><h3>DYK</h3><p>Wikipedia</p></div>
+              <span class="dataset-task">Question–answer classification</span>
+              <a href="https://huggingface.co/datasets/allegro/klej-dyk" aria-label="DYK on Hugging Face">View dataset ↗</a>
+            </article>
+            <article class="dataset-row" role="listitem">
+              <span class="dataset-number">03</span>
+              <div><h3>PolEmo 2.0</h3><p>Online reviews</p></div>
+              <span class="dataset-task">Sentiment analysis · 3 variants</span>
+              <a href="https://huggingface.co/datasets/clarin-pl/polemo2-official" aria-label="PolEmo 2.0 on Hugging Face">View dataset ↗</a>
+            </article>
+            <article class="dataset-row" role="listitem">
+              <span class="dataset-number">04</span>
+              <div><h3>PSC</h3><p>News</p></div>
+              <span class="dataset-task">Paraphrase classification</span>
+              <a href="https://huggingface.co/datasets/allegro/klej-psc" aria-label="PSC on Hugging Face">View dataset ↗</a>
+            </article>
+            <article class="dataset-row" role="listitem">
+              <span class="dataset-number">05</span>
+              <div><h3>Abusive Clauses</h3><p>Legal texts</p></div>
+              <span class="dataset-task">Abusive clause detection</span>
+              <a href="https://huggingface.co/datasets/laugustyniak/abusive-clauses-pl" aria-label="Abusive Clauses on Hugging Face">View dataset ↗</a>
+            </article>
+            <article class="dataset-row" role="listitem">
+              <span class="dataset-number">06</span>
+              <div><h3>AspectEmo</h3><p>Online reviews</p></div>
+              <span class="dataset-task">Aspect-based sentiment</span>
+              <a href="https://huggingface.co/datasets/clarin-pl/aspectemo" aria-label="AspectEmo on Hugging Face">View dataset ↗</a>
+            </article>
+            <details class="more-datasets">
+              <summary>Show six more benchmark datasets <span aria-hidden="true">＋</span></summary>
+              <div class="more-datasets-grid">
+                <a href="https://huggingface.co/datasets/clarin-pl/kpwr-ner"><strong>KPWr NER</strong><span>Named entity recognition</span></a>
+                <a href="https://huggingface.co/datasets/clarin-pl/nkjp-pos"><strong>NKJP POS</strong><span>Part-of-speech tagging</span></a>
+                <a href="https://huggingface.co/datasets/laugustyniak/political-advertising-pl"><strong>Political Advertising</strong><span>Sequence labeling</span></a>
+                <a href="https://huggingface.co/datasets/clarin-pl/2021-punctuation-restoration"><strong>Punctuation Restoration</strong><span>Sequence labeling</span></a>
+                <a href="https://huggingface.co/datasets/allegro/klej-polemo2-in"><strong>PolEmo 2.0 In-Domain</strong><span>Sentiment analysis</span></a>
+                <a href="https://huggingface.co/datasets/allegro/klej-polemo2-out"><strong>PolEmo 2.0 Out-of-Domain</strong><span>Sentiment analysis</span></a>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section related-section">
+        <div class="shell related-layout">
+          <div class="related-copy">
+            <p class="kicker">Related resources</p>
+            <h2>Extractive QA datasets from Expansio.</h2>
+            <p>
+              Three Polish SQuAD 2.0-style datasets complement the benchmark ecosystem with
+              answerable, paraphrased and unanswerable questions. They are listed as related
+              resources and are not part of the original 2022 evaluation pipeline.
+            </p>
+          </div>
+          <div class="related-cards">
+            <a href="https://huggingface.co/datasets/expansio/qa-wikipedia">
+              <span>Wikipedia</span><strong>qa-wikipedia</strong><small>DOI 10.57967/hf/8855 ↗</small>
+            </a>
+            <a href="https://huggingface.co/datasets/expansio/qa-nkjp">
+              <span>NKJP</span><strong>qa-nkjp</strong><small>DOI 10.57967/hf/8856 ↗</small>
+            </a>
+            <a href="https://huggingface.co/datasets/expansio/qa-kpwr">
+              <span>KPWr</span><strong>qa-kpwr</strong><small>DOI 10.57967/hf/8854 ↗</small>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section resources-section" id="resources">
+        <div class="shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="kicker">Project resources</p>
+              <h2>Go from paper<br />to pipeline.</h2>
+            </div>
+            <p>
+              Read the methodology, inspect versioned experiment definitions, explore public
+              datasets and review tracked runs from the original benchmark.
+            </p>
+          </div>
+          <div class="resource-grid">
+            <a class="resource-card resource-dark" href="https://proceedings.neurips.cc/paper_files/paper/2022/file/890b206ebb79e550f3988cb8db936f42-Paper-Datasets_and_Benchmarks.pdf">
+              <span class="resource-type">Publication</span><strong>NeurIPS paper</strong><small>Methodology, experiments and findings</small><i aria-hidden="true">↗</i>
+            </a>
+            <a class="resource-card" href="https://github.com/CLARIN-PL/LEPISZCZE">
+              <span class="resource-type">Implementation</span><strong>Source code</strong><small>DVC pipeline, configs and tooling</small><i aria-hidden="true">↗</i>
+            </a>
+            <a class="resource-card" href="https://huggingface.co/clarin-pl">
+              <span class="resource-type">Data</span><strong>Hugging Face</strong><small>Public datasets from CLARIN-PL</small><i aria-hidden="true">↗</i>
+            </a>
+            <a class="resource-card" href="https://wandb.ai/embeddings/LEPISZCZE">
+              <span class="resource-type">Experiments</span><strong>Weights &amp; Biases</strong><small>Tracked runs and model configurations</small><i aria-hidden="true">↗</i>
+            </a>
+          </div>
+          <div class="repro-note">
+            <strong>Reproducibility note</strong>
+            <p>
+              Pipeline definitions are public. Historical DVC outputs use a non-public remote due
+              to artifact size; contact the authors if you need access to those generated artifacts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section citation-section" id="citation">
+        <div class="shell citation-layout">
+          <div>
+            <p class="kicker kicker-light">Use the benchmark</p>
+            <h2>Cite LEPISZCZE.</h2>
+            <p>If this benchmark supports your research, please cite the NeurIPS 2022 paper.</p>
+          </div>
+          <div class="citation-card">
+            <button class="copy-button" type="button" data-copy-button aria-label="Copy BibTeX citation">
+              <span data-copy-label>Copy BibTeX</span>
+            </button>
+            <pre><code id="bibtex">@inproceedings{augustyniak2022lepiszcze,
+  author    = {Augustyniak, Lukasz and Tagowski, Kamil and Sawczyn, Albert
+               and Janiak, Denis and Bartusiak, Roman and Szymczak, Adrian
+               and Janz, Arkadiusz and Szymański, Piotr and Wątroba, Marcin
+               and Morzy, Mikołaj and Kajdanowicz, Tomasz and Piasecki, Maciej},
+  title     = {This is the way: designing and compiling LEPISZCZE,
+               a comprehensive NLP benchmark for Polish},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {35},
+  pages     = {21805--21818},
+  publisher = {Curran Associates, Inc.},
+  year      = {2022}
+}</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <div class="footer-top">
+          <div>
+            <a class="brand brand-footer" href="#top"><span class="brand-mark" aria-hidden="true">L</span><span>LEPISZCZE</span></a>
+            <p>A comprehensive benchmark for Polish natural language processing.</p>
+          </div>
+          <div class="footer-links">
+            <div><strong>Project</strong><a href="#benchmark">Benchmark</a><a href="#datasets">Datasets</a><a href="#citation">Citation</a></div>
+            <div><strong>External</strong><a href="https://github.com/CLARIN-PL/LEPISZCZE">GitHub ↗</a><a href="https://huggingface.co/clarin-pl">Hugging Face ↗</a><a href="https://wandb.ai/embeddings/LEPISZCZE">W&amp;B ↗</a></div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2022–2026 LEPISZCZE contributors</span>
+          <span>MIT License · Built for open research</span>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/site.js" defer></script>
+  </body>
+</html>
