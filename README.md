@@ -12,11 +12,28 @@ LEPISZCZE benchmark resources
 
 | Name                  | Description                                                                                                                                      | URL                                                |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| **Leaderboard**           | **LEPISZCZE Leaderboard**                                                                                                                            | [**LEPISZCZE**](https://lepiszcze.clarin-pl.eu/)               |
+| **Leaderboard**           | **Interactive LEPISZCZE and Expansio QA results**                                                                                                    | [**LEPISZCZE**](https://clarin-pl.github.io/LEPISZCZE/leaderboard/) |
 | Libary                | **clarin-pl/embeddings** Our library with pre-defined NLP pipelines for text classification, pair text classification and sequence labeling taks | [GitHub](https://github.com/cLARIN-PL/embeddings/) |
 | Experiments dashboard | Weight&Biases dashboard with our experiments                                                                                                     | [W&B](https://wandb.ai/embeddings/LEPISZCZE)       |
  | Datasets              | LEPISZCZE Datasets are accessible through our HuggingFace Hub organization page.                                                                 | [HuggingFace](https://huggingface.co/clarin-pl)    | 
- | KLEJ-Datasets         | Datasets for KLEJ benchmark are accessible through Allegro HuggingFace organization page.                                                        | [HuggingFace](https://huggingface.co/allegro)      ||               |                                                                                                                                                  |                                                    |
+| KLEJ-Datasets         | Datasets for KLEJ benchmark are accessible through Allegro HuggingFace organization page.                                                        | [HuggingFace](https://huggingface.co/allegro)      ||               |                                                                                                                                                  |                                                    |
+
+### Updating the leaderboard
+
+The GitHub Pages leaderboard uses a minimal, checked-in snapshot rather than loading mutable
+cross-repository data at runtime. To rebuild it from the historical results:
+
+```bash
+git clone https://github.com/CLARIN-PL/embeddings.git
+cd LEPISZCZE
+python3 scripts/build_leaderboard.py \
+  --source-dir ../embeddings/webpage/data/results \
+  --source-commit "$(git -C ../embeddings rev-parse HEAD)"
+python3 scripts/build_leaderboard.py --check docs/data/leaderboard.json
+```
+
+Commit the generated `docs/data/leaderboard.json`. GitHub Actions validates its schema before
+deploying the static site.
 
 
 ## Citation

@@ -1,0 +1,4089 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "https://github.com/CLARIN-PL/embeddings",
+    "commit": "a434193a871c7d1bccdb5fd9106be5a950e38aad",
+    "results_path": "webpage/data/results",
+    "license": "MIT"
+  },
+  "summary": {
+    "entries": 86,
+    "datasets": 17,
+    "models": 10,
+    "tasks": 12
+  },
+  "entries": [
+    {
+      "id": "abusive_clauses_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Abusive Clauses Detection",
+      "dataset": "laugustyniak/abusive-clauses-pl",
+      "dataset_label": "Abusive Clauses",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8704315088328989,
+          "std": 0.005431894660893374
+        },
+        "f1_macro": {
+          "mean": 0.8566239283287915,
+          "std": 0.0057694612646211774
+        },
+        "f1_micro": {
+          "mean": 0.8704315088328989,
+          "std": 0.005431894660893374
+        },
+        "f1_weighted": {
+          "mean": 0.872202068762124,
+          "std": 0.005147025780726845
+        },
+        "precision_macro": {
+          "mean": 0.8493760084362519,
+          "std": 0.005713918729520656
+        },
+        "precision_micro": {
+          "mean": 0.8704315088328989,
+          "std": 0.005431894660893374
+        },
+        "precision_weighted": {
+          "mean": 0.8782632955696758,
+          "std": 0.006721625177035103
+        },
+        "recall_macro": {
+          "mean": 0.8690659252342171,
+          "std": 0.010877917464433257
+        },
+        "recall_micro": {
+          "mean": 0.8704315088328989,
+          "std": 0.005431894660893374
+        },
+        "recall_weighted": {
+          "mean": 0.8704315088328989,
+          "std": 0.005431894660893374
+        }
+      }
+    },
+    {
+      "id": "abusive_clauses_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Abusive Clauses Detection",
+      "dataset": "laugustyniak/abusive-clauses-pl",
+      "dataset_label": "Abusive Clauses",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8801042571676803,
+          "std": 0.005935100356767807
+        },
+        "f1_macro": {
+          "mean": 0.8656778571081865,
+          "std": 0.00913155241347029
+        },
+        "f1_micro": {
+          "mean": 0.8801042571676803,
+          "std": 0.005935100356767807
+        },
+        "f1_weighted": {
+          "mean": 0.8810886575752328,
+          "std": 0.006880085194845517
+        },
+        "precision_macro": {
+          "mean": 0.8608387128820101,
+          "std": 0.004647093764366983
+        },
+        "precision_micro": {
+          "mean": 0.8801042571676803,
+          "std": 0.005935100356767807
+        },
+        "precision_weighted": {
+          "mean": 0.8846352053049791,
+          "std": 0.009300917527958745
+        },
+        "recall_macro": {
+          "mean": 0.8736708560406589,
+          "std": 0.017296115331760724
+        },
+        "recall_micro": {
+          "mean": 0.8801042571676803,
+          "std": 0.005935100356767807
+        },
+        "recall_weighted": {
+          "mean": 0.8801042571676803,
+          "std": 0.005935100356767807
+        }
+      }
+    },
+    {
+      "id": "abusive_clauses_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Abusive Clauses Detection",
+      "dataset": "laugustyniak/abusive-clauses-pl",
+      "dataset_label": "Abusive Clauses",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8748913987836664,
+          "std": 0.005788443698611836
+        },
+        "f1_macro": {
+          "mean": 0.85933157412678,
+          "std": 0.006567308518844697
+        },
+        "f1_micro": {
+          "mean": 0.8748913987836664,
+          "std": 0.005788443698611836
+        },
+        "f1_weighted": {
+          "mean": 0.8757308048166935,
+          "std": 0.005700166186731988
+        },
+        "precision_macro": {
+          "mean": 0.8554213514955022,
+          "std": 0.006393689359401862
+        },
+        "precision_micro": {
+          "mean": 0.8748913987836664,
+          "std": 0.005788443698611836
+        },
+        "precision_weighted": {
+          "mean": 0.87810421395493,
+          "std": 0.005529129483754419
+        },
+        "recall_macro": {
+          "mean": 0.8651244948257915,
+          "std": 0.01035756342991239
+        },
+        "recall_micro": {
+          "mean": 0.8748913987836664,
+          "std": 0.005788443698611836
+        },
+        "recall_weighted": {
+          "mean": 0.8748913987836664,
+          "std": 0.005788443698611836
+        }
+      }
+    },
+    {
+      "id": "abusive_clauses_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Abusive Clauses Detection",
+      "dataset": "laugustyniak/abusive-clauses-pl",
+      "dataset_label": "Abusive Clauses",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8713003185635679,
+          "std": 0.007424808174173695
+        },
+        "f1_macro": {
+          "mean": 0.8573782537994936,
+          "std": 0.00859270036403278
+        },
+        "f1_micro": {
+          "mean": 0.8713003185635679,
+          "std": 0.007424808174173663
+        },
+        "f1_weighted": {
+          "mean": 0.8728989313866754,
+          "std": 0.007283453773197046
+        },
+        "precision_macro": {
+          "mean": 0.8518301834563841,
+          "std": 0.0070846085146913
+        },
+        "precision_micro": {
+          "mean": 0.8713003185635679,
+          "std": 0.007424808174173695
+        },
+        "precision_weighted": {
+          "mean": 0.8804766779110661,
+          "std": 0.01070600933813305
+        },
+        "recall_macro": {
+          "mean": 0.870080253811769,
+          "std": 0.01811273615856534
+        },
+        "recall_micro": {
+          "mean": 0.8713003185635679,
+          "std": 0.007424808174173695
+        },
+        "recall_weighted": {
+          "mean": 0.8713003185635679,
+          "std": 0.007424808174173695
+        }
+      }
+    },
+    {
+      "id": "abusive_clauses_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Abusive Clauses Detection",
+      "dataset": "laugustyniak/abusive-clauses-pl",
+      "dataset_label": "Abusive Clauses",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8641760787720822,
+          "std": 0.003814636510952636
+        },
+        "f1_macro": {
+          "mean": 0.8432150560958955,
+          "std": 0.0070940470553244785
+        },
+        "f1_micro": {
+          "mean": 0.8641760787720822,
+          "std": 0.0038146365109525877
+        },
+        "f1_weighted": {
+          "mean": 0.8632391356875369,
+          "std": 0.004594213849341338
+        },
+        "precision_macro": {
+          "mean": 0.849944029247323,
+          "std": 0.00965680473235117
+        },
+        "precision_micro": {
+          "mean": 0.8641760787720822,
+          "std": 0.003814636510952636
+        },
+        "precision_weighted": {
+          "mean": 0.8655229041857244,
+          "std": 0.00423497171322003
+        },
+        "recall_macro": {
+          "mean": 0.8406219766089034,
+          "std": 0.017644292121525497
+        },
+        "recall_micro": {
+          "mean": 0.8641760787720822,
+          "std": 0.003814636510952636
+        },
+        "recall_weighted": {
+          "mean": 0.8641760787720822,
+          "std": 0.003814636510952636
+        }
+      }
+    },
+    {
+      "id": "aspectemo_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Aspect-based Sentiment Analysis",
+      "dataset": "clarin-pl/aspectemo",
+      "dataset_label": "AspectEmo",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9519326198331589,
+          "std": 0.0006859639952010168
+        },
+        "f1_macro": {
+          "mean": 0.3728372238363267,
+          "std": 0.007077218111846376
+        },
+        "f1_micro": {
+          "mean": 0.5818219722084399,
+          "std": 0.003159804529309926
+        },
+        "f1_weighted": {
+          "mean": 0.5827470236681557,
+          "std": 0.003999806509916548
+        },
+        "precision_macro": {
+          "mean": 0.40079885986868163,
+          "std": 0.011166522792266974
+        },
+        "precision_micro": {
+          "mean": 0.6055805356236488,
+          "std": 0.009930096244000873
+        },
+        "precision_weighted": {
+          "mean": 0.6179059962816023,
+          "std": 0.012273875413826553
+        },
+        "recall_macro": {
+          "mean": 0.3736304056248477,
+          "std": 0.0071728059628899925
+        },
+        "recall_micro": {
+          "mean": 0.5601164483260553,
+          "std": 0.010948523232105871
+        },
+        "recall_weighted": {
+          "mean": 0.5601164483260553,
+          "std": 0.010948523232105871
+        }
+      }
+    },
+    {
+      "id": "aspectemo_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Aspect-based Sentiment Analysis",
+      "dataset": "clarin-pl/aspectemo",
+      "dataset_label": "AspectEmo",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9527373192779164,
+          "std": 0.0024007990624195104
+        },
+        "f1_macro": {
+          "mean": 0.3943852023929203,
+          "std": 0.01740879988540408
+        },
+        "f1_micro": {
+          "mean": 0.5909884256531005,
+          "std": 0.013164261584255444
+        },
+        "f1_weighted": {
+          "mean": 0.591643777124412,
+          "std": 0.01022958641222607
+        },
+        "precision_macro": {
+          "mean": 0.41697824490274527,
+          "std": 0.039896597632949025
+        },
+        "precision_micro": {
+          "mean": 0.6107412112582132,
+          "std": 0.02805658051852975
+        },
+        "precision_weighted": {
+          "mean": 0.6206555120513454,
+          "std": 0.021374997947540778
+        },
+        "recall_macro": {
+          "mean": 0.3979834342194781,
+          "std": 0.012968887962418447
+        },
+        "recall_micro": {
+          "mean": 0.5730713245997089,
+          "std": 0.00950123190893561
+        },
+        "recall_weighted": {
+          "mean": 0.5730713245997089,
+          "std": 0.00950123190893561
+        }
+      }
+    },
+    {
+      "id": "aspectemo_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Aspect-based Sentiment Analysis",
+      "dataset": "clarin-pl/aspectemo",
+      "dataset_label": "AspectEmo",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9455734891951311,
+          "std": 0.0010797914400559243
+        },
+        "f1_macro": {
+          "mean": 0.3000780266928013,
+          "std": 0.0058314028048139606
+        },
+        "f1_micro": {
+          "mean": 0.5082233704763617,
+          "std": 0.004230906833747561
+        },
+        "f1_weighted": {
+          "mean": 0.5037994974072779,
+          "std": 0.003928669048221731
+        },
+        "precision_macro": {
+          "mean": 0.4369126318161345,
+          "std": 0.0319340306968333
+        },
+        "precision_micro": {
+          "mean": 0.5571186435557315,
+          "std": 0.011638484895176805
+        },
+        "precision_weighted": {
+          "mean": 0.5695892546880336,
+          "std": 0.012679880192683204
+        },
+        "recall_macro": {
+          "mean": 0.27543371349964524,
+          "std": 0.006898180724432854
+        },
+        "recall_micro": {
+          "mean": 0.467442706438705,
+          "std": 0.008899330536722504
+        },
+        "recall_weighted": {
+          "mean": 0.467442706438705,
+          "std": 0.008899330536722504
+        }
+      }
+    },
+    {
+      "id": "aspectemo_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Aspect-based Sentiment Analysis",
+      "dataset": "clarin-pl/aspectemo",
+      "dataset_label": "AspectEmo",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9465055712176131,
+          "std": 0.0007127955325458977
+        },
+        "f1_macro": {
+          "mean": 0.3147655252840788,
+          "std": 0.010599131117690376
+        },
+        "f1_micro": {
+          "mean": 0.5155315679667024,
+          "std": 0.00978274794715907
+        },
+        "f1_weighted": {
+          "mean": 0.5150441946903248,
+          "std": 0.009548237886920094
+        },
+        "precision_macro": {
+          "mean": 0.3796695167714999,
+          "std": 0.03167783228001837
+        },
+        "precision_micro": {
+          "mean": 0.5604743893933037,
+          "std": 0.012086201023732004
+        },
+        "precision_weighted": {
+          "mean": 0.5736142997006018,
+          "std": 0.016901535400043476
+        },
+        "recall_macro": {
+          "mean": 0.2980451497496773,
+          "std": 0.009949907273965261
+        },
+        "recall_micro": {
+          "mean": 0.47769679300291545,
+          "std": 0.017565446450603
+        },
+        "recall_weighted": {
+          "mean": 0.47769679300291545,
+          "std": 0.017565446450603
+        }
+      }
+    },
+    {
+      "id": "aspectemo_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Aspect-based Sentiment Analysis",
+      "dataset": "clarin-pl/aspectemo",
+      "dataset_label": "AspectEmo",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.927347513124425,
+          "std": 0.0025215404732465085
+        },
+        "f1_macro": {
+          "mean": 0.18424816305994146,
+          "std": 0.009759085597583424
+        },
+        "f1_micro": {
+          "mean": 0.34068271465292777,
+          "std": 0.013558520535148666
+        },
+        "f1_weighted": {
+          "mean": 0.3344706155186252,
+          "std": 0.014168312101878903
+        },
+        "precision_macro": {
+          "mean": 0.23572132312938224,
+          "std": 0.02151343172939008
+        },
+        "precision_micro": {
+          "mean": 0.40386384127254943,
+          "std": 0.021241287922129325
+        },
+        "precision_weighted": {
+          "mean": 0.39704859790785113,
+          "std": 0.014305675669967878
+        },
+        "recall_macro": {
+          "mean": 0.16057717226353,
+          "std": 0.011715879416507528
+        },
+        "recall_micro": {
+          "mean": 0.295900439238653,
+          "std": 0.023906695498747892
+        },
+        "recall_weighted": {
+          "mean": 0.295900439238653,
+          "std": 0.023906695498747892
+        }
+      }
+    },
+    {
+      "id": "dialogue_acts_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Dialogue Acts Classification",
+      "dataset": "clarin-pl/dialogue-acts",
+      "dataset_label": "Dialogue Acts",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7649596911547633,
+          "std": 0.0020751296562390204
+        },
+        "f1_macro": {
+          "mean": 0.49542945998118737,
+          "std": 0.007397860145543107
+        },
+        "f1_micro": {
+          "mean": 0.7649596911547633,
+          "std": 0.0020751296562390507
+        },
+        "f1_weighted": {
+          "mean": 0.7556794531975414,
+          "std": 0.0030427758606445666
+        },
+        "precision_macro": {
+          "mean": 0.5283071362584025,
+          "std": 0.009684571816346976
+        },
+        "precision_micro": {
+          "mean": 0.7649596911547633,
+          "std": 0.0020751296562390204
+        },
+        "precision_weighted": {
+          "mean": 0.7596366055199527,
+          "std": 0.0047386663228473225
+        },
+        "recall_macro": {
+          "mean": 0.4953983139977154,
+          "std": 0.011627521429875068
+        },
+        "recall_micro": {
+          "mean": 0.7649596911547633,
+          "std": 0.0020751296562390204
+        },
+        "recall_weighted": {
+          "mean": 0.7649596911547633,
+          "std": 0.0020751296562390204
+        }
+      }
+    },
+    {
+      "id": "dialogue_acts_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Dialogue Acts Classification",
+      "dataset": "clarin-pl/dialogue-acts",
+      "dataset_label": "Dialogue Acts",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7707505393437039,
+          "std": 0.004015261657792001
+        },
+        "f1_macro": {
+          "mean": 0.5110670029578682,
+          "std": 0.008526070639150765
+        },
+        "f1_micro": {
+          "mean": 0.7707505393437039,
+          "std": 0.004015261657791958
+        },
+        "f1_weighted": {
+          "mean": 0.7602725213439019,
+          "std": 0.0017968708834165783
+        },
+        "precision_macro": {
+          "mean": 0.5360820645321095,
+          "std": 0.011030157975439823
+        },
+        "precision_micro": {
+          "mean": 0.7707505393437039,
+          "std": 0.004015261657792001
+        },
+        "precision_weighted": {
+          "mean": 0.7630494228857455,
+          "std": 0.003432203855725723
+        },
+        "recall_macro": {
+          "mean": 0.5178766473159212,
+          "std": 0.007136055041469015
+        },
+        "recall_micro": {
+          "mean": 0.7707505393437039,
+          "std": 0.004015261657792001
+        },
+        "recall_weighted": {
+          "mean": 0.7707505393437039,
+          "std": 0.004015261657792001
+        }
+      }
+    },
+    {
+      "id": "dialogue_acts_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Dialogue Acts Classification",
+      "dataset": "clarin-pl/dialogue-acts",
+      "dataset_label": "Dialogue Acts",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7629839900079483,
+          "std": 0.0025090849519785884
+        },
+        "f1_macro": {
+          "mean": 0.5019628267419497,
+          "std": 0.01315794109710426
+        },
+        "f1_micro": {
+          "mean": 0.7629839900079483,
+          "std": 0.0025090849519785884
+        },
+        "f1_weighted": {
+          "mean": 0.7542509331427579,
+          "std": 0.0025209637953793984
+        },
+        "precision_macro": {
+          "mean": 0.5237942227067891,
+          "std": 0.010583188404695744
+        },
+        "precision_micro": {
+          "mean": 0.7629839900079483,
+          "std": 0.0025090849519785884
+        },
+        "precision_weighted": {
+          "mean": 0.757466657996886,
+          "std": 0.005537195583757833
+        },
+        "recall_macro": {
+          "mean": 0.509106321108995,
+          "std": 0.01451807357328198
+        },
+        "recall_micro": {
+          "mean": 0.7629839900079483,
+          "std": 0.0025090849519785884
+        },
+        "recall_weighted": {
+          "mean": 0.7629839900079483,
+          "std": 0.0025090849519785884
+        }
+      }
+    },
+    {
+      "id": "dialogue_acts_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Dialogue Acts Classification",
+      "dataset": "clarin-pl/dialogue-acts",
+      "dataset_label": "Dialogue Acts",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7616441467014875,
+          "std": 0.0024025119186827123
+        },
+        "f1_macro": {
+          "mean": 0.4886862284424959,
+          "std": 0.009034716171117398
+        },
+        "f1_micro": {
+          "mean": 0.7616441467014875,
+          "std": 0.0024025119186827123
+        },
+        "f1_weighted": {
+          "mean": 0.7521459406661015,
+          "std": 0.0021024161673952172
+        },
+        "precision_macro": {
+          "mean": 0.5094635322382257,
+          "std": 0.011009217198466544
+        },
+        "precision_micro": {
+          "mean": 0.7616441467014875,
+          "std": 0.0024025119186827123
+        },
+        "precision_weighted": {
+          "mean": 0.7519860215192584,
+          "std": 0.002741717564786826
+        },
+        "recall_macro": {
+          "mean": 0.49579245507684966,
+          "std": 0.008081593277331897
+        },
+        "recall_micro": {
+          "mean": 0.7616441467014875,
+          "std": 0.0024025119186827123
+        },
+        "recall_weighted": {
+          "mean": 0.7616441467014875,
+          "std": 0.0024025119186827123
+        }
+      }
+    },
+    {
+      "id": "dialogue_acts_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Dialogue Acts Classification",
+      "dataset": "clarin-pl/dialogue-acts",
+      "dataset_label": "Dialogue Acts",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7665039173384808,
+          "std": 0.0074813832464278
+        },
+        "f1_macro": {
+          "mean": 0.4905007464526222,
+          "std": 0.003920832733833511
+        },
+        "f1_micro": {
+          "mean": 0.7665039173384808,
+          "std": 0.007481383246427777
+        },
+        "f1_weighted": {
+          "mean": 0.7558613741810553,
+          "std": 0.005923448566679585
+        },
+        "precision_macro": {
+          "mean": 0.5247355632282903,
+          "std": 0.016545685203720142
+        },
+        "precision_micro": {
+          "mean": 0.7665039173384808,
+          "std": 0.0074813832464278
+        },
+        "precision_weighted": {
+          "mean": 0.7599435187672794,
+          "std": 0.008587436783260495
+        },
+        "recall_macro": {
+          "mean": 0.4936384550295455,
+          "std": 0.008428883323722118
+        },
+        "recall_micro": {
+          "mean": 0.7665039173384808,
+          "std": 0.0074813832464278
+        },
+        "recall_weighted": {
+          "mean": 0.7665039173384808,
+          "std": 0.0074813832464278
+        }
+      }
+    },
+    {
+      "id": "cdsc_e_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Entailment Classification",
+      "dataset": "allegro/klej-cdsc-e",
+      "dataset_label": "CDSC-E",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9401999999999999,
+          "std": 0.003346640106136305
+        },
+        "f1_macro": {
+          "mean": 0.9096345637167936,
+          "std": 0.007347959162443719
+        },
+        "f1_micro": {
+          "mean": 0.9401999999999999,
+          "std": 0.003346640106136305
+        },
+        "f1_weighted": {
+          "mean": 0.9392847524001509,
+          "std": 0.0032285664783491285
+        },
+        "precision_macro": {
+          "mean": 0.9223772562884506,
+          "std": 0.008107070882345928
+        },
+        "precision_micro": {
+          "mean": 0.9401999999999999,
+          "std": 0.003346640106136305
+        },
+        "precision_weighted": {
+          "mean": 0.9398016267238438,
+          "std": 0.0035555840079574985
+        },
+        "recall_macro": {
+          "mean": 0.8991992076966611,
+          "std": 0.009403915874624367
+        },
+        "recall_micro": {
+          "mean": 0.9401999999999999,
+          "std": 0.003346640106136305
+        },
+        "recall_weighted": {
+          "mean": 0.9401999999999999,
+          "std": 0.003346640106136305
+        }
+      }
+    },
+    {
+      "id": "cdsc_e_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Entailment Classification",
+      "dataset": "allegro/klej-cdsc-e",
+      "dataset_label": "CDSC-E",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9391999999999999,
+          "std": 0.0016431676725155
+        },
+        "f1_macro": {
+          "mean": 0.9048416216512527,
+          "std": 0.0019608200588130445
+        },
+        "f1_micro": {
+          "mean": 0.9391999999999999,
+          "std": 0.0016431676725155
+        },
+        "f1_weighted": {
+          "mean": 0.9379639850087585,
+          "std": 0.0017546062388815516
+        },
+        "precision_macro": {
+          "mean": 0.9283148433489639,
+          "std": 0.0068509804981905795
+        },
+        "precision_micro": {
+          "mean": 0.9391999999999999,
+          "std": 0.0016431676725155
+        },
+        "precision_weighted": {
+          "mean": 0.939039471843693,
+          "std": 0.0015690030990181104
+        },
+        "recall_macro": {
+          "mean": 0.8850925211366637,
+          "std": 0.006726588191698312
+        },
+        "recall_micro": {
+          "mean": 0.9391999999999999,
+          "std": 0.0016431676725155
+        },
+        "recall_weighted": {
+          "mean": 0.9391999999999999,
+          "std": 0.0016431676725155
+        }
+      }
+    },
+    {
+      "id": "cdsc_e_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Entailment Classification",
+      "dataset": "allegro/klej-cdsc-e",
+      "dataset_label": "CDSC-E",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.923,
+          "std": 0.002549509756796395
+        },
+        "f1_macro": {
+          "mean": 0.8894937184161469,
+          "std": 0.003144185902848028
+        },
+        "f1_micro": {
+          "mean": 0.923,
+          "std": 0.002549509756796395
+        },
+        "f1_weighted": {
+          "mean": 0.9215990841715556,
+          "std": 0.00238676698935366
+        },
+        "precision_macro": {
+          "mean": 0.8991005100374058,
+          "std": 0.01302615701262949
+        },
+        "precision_micro": {
+          "mean": 0.923,
+          "std": 0.002549509756796395
+        },
+        "precision_weighted": {
+          "mean": 0.9221395934937524,
+          "std": 0.002420158264918904
+        },
+        "recall_macro": {
+          "mean": 0.8832932894308106,
+          "std": 0.010945765771064877
+        },
+        "recall_micro": {
+          "mean": 0.923,
+          "std": 0.002549509756796395
+        },
+        "recall_weighted": {
+          "mean": 0.923,
+          "std": 0.002549509756796395
+        }
+      }
+    },
+    {
+      "id": "cdsc_e_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Entailment Classification",
+      "dataset": "allegro/klej-cdsc-e",
+      "dataset_label": "CDSC-E",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9348000000000001,
+          "std": 0.0027748873851022923
+        },
+        "f1_macro": {
+          "mean": 0.9062053890809323,
+          "std": 0.0026622176935751675
+        },
+        "f1_micro": {
+          "mean": 0.9348000000000001,
+          "std": 0.0027748873851022923
+        },
+        "f1_weighted": {
+          "mean": 0.9341935482242916,
+          "std": 0.002509829060021491
+        },
+        "precision_macro": {
+          "mean": 0.9120220436466036,
+          "std": 0.009232140919656582
+        },
+        "precision_micro": {
+          "mean": 0.9348000000000001,
+          "std": 0.0027748873851022923
+        },
+        "precision_weighted": {
+          "mean": 0.9343037144712488,
+          "std": 0.002890577004452612
+        },
+        "recall_macro": {
+          "mean": 0.901506919792149,
+          "std": 0.005248177414581839
+        },
+        "recall_micro": {
+          "mean": 0.9348000000000001,
+          "std": 0.0027748873851022923
+        },
+        "recall_weighted": {
+          "mean": 0.9348000000000001,
+          "std": 0.0027748873851022923
+        }
+      }
+    },
+    {
+      "id": "cdsc_e_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Entailment Classification",
+      "dataset": "allegro/klej-cdsc-e",
+      "dataset_label": "CDSC-E",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8658,
+          "std": 0.006760177512462234
+        },
+        "f1_macro": {
+          "mean": 0.8262127203552264,
+          "std": 0.00878469255096954
+        },
+        "f1_micro": {
+          "mean": 0.8658,
+          "std": 0.006760177512462234
+        },
+        "f1_weighted": {
+          "mean": 0.8683015418926744,
+          "std": 0.005390887479333675
+        },
+        "precision_macro": {
+          "mean": 0.8018187715501303,
+          "std": 0.012352585925295697
+        },
+        "precision_micro": {
+          "mean": 0.8658,
+          "std": 0.006760177512462234
+        },
+        "precision_weighted": {
+          "mean": 0.8746696403778451,
+          "std": 0.00672897663352215
+        },
+        "recall_macro": {
+          "mean": 0.8578027301881291,
+          "std": 0.01953283736199594
+        },
+        "recall_micro": {
+          "mean": 0.8658,
+          "std": 0.006760177512462234
+        },
+        "recall_weighted": {
+          "mean": 0.8658,
+          "std": 0.006760177512462234
+        }
+      }
+    },
+    {
+      "id": "kpwr_ner_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Named Entity Recognition",
+      "dataset": "clarin-pl/kpwr-ner",
+      "dataset_label": "KPWr NER",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9713115620376241,
+          "std": 0.0005245012252718427
+        },
+        "f1_macro": {
+          "mean": 0.5421623706479558,
+          "std": 0.0075825372956182845
+        },
+        "f1_micro": {
+          "mean": 0.7689969571635127,
+          "std": 0.0024860568925784946
+        },
+        "f1_weighted": {
+          "mean": 0.7709328349569831,
+          "std": 0.0023650416346435057
+        },
+        "precision_macro": {
+          "mean": 0.5596800796096058,
+          "std": 0.010206125768459959
+        },
+        "precision_micro": {
+          "mean": 0.7508598417330965,
+          "std": 0.0036804421427491718
+        },
+        "precision_weighted": {
+          "mean": 0.7643152817376726,
+          "std": 0.0034723595088777238
+        },
+        "recall_macro": {
+          "mean": 0.557358290042838,
+          "std": 0.007059521838675203
+        },
+        "recall_micro": {
+          "mean": 0.7880361173814898,
+          "std": 0.0013065278671320966
+        },
+        "recall_weighted": {
+          "mean": 0.7880361173814898,
+          "std": 0.0013065278671320966
+        }
+      }
+    },
+    {
+      "id": "kpwr_ner_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Named Entity Recognition",
+      "dataset": "clarin-pl/kpwr-ner",
+      "dataset_label": "KPWr NER",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9725295920524202,
+          "std": 0.0004426681456047096
+        },
+        "f1_macro": {
+          "mean": 0.5268384230503906,
+          "std": 0.013916497429464764
+        },
+        "f1_micro": {
+          "mean": 0.765824631350898,
+          "std": 0.0067347371432164
+        },
+        "f1_weighted": {
+          "mean": 0.7701545398444893,
+          "std": 0.006913583883946288
+        },
+        "precision_macro": {
+          "mean": 0.5307130379886154,
+          "std": 0.01766403788840351
+        },
+        "precision_micro": {
+          "mean": 0.7384953714938993,
+          "std": 0.007242513546121645
+        },
+        "precision_weighted": {
+          "mean": 0.7559856625191318,
+          "std": 0.007394257903578175
+        },
+        "recall_macro": {
+          "mean": 0.5551542080130817,
+          "std": 0.014717381336375537
+        },
+        "recall_micro": {
+          "mean": 0.7952595936794582,
+          "std": 0.00642449186038721
+        },
+        "recall_weighted": {
+          "mean": 0.7952595936794582,
+          "std": 0.00642449186038721
+        }
+      }
+    },
+    {
+      "id": "kpwr_ner_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Named Entity Recognition",
+      "dataset": "clarin-pl/kpwr-ner",
+      "dataset_label": "KPWr NER",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9686482773198055,
+          "std": 0.00035428430124416813
+        },
+        "f1_macro": {
+          "mean": 0.4800626699182108,
+          "std": 0.007556252856835551
+        },
+        "f1_micro": {
+          "mean": 0.7259429014237646,
+          "std": 0.0032349421413630257
+        },
+        "f1_weighted": {
+          "mean": 0.7246855311825002,
+          "std": 0.0026975398510519603
+        },
+        "precision_macro": {
+          "mean": 0.5044612151251765,
+          "std": 0.013244118565553282
+        },
+        "precision_micro": {
+          "mean": 0.7029678161694596,
+          "std": 0.0033708850099563184
+        },
+        "precision_weighted": {
+          "mean": 0.7112520899250927,
+          "std": 0.002471095941613756
+        },
+        "recall_macro": {
+          "mean": 0.4902871037143543,
+          "std": 0.005478647438763077
+        },
+        "recall_micro": {
+          "mean": 0.7504740406320543,
+          "std": 0.0035498363477758127
+        },
+        "recall_weighted": {
+          "mean": 0.7504740406320543,
+          "std": 0.0035498363477758127
+        }
+      }
+    },
+    {
+      "id": "kpwr_ner_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Named Entity Recognition",
+      "dataset": "clarin-pl/kpwr-ner",
+      "dataset_label": "KPWr NER",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9589885859226379,
+          "std": 0.00030017749690189094
+        },
+        "f1_macro": {
+          "mean": 0.4020943825744251,
+          "std": 0.005013088357756982
+        },
+        "f1_micro": {
+          "mean": 0.6648890873743019,
+          "std": 0.000927735190629331
+        },
+        "f1_weighted": {
+          "mean": 0.6597140119032375,
+          "std": 0.0016912144519000503
+        },
+        "precision_macro": {
+          "mean": 0.44996386710478486,
+          "std": 0.012481524018249106
+        },
+        "precision_micro": {
+          "mean": 0.6447595290905637,
+          "std": 0.00197814652131458
+        },
+        "precision_weighted": {
+          "mean": 0.6541498606759731,
+          "std": 0.0029773455467259824
+        },
+        "recall_macro": {
+          "mean": 0.40813529295867335,
+          "std": 0.0027275679246032453
+        },
+        "recall_micro": {
+          "mean": 0.6863205417607223,
+          "std": 0.0010170546569813997
+        },
+        "recall_weighted": {
+          "mean": 0.6863205417607223,
+          "std": 0.0010170546569813997
+        }
+      }
+    },
+    {
+      "id": "kpwr_ner_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Named Entity Recognition",
+      "dataset": "clarin-pl/kpwr-ner",
+      "dataset_label": "KPWr NER",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.957419150285352,
+          "std": 0.0002629567387560303
+        },
+        "f1_macro": {
+          "mean": 0.36133901815341046,
+          "std": 0.00441595203008824
+        },
+        "f1_micro": {
+          "mean": 0.6156845072587737,
+          "std": 0.004429091781933451
+        },
+        "f1_weighted": {
+          "mean": 0.6183556286230819,
+          "std": 0.004739272993136935
+        },
+        "precision_macro": {
+          "mean": 0.36635724994350893,
+          "std": 0.003518461108451063
+        },
+        "precision_micro": {
+          "mean": 0.5728092783408572,
+          "std": 0.004564869390485445
+        },
+        "precision_weighted": {
+          "mean": 0.589780763129225,
+          "std": 0.004258523925085808
+        },
+        "recall_macro": {
+          "mean": 0.3860109250709363,
+          "std": 0.004684242551053061
+        },
+        "recall_micro": {
+          "mean": 0.6655079006772009,
+          "std": 0.005053610950412887
+        },
+        "recall_weighted": {
+          "mean": 0.6655079006772009,
+          "std": 0.005053610950412887
+        }
+      }
+    },
+    {
+      "id": "psc_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Paraphrase Classification",
+      "dataset": "allegro/klej-psc",
+      "dataset_label": "PSC",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9821892393320965,
+          "std": 0.0020110838022893204
+        },
+        "f1_macro": {
+          "mean": 0.9790062102467687,
+          "std": 0.002393110833587617
+        },
+        "f1_micro": {
+          "mean": 0.9821892393320965,
+          "std": 0.0020110838022893204
+        },
+        "f1_weighted": {
+          "mean": 0.9822061747326304,
+          "std": 0.0020185123492935967
+        },
+        "precision_macro": {
+          "mean": 0.9780633685431118,
+          "std": 0.002269592564101703
+        },
+        "precision_micro": {
+          "mean": 0.9821892393320965,
+          "std": 0.0020110838022893204
+        },
+        "precision_weighted": {
+          "mean": 0.9822570797944058,
+          "std": 0.0020376237857585313
+        },
+        "recall_macro": {
+          "mean": 0.9799951219512195,
+          "std": 0.003344233368154172
+        },
+        "recall_micro": {
+          "mean": 0.9821892393320965,
+          "std": 0.0020110838022893204
+        },
+        "recall_weighted": {
+          "mean": 0.9821892393320965,
+          "std": 0.0020110838022893204
+        }
+      }
+    },
+    {
+      "id": "psc_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Paraphrase Classification",
+      "dataset": "allegro/klej-psc",
+      "dataset_label": "PSC",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9858998144712431,
+          "std": 0.005695763054919746
+        },
+        "f1_macro": {
+          "mean": 0.9832794416977119,
+          "std": 0.006915140097258814
+        },
+        "f1_micro": {
+          "mean": 0.9858998144712431,
+          "std": 0.005695763054919746
+        },
+        "f1_weighted": {
+          "mean": 0.9858701319707979,
+          "std": 0.0057769678469501515
+        },
+        "precision_macro": {
+          "mean": 0.9842267628437312,
+          "std": 0.003378647255128011
+        },
+        "precision_micro": {
+          "mean": 0.9858998144712431,
+          "std": 0.005695763054919746
+        },
+        "precision_weighted": {
+          "mean": 0.9859558965507593,
+          "std": 0.00563854984697608
+        },
+        "recall_macro": {
+          "mean": 0.982490243902439,
+          "std": 0.0101975940649805
+        },
+        "recall_micro": {
+          "mean": 0.9858998144712431,
+          "std": 0.005695763054919746
+        },
+        "recall_weighted": {
+          "mean": 0.9858998144712431,
+          "std": 0.005695763054919746
+        }
+      }
+    },
+    {
+      "id": "psc_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Paraphrase Classification",
+      "dataset": "allegro/klej-psc",
+      "dataset_label": "PSC",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9910946196660482,
+          "std": 0.0010576766466596913
+        },
+        "f1_macro": {
+          "mean": 0.9895005143880736,
+          "std": 0.0012512256593390659
+        },
+        "f1_micro": {
+          "mean": 0.9910946196660482,
+          "std": 0.0010576766466596913
+        },
+        "f1_weighted": {
+          "mean": 0.9911020466462324,
+          "std": 0.0010585712923565406
+        },
+        "precision_macro": {
+          "mean": 0.9886723364167257,
+          "std": 0.0010922438155011578
+        },
+        "precision_micro": {
+          "mean": 0.9910946196660482,
+          "std": 0.0010576766466596913
+        },
+        "precision_weighted": {
+          "mean": 0.9911182769062801,
+          "std": 0.0010626630737882625
+        },
+        "recall_macro": {
+          "mean": 0.9903406504065041,
+          "std": 0.0014567185331843962
+        },
+        "recall_micro": {
+          "mean": 0.9910946196660482,
+          "std": 0.0010576766466596913
+        },
+        "recall_weighted": {
+          "mean": 0.9910946196660482,
+          "std": 0.0010576766466596913
+        }
+      }
+    },
+    {
+      "id": "psc_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Paraphrase Classification",
+      "dataset": "allegro/klej-psc",
+      "dataset_label": "PSC",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9903525046382189,
+          "std": 0.0008297098246752549
+        },
+        "f1_macro": {
+          "mean": 0.9886599760803954,
+          "std": 0.0009833285144424107
+        },
+        "f1_micro": {
+          "mean": 0.9903525046382189,
+          "std": 0.0008297098246752549
+        },
+        "f1_weighted": {
+          "mean": 0.990374982746156,
+          "std": 0.000831123379166017
+        },
+        "precision_macro": {
+          "mean": 0.9864022120173236,
+          "std": 0.0008282377530928338
+        },
+        "precision_micro": {
+          "mean": 0.9903525046382189,
+          "std": 0.0008297098246752549
+        },
+        "precision_weighted": {
+          "mean": 0.9904641761357014,
+          "std": 0.0008518964290188405
+        },
+        "recall_macro": {
+          "mean": 0.9910081300813008,
+          "std": 0.0014922658476414158
+        },
+        "recall_micro": {
+          "mean": 0.9903525046382189,
+          "std": 0.0008297098246752549
+        },
+        "recall_weighted": {
+          "mean": 0.9903525046382189,
+          "std": 0.0008297098246752549
+        }
+      }
+    },
+    {
+      "id": "psc_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Paraphrase Classification",
+      "dataset": "allegro/klej-psc",
+      "dataset_label": "PSC",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7398886827458255,
+          "std": 0.005353075341838025
+        },
+        "f1_macro": {
+          "mean": 0.5884501661970666,
+          "std": 0.014918882029189588
+        },
+        "f1_micro": {
+          "mean": 0.7398886827458255,
+          "std": 0.005353075341838006
+        },
+        "f1_weighted": {
+          "mean": 0.6861706743375695,
+          "std": 0.010017871441611583
+        },
+        "precision_macro": {
+          "mean": 0.7430026004970367,
+          "std": 0.00900439296066433
+        },
+        "precision_micro": {
+          "mean": 0.7398886827458255,
+          "std": 0.005353075341838025
+        },
+        "precision_weighted": {
+          "mean": 0.7415293832224029,
+          "std": 0.006889032557251785
+        },
+        "recall_macro": {
+          "mean": 0.593489430894309,
+          "std": 0.010064497043255053
+        },
+        "recall_micro": {
+          "mean": 0.7398886827458255,
+          "std": 0.005353075341838025
+        },
+        "recall_weighted": {
+          "mean": 0.7398886827458255,
+          "std": 0.005353075341838025
+        }
+      }
+    },
+    {
+      "id": "nkjp_pos_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Part-of-speech Tagging",
+      "dataset": "clarin-pl/nkjp-pos",
+      "dataset_label": "NKJP POS",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "1.1.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9887796555851941,
+          "std": 0.00017039399829927782
+        },
+        "f1_macro": {
+          "mean": 0.9459166862495607,
+          "std": 0.005596021298794464
+        },
+        "f1_micro": {
+          "mean": 0.9887796555851941,
+          "std": 0.00017039399829927782
+        },
+        "f1_weighted": {
+          "mean": 0.9887935601636144,
+          "std": 0.00016782204925126795
+        },
+        "precision_macro": {
+          "mean": 0.9590966369976585,
+          "std": 0.008157892057391262
+        },
+        "precision_micro": {
+          "mean": 0.9887796555851941,
+          "std": 0.00017039399829927782
+        },
+        "precision_weighted": {
+          "mean": 0.9888407423662097,
+          "std": 0.0001624391094630938
+        },
+        "recall_macro": {
+          "mean": 0.9394825339805634,
+          "std": 0.0063941617601803585
+        },
+        "recall_micro": {
+          "mean": 0.9887796555851941,
+          "std": 0.00017039399829927782
+        },
+        "recall_weighted": {
+          "mean": 0.9887796555851941,
+          "std": 0.00017039399829927782
+        }
+      }
+    },
+    {
+      "id": "nkjp_pos_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Part-of-speech Tagging",
+      "dataset": "clarin-pl/nkjp-pos",
+      "dataset_label": "NKJP POS",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "1.1.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9898221371815293,
+          "std": 1.6861191426382304e-05
+        },
+        "f1_macro": {
+          "mean": 0.9613961614803594,
+          "std": 0.0038144874848850905
+        },
+        "f1_micro": {
+          "mean": 0.9898221371815293,
+          "std": 1.6861191426382304e-05
+        },
+        "f1_weighted": {
+          "mean": 0.9898274925148366,
+          "std": 1.5361116283735402e-05
+        },
+        "precision_macro": {
+          "mean": 0.9723448628240345,
+          "std": 0.003848771214522517
+        },
+        "precision_micro": {
+          "mean": 0.9898221371815293,
+          "std": 1.6861191426382304e-05
+        },
+        "precision_weighted": {
+          "mean": 0.9898546623086244,
+          "std": 1.6414832854325272e-05
+        },
+        "recall_macro": {
+          "mean": 0.9538526242565841,
+          "std": 0.004481758585836573
+        },
+        "recall_micro": {
+          "mean": 0.9898221371815293,
+          "std": 1.6861191426382304e-05
+        },
+        "recall_weighted": {
+          "mean": 0.9898221371815293,
+          "std": 1.6861191426382304e-05
+        }
+      }
+    },
+    {
+      "id": "nkjp_pos_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Part-of-speech Tagging",
+      "dataset": "clarin-pl/nkjp-pos",
+      "dataset_label": "NKJP POS",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "1.1.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9876561130329051,
+          "std": 0.00017616213400905084
+        },
+        "f1_macro": {
+          "mean": 0.9433695042106219,
+          "std": 0.006130280068249077
+        },
+        "f1_micro": {
+          "mean": 0.9876561130329051,
+          "std": 0.00017616213400905084
+        },
+        "f1_weighted": {
+          "mean": 0.9876491431384908,
+          "std": 0.00017593839602967641
+        },
+        "precision_macro": {
+          "mean": 0.9659263627085896,
+          "std": 0.007307217123443455
+        },
+        "precision_micro": {
+          "mean": 0.9876561130329051,
+          "std": 0.00017616213400905084
+        },
+        "precision_weighted": {
+          "mean": 0.9876817436903825,
+          "std": 0.00018048400307700858
+        },
+        "recall_macro": {
+          "mean": 0.9318007028283483,
+          "std": 0.004974673309080868
+        },
+        "recall_micro": {
+          "mean": 0.9876561130329051,
+          "std": 0.00017616213400905084
+        },
+        "recall_weighted": {
+          "mean": 0.9876561130329051,
+          "std": 0.00017616213400905084
+        }
+      }
+    },
+    {
+      "id": "nkjp_pos_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Part-of-speech Tagging",
+      "dataset": "clarin-pl/nkjp-pos",
+      "dataset_label": "NKJP POS",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "1.1.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9879238027014035,
+          "std": 0.00018123329863097966
+        },
+        "f1_macro": {
+          "mean": 0.9454439917409159,
+          "std": 0.00192051565243359
+        },
+        "f1_micro": {
+          "mean": 0.9879238027014035,
+          "std": 0.00018123329863097966
+        },
+        "f1_weighted": {
+          "mean": 0.987915449542197,
+          "std": 0.0001750383789463822
+        },
+        "precision_macro": {
+          "mean": 0.9699348987056671,
+          "std": 0.0023286900819888654
+        },
+        "precision_micro": {
+          "mean": 0.9879238027014035,
+          "std": 0.00018123329863097966
+        },
+        "precision_weighted": {
+          "mean": 0.9879517622828073,
+          "std": 0.00015952756820961499
+        },
+        "recall_macro": {
+          "mean": 0.9328329914853298,
+          "std": 0.0012073903771544611
+        },
+        "recall_micro": {
+          "mean": 0.9879238027014035,
+          "std": 0.00018123329863097966
+        },
+        "recall_weighted": {
+          "mean": 0.9879238027014035,
+          "std": 0.00018123329863097966
+        }
+      }
+    },
+    {
+      "id": "nkjp_pos_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Part-of-speech Tagging",
+      "dataset": "clarin-pl/nkjp-pos",
+      "dataset_label": "NKJP POS",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "1.1.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9816161292450962,
+          "std": 0.00015568094273562063
+        },
+        "f1_macro": {
+          "mean": 0.9029454838632935,
+          "std": 0.005147032606539332
+        },
+        "f1_micro": {
+          "mean": 0.9816161292450962,
+          "std": 0.00015568094273562063
+        },
+        "f1_weighted": {
+          "mean": 0.9815557713043634,
+          "std": 0.00015716766016264427
+        },
+        "precision_macro": {
+          "mean": 0.9250323056691511,
+          "std": 0.011723990293980472
+        },
+        "precision_micro": {
+          "mean": 0.9816161292450962,
+          "std": 0.00015568094273562063
+        },
+        "precision_weighted": {
+          "mean": 0.9815585429622696,
+          "std": 0.0001557354547836728
+        },
+        "recall_macro": {
+          "mean": 0.8886298058312084,
+          "std": 0.0032902261724297756
+        },
+        "recall_micro": {
+          "mean": 0.9816161292450962,
+          "std": 0.00015568094273562063
+        },
+        "recall_weighted": {
+          "mean": 0.9816161292450962,
+          "std": 0.00015568094273562063
+        }
+      }
+    },
+    {
+      "id": "political_advertising_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Political Advertising Detection",
+      "dataset": "laugustyniak/political-advertising-pl",
+      "dataset_label": "Political Advertising",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9646139180171591,
+          "std": 0.0021405527390717873
+        },
+        "f1_macro": {
+          "mean": 0.6142066590544236,
+          "std": 0.013810209258702948
+        },
+        "f1_micro": {
+          "mean": 0.6802061445270478,
+          "std": 0.013529039659316481
+        },
+        "f1_weighted": {
+          "mean": 0.6809944814391814,
+          "std": 0.013376514798470632
+        },
+        "precision_macro": {
+          "mean": 0.5882016141407482,
+          "std": 0.03331499453205797
+        },
+        "precision_micro": {
+          "mean": 0.644580488139254,
+          "std": 0.029471288668242706
+        },
+        "precision_weighted": {
+          "mean": 0.6496631212047963,
+          "std": 0.030636088917462383
+        },
+        "recall_macro": {
+          "mean": 0.6504414163719809,
+          "std": 0.010498564263806583
+        },
+        "recall_micro": {
+          "mean": 0.7208747514910536,
+          "std": 0.0069724365474155975
+        },
+        "recall_weighted": {
+          "mean": 0.7208747514910536,
+          "std": 0.0069724365474155975
+        }
+      }
+    },
+    {
+      "id": "political_advertising_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Political Advertising Detection",
+      "dataset": "laugustyniak/political-advertising-pl",
+      "dataset_label": "Political Advertising",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9648999046711154,
+          "std": 0.0018205071688987223
+        },
+        "f1_macro": {
+          "mean": 0.6216039917392763,
+          "std": 0.0014396173726754292
+        },
+        "f1_micro": {
+          "mean": 0.6785622991815865,
+          "std": 0.008829681489152601
+        },
+        "f1_weighted": {
+          "mean": 0.6809609546970182,
+          "std": 0.008289664926342769
+        },
+        "precision_macro": {
+          "mean": 0.5961508963367748,
+          "std": 0.013268821739586226
+        },
+        "precision_micro": {
+          "mean": 0.6407183842495118,
+          "std": 0.025015574551793433
+        },
+        "precision_weighted": {
+          "mean": 0.6493382613523786,
+          "std": 0.02399342381554663
+        },
+        "recall_macro": {
+          "mean": 0.6560382332114973,
+          "std": 0.015856110764746155
+        },
+        "recall_micro": {
+          "mean": 0.7220675944333996,
+          "std": 0.011711074731628758
+        },
+        "recall_weighted": {
+          "mean": 0.7220675944333996,
+          "std": 0.011711074731628758
+        }
+      }
+    },
+    {
+      "id": "political_advertising_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Political Advertising Detection",
+      "dataset": "laugustyniak/political-advertising-pl",
+      "dataset_label": "Political Advertising",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9612392755004766,
+          "std": 0.000925721516591815
+        },
+        "f1_macro": {
+          "mean": 0.5893571046652736,
+          "std": 0.01924311284120588
+        },
+        "f1_micro": {
+          "mean": 0.6525415188504582,
+          "std": 0.0053952772870168
+        },
+        "f1_weighted": {
+          "mean": 0.6527764641717839,
+          "std": 0.0056139087245233215
+        },
+        "precision_macro": {
+          "mean": 0.6089416514148317,
+          "std": 0.03684404302730452
+        },
+        "precision_micro": {
+          "mean": 0.6609051725063628,
+          "std": 0.023618344457336047
+        },
+        "precision_weighted": {
+          "mean": 0.6661266837670011,
+          "std": 0.02340833238827828
+        },
+        "recall_macro": {
+          "mean": 0.5769856378950041,
+          "std": 0.01618588924982418
+        },
+        "recall_micro": {
+          "mean": 0.6453280318091451,
+          "std": 0.016962806367953515
+        },
+        "recall_weighted": {
+          "mean": 0.6453280318091451,
+          "std": 0.016962806367953515
+        }
+      }
+    },
+    {
+      "id": "political_advertising_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Political Advertising Detection",
+      "dataset": "laugustyniak/political-advertising-pl",
+      "dataset_label": "Political Advertising",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9637733689431515,
+          "std": 0.0010435663408323403
+        },
+        "f1_macro": {
+          "mean": 0.6251892805050727,
+          "std": 0.012284037808185443
+        },
+        "f1_micro": {
+          "mean": 0.6892677874803912,
+          "std": 0.013093772616807432
+        },
+        "f1_weighted": {
+          "mean": 0.6889270478718308,
+          "std": 0.013283345513504479
+        },
+        "precision_macro": {
+          "mean": 0.6292572565153935,
+          "std": 0.017537016603008937
+        },
+        "precision_micro": {
+          "mean": 0.6818135476307682,
+          "std": 0.01806055143022058
+        },
+        "precision_weighted": {
+          "mean": 0.6849564326547848,
+          "std": 0.01867075880321862
+        },
+        "recall_macro": {
+          "mean": 0.6271661162080803,
+          "std": 0.011283252465860932
+        },
+        "recall_micro": {
+          "mean": 0.6970178926441352,
+          "std": 0.011211031554569931
+        },
+        "recall_weighted": {
+          "mean": 0.6970178926441352,
+          "std": 0.011211031554569931
+        }
+      }
+    },
+    {
+      "id": "political_advertising_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Political Advertising Detection",
+      "dataset": "laugustyniak/political-advertising-pl",
+      "dataset_label": "Political Advertising",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9571414959504526,
+          "std": 0.0007604790829627252
+        },
+        "f1_macro": {
+          "mean": 0.5668000511001542,
+          "std": 0.00941230256137938
+        },
+        "f1_micro": {
+          "mean": 0.6094405850684116,
+          "std": 0.007066092182330354
+        },
+        "f1_weighted": {
+          "mean": 0.6096596766460045,
+          "std": 0.006106423733645816
+        },
+        "precision_macro": {
+          "mean": 0.5468117468272549,
+          "std": 0.026215209572817033
+        },
+        "precision_micro": {
+          "mean": 0.5885495032299642,
+          "std": 0.022256687494909607
+        },
+        "precision_weighted": {
+          "mean": 0.5916686839010608,
+          "std": 0.022105713519447998
+        },
+        "recall_macro": {
+          "mean": 0.5954535881756301,
+          "std": 0.012277008181071187
+        },
+        "recall_micro": {
+          "mean": 0.6330019880715706,
+          "std": 0.019910514447004823
+        },
+        "recall_weighted": {
+          "mean": 0.6330019880715706,
+          "std": 0.019910514447004823
+        }
+      }
+    },
+    {
+      "id": "punctuation_restoration_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Punctuation Restoration",
+      "dataset": "clarin-pl/2021-punctuation-restoration",
+      "dataset_label": "Punctuation Restoration",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9355575711519133,
+          "std": 0.000786628561376711
+        },
+        "f1_macro": {
+          "mean": 0.455898112707211,
+          "std": 0.003779704005082464
+        },
+        "f1_micro": {
+          "mean": 0.7323379805183458,
+          "std": 0.003255171897644421
+        },
+        "f1_weighted": {
+          "mean": 0.7240847844951184,
+          "std": 0.0030314966161080767
+        },
+        "precision_macro": {
+          "mean": 0.4948200963935936,
+          "std": 0.0025735262137964576
+        },
+        "precision_micro": {
+          "mean": 0.7493494088561827,
+          "std": 0.0032833746414276774
+        },
+        "precision_weighted": {
+          "mean": 0.739429963089656,
+          "std": 0.002657255323716726
+        },
+        "recall_macro": {
+          "mean": 0.4315713189388393,
+          "std": 0.003648510588409083
+        },
+        "recall_micro": {
+          "mean": 0.7160861817592743,
+          "std": 0.0037898013583017166
+        },
+        "recall_weighted": {
+          "mean": 0.7160861817592743,
+          "std": 0.0037898013583017166
+        }
+      }
+    },
+    {
+      "id": "punctuation_restoration_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Punctuation Restoration",
+      "dataset": "clarin-pl/2021-punctuation-restoration",
+      "dataset_label": "Punctuation Restoration",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9409947785159218,
+          "std": 0.0006399518290984626
+        },
+        "f1_macro": {
+          "mean": 0.4668273705582159,
+          "std": 0.006140422830100761
+        },
+        "f1_micro": {
+          "mean": 0.7501302574014416,
+          "std": 0.0022781720472265865
+        },
+        "f1_weighted": {
+          "mean": 0.7376559074323513,
+          "std": 0.002595521045362201
+        },
+        "precision_macro": {
+          "mean": 0.5319455625923069,
+          "std": 0.009680288950573443
+        },
+        "precision_micro": {
+          "mean": 0.7733359650082893,
+          "std": 0.00553345287634204
+        },
+        "precision_weighted": {
+          "mean": 0.7680285728056677,
+          "std": 0.004883117437125472
+        },
+        "recall_macro": {
+          "mean": 0.43556100345019716,
+          "std": 0.01063652479452407
+        },
+        "recall_micro": {
+          "mean": 0.7283654624979751,
+          "std": 0.00807821523374409
+        },
+        "recall_weighted": {
+          "mean": 0.7283654624979751,
+          "std": 0.00807821523374409
+        }
+      }
+    },
+    {
+      "id": "punctuation_restoration_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Punctuation Restoration",
+      "dataset": "clarin-pl/2021-punctuation-restoration",
+      "dataset_label": "Punctuation Restoration",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9189177266377472,
+          "std": 0.0026351857904220203
+        },
+        "f1_macro": {
+          "mean": 0.38894108114267917,
+          "std": 0.009091164571547575
+        },
+        "f1_micro": {
+          "mean": 0.6648757846904376,
+          "std": 0.004115601625663345
+        },
+        "f1_weighted": {
+          "mean": 0.6529100854655365,
+          "std": 0.004786429593791258
+        },
+        "precision_macro": {
+          "mean": 0.4621943025270545,
+          "std": 0.020544741566179452
+        },
+        "precision_micro": {
+          "mean": 0.6849708862954542,
+          "std": 0.0234462267999279
+        },
+        "precision_weighted": {
+          "mean": 0.6779961440955343,
+          "std": 0.018374109553771147
+        },
+        "recall_macro": {
+          "mean": 0.35500526325543963,
+          "std": 0.012662547656683955
+        },
+        "recall_micro": {
+          "mean": 0.6469655284026541,
+          "std": 0.01994018274354135
+        },
+        "recall_weighted": {
+          "mean": 0.6469655284026541,
+          "std": 0.01994018274354135
+        }
+      }
+    },
+    {
+      "id": "punctuation_restoration_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Punctuation Restoration",
+      "dataset": "clarin-pl/2021-punctuation-restoration",
+      "dataset_label": "Punctuation Restoration",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9237579617834395,
+          "std": 0.0013080996841520847
+        },
+        "f1_macro": {
+          "mean": 0.4131168428822792,
+          "std": 0.00588751273164006
+        },
+        "f1_micro": {
+          "mean": 0.68557984666997,
+          "std": 0.003868739203689805
+        },
+        "f1_weighted": {
+          "mean": 0.6728508766572737,
+          "std": 0.0038245997247708828
+        },
+        "precision_macro": {
+          "mean": 0.5029293038388504,
+          "std": 0.06665677285854485
+        },
+        "precision_micro": {
+          "mean": 0.7064437679032539,
+          "std": 0.016397081526514784
+        },
+        "precision_weighted": {
+          "mean": 0.6983912124509102,
+          "std": 0.01757346853790329
+        },
+        "recall_macro": {
+          "mean": 0.38111097082857215,
+          "std": 0.009814389454759301
+        },
+        "recall_micro": {
+          "mean": 0.6665159101922145,
+          "std": 0.017444154290201176
+        },
+        "recall_weighted": {
+          "mean": 0.6665159101922145,
+          "std": 0.017444154290201176
+        }
+      }
+    },
+    {
+      "id": "punctuation_restoration_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Punctuation Restoration",
+      "dataset": "clarin-pl/2021-punctuation-restoration",
+      "dataset_label": "Punctuation Restoration",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "1.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8370866779586126,
+          "std": 0.001909174255733518
+        },
+        "f1_macro": {
+          "mean": 0.1433344938570756,
+          "std": 0.0194455124482485
+        },
+        "f1_micro": {
+          "mean": 0.21724347663800583,
+          "std": 0.008473794655764897
+        },
+        "f1_weighted": {
+          "mean": 0.214433164918844,
+          "std": 0.007787154214619362
+        },
+        "precision_macro": {
+          "mean": 0.23854322025081096,
+          "std": 0.016423218664573108
+        },
+        "precision_micro": {
+          "mean": 0.3342611275692088,
+          "std": 0.014421092707219989
+        },
+        "precision_weighted": {
+          "mean": 0.32963646576710887,
+          "std": 0.011505556492940851
+        },
+        "recall_macro": {
+          "mean": 0.10708151028598782,
+          "std": 0.01900005404784232
+        },
+        "recall_micro": {
+          "mean": 0.16101200129743756,
+          "std": 0.007418192150374936
+        },
+        "recall_weighted": {
+          "mean": 0.16101200129743756,
+          "std": 0.007418192150374936
+        }
+      }
+    },
+    {
+      "id": "dyk_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Q&A Classification",
+      "dataset": "allegro/klej-dyk",
+      "dataset_label": "DYK",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9039844509232264,
+          "std": 0.007816939767615246
+        },
+        "f1_macro": {
+          "mean": 0.8239102249027062,
+          "std": 0.014310535306669309
+        },
+        "f1_micro": {
+          "mean": 0.9039844509232264,
+          "std": 0.007816939767615246
+        },
+        "f1_weighted": {
+          "mean": 0.9024928073128062,
+          "std": 0.007884299568933635
+        },
+        "precision_macro": {
+          "mean": 0.8347406202892406,
+          "std": 0.01568199535170188
+        },
+        "precision_micro": {
+          "mean": 0.9039844509232264,
+          "std": 0.007816939767615246
+        },
+        "precision_weighted": {
+          "mean": 0.9015711999658067,
+          "std": 0.008093666335397643
+        },
+        "recall_macro": {
+          "mean": 0.8145089735833838,
+          "std": 0.015750390347761628
+        },
+        "recall_micro": {
+          "mean": 0.9039844509232264,
+          "std": 0.007816939767615246
+        },
+        "recall_weighted": {
+          "mean": 0.9039844509232264,
+          "std": 0.007816939767615246
+        }
+      }
+    },
+    {
+      "id": "dyk_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Q&A Classification",
+      "dataset": "allegro/klej-dyk",
+      "dataset_label": "DYK",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8765792031098154,
+          "std": 0.002173049540816146
+        },
+        "f1_macro": {
+          "mean": 0.7957885916029572,
+          "std": 0.005894411020245067
+        },
+        "f1_micro": {
+          "mean": 0.8765792031098153,
+          "std": 0.0021730495408161087
+        },
+        "f1_weighted": {
+          "mean": 0.8807767907125893,
+          "std": 0.0021281847654512492
+        },
+        "precision_macro": {
+          "mean": 0.7785226256841452,
+          "std": 0.0033931961214400284
+        },
+        "precision_micro": {
+          "mean": 0.8765792031098154,
+          "std": 0.002173049540816146
+        },
+        "precision_weighted": {
+          "mean": 0.8877594312373405,
+          "std": 0.004953880273917431
+        },
+        "recall_macro": {
+          "mean": 0.81953216374269,
+          "std": 0.01613705030185958
+        },
+        "recall_micro": {
+          "mean": 0.8765792031098154,
+          "std": 0.002173049540816146
+        },
+        "recall_weighted": {
+          "mean": 0.8765792031098154,
+          "std": 0.002173049540816146
+        }
+      }
+    },
+    {
+      "id": "dyk_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Q&A Classification",
+      "dataset": "allegro/klej-dyk",
+      "dataset_label": "DYK",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8759961127308066,
+          "std": 0.006357794843069451
+        },
+        "f1_macro": {
+          "mean": 0.7587313432574943,
+          "std": 0.009825391747517656
+        },
+        "f1_micro": {
+          "mean": 0.8759961127308066,
+          "std": 0.006357794843069453
+        },
+        "f1_weighted": {
+          "mean": 0.8700426695165927,
+          "std": 0.0057582761943558635
+        },
+        "precision_macro": {
+          "mean": 0.7889994834646279,
+          "std": 0.016491779738467573
+        },
+        "precision_micro": {
+          "mean": 0.8759961127308066,
+          "std": 0.006357794843069451
+        },
+        "precision_weighted": {
+          "mean": 0.867771318046135,
+          "std": 0.006365812882966431
+        },
+        "recall_macro": {
+          "mean": 0.7377011494252874,
+          "std": 0.009388742084777316
+        },
+        "recall_micro": {
+          "mean": 0.8759961127308066,
+          "std": 0.006357794843069451
+        },
+        "recall_weighted": {
+          "mean": 0.8759961127308066,
+          "std": 0.006357794843069451
+        }
+      }
+    },
+    {
+      "id": "dyk_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Q&A Classification",
+      "dataset": "allegro/klej-dyk",
+      "dataset_label": "DYK",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8682215743440234,
+          "std": 0.006468245400308561
+        },
+        "f1_macro": {
+          "mean": 0.7440957329933127,
+          "std": 0.011498070135249347
+        },
+        "f1_micro": {
+          "mean": 0.8682215743440234,
+          "std": 0.006468245400308561
+        },
+        "f1_weighted": {
+          "mean": 0.8620184407358211,
+          "std": 0.005605452334503735
+        },
+        "precision_macro": {
+          "mean": 0.7730448392745902,
+          "std": 0.019400814054581408
+        },
+        "precision_micro": {
+          "mean": 0.8682215743440234,
+          "std": 0.006468245400308561
+        },
+        "precision_weighted": {
+          "mean": 0.8598171771007109,
+          "std": 0.006413697505145447
+        },
+        "recall_macro": {
+          "mean": 0.7252409760032265,
+          "std": 0.016867441207981605
+        },
+        "recall_micro": {
+          "mean": 0.8682215743440234,
+          "std": 0.006468245400308561
+        },
+        "recall_weighted": {
+          "mean": 0.8682215743440234,
+          "std": 0.006468245400308561
+        }
+      }
+    },
+    {
+      "id": "dyk_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Q&A Classification",
+      "dataset": "allegro/klej-dyk",
+      "dataset_label": "DYK",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8379008746355685,
+          "std": 0.008837661842091072
+        },
+        "f1_macro": {
+          "mean": 0.5892951417897992,
+          "std": 0.07978081830481226
+        },
+        "f1_micro": {
+          "mean": 0.8379008746355685,
+          "std": 0.008837661842091072
+        },
+        "f1_weighted": {
+          "mean": 0.8006025983674957,
+          "std": 0.028919637025770013
+        },
+        "precision_macro": {
+          "mean": 0.6603315770197751,
+          "std": 0.13814425085992343
+        },
+        "precision_micro": {
+          "mean": 0.8379008746355685,
+          "std": 0.008837661842091072
+        },
+        "precision_weighted": {
+          "mean": 0.7895135839523961,
+          "std": 0.0562174601543707
+        },
+        "recall_macro": {
+          "mean": 0.581113127646703,
+          "std": 0.05097877326515627
+        },
+        "recall_micro": {
+          "mean": 0.8379008746355685,
+          "std": 0.008837661842091072
+        },
+        "recall_weighted": {
+          "mean": 0.8379008746355685,
+          "std": 0.008837661842091072
+        }
+      }
+    },
+    {
+      "id": "polemo2_in_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-in",
+      "dataset_label": "PolEmo 2.0 In-Domain",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9030470914127424,
+          "std": 0.00277008310249309
+        },
+        "f1_macro": {
+          "mean": 0.8809912305961929,
+          "std": 0.003643829714530789
+        },
+        "f1_micro": {
+          "mean": 0.9030470914127424,
+          "std": 0.00277008310249309
+        },
+        "f1_weighted": {
+          "mean": 0.8990145557039207,
+          "std": 0.0027618999665535607
+        },
+        "precision_macro": {
+          "mean": 0.8939561543151432,
+          "std": 0.00546996318448258
+        },
+        "precision_micro": {
+          "mean": 0.9030470914127424,
+          "std": 0.00277008310249309
+        },
+        "precision_weighted": {
+          "mean": 0.898979049319404,
+          "std": 0.0030816439521925915
+        },
+        "recall_macro": {
+          "mean": 0.8740279404746409,
+          "std": 0.003295678404838521
+        },
+        "recall_micro": {
+          "mean": 0.9030470914127424,
+          "std": 0.00277008310249309
+        },
+        "recall_weighted": {
+          "mean": 0.9030470914127424,
+          "std": 0.00277008310249309
+        }
+      }
+    },
+    {
+      "id": "polemo2_in_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-in",
+      "dataset_label": "PolEmo 2.0 In-Domain",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9055401662049861,
+          "std": 0.004737571018417473
+        },
+        "f1_macro": {
+          "mean": 0.8833709016815974,
+          "std": 0.0062526362202918444
+        },
+        "f1_micro": {
+          "mean": 0.9055401662049861,
+          "std": 0.0047375710184175196
+        },
+        "f1_weighted": {
+          "mean": 0.9020100679283719,
+          "std": 0.005128772040666502
+        },
+        "precision_macro": {
+          "mean": 0.8960112384947576,
+          "std": 0.009516516653558214
+        },
+        "precision_micro": {
+          "mean": 0.9055401662049861,
+          "std": 0.004737571018417473
+        },
+        "precision_weighted": {
+          "mean": 0.9022410977047839,
+          "std": 0.005651869038134371
+        },
+        "recall_macro": {
+          "mean": 0.8761758427697514,
+          "std": 0.008580271664390647
+        },
+        "recall_micro": {
+          "mean": 0.9055401662049861,
+          "std": 0.004737571018417473
+        },
+        "recall_weighted": {
+          "mean": 0.9055401662049861,
+          "std": 0.004737571018417473
+        }
+      }
+    },
+    {
+      "id": "polemo2_in_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-in",
+      "dataset_label": "PolEmo 2.0 In-Domain",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8753462603878116,
+          "std": 0.004268984766599019
+        },
+        "f1_macro": {
+          "mean": 0.8531503146925596,
+          "std": 0.004536701269591144
+        },
+        "f1_micro": {
+          "mean": 0.8753462603878116,
+          "std": 0.004268984766599036
+        },
+        "f1_weighted": {
+          "mean": 0.87329871854909,
+          "std": 0.004471311052991312
+        },
+        "precision_macro": {
+          "mean": 0.8599021642593334,
+          "std": 0.005308264184543941
+        },
+        "precision_micro": {
+          "mean": 0.8753462603878116,
+          "std": 0.004268984766599019
+        },
+        "precision_weighted": {
+          "mean": 0.8727372912919041,
+          "std": 0.004822097226879387
+        },
+        "recall_macro": {
+          "mean": 0.8483400870608994,
+          "std": 0.005555131743461074
+        },
+        "recall_micro": {
+          "mean": 0.8753462603878116,
+          "std": 0.004268984766599019
+        },
+        "recall_weighted": {
+          "mean": 0.8753462603878116,
+          "std": 0.004268984766599019
+        }
+      }
+    },
+    {
+      "id": "polemo2_in_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-in",
+      "dataset_label": "PolEmo 2.0 In-Domain",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8759002770083102,
+          "std": 0.008111662307117044
+        },
+        "f1_macro": {
+          "mean": 0.8570636888798311,
+          "std": 0.004021045676414045
+        },
+        "f1_micro": {
+          "mean": 0.8759002770083102,
+          "std": 0.008111662307117046
+        },
+        "f1_weighted": {
+          "mean": 0.8763537401472334,
+          "std": 0.005276281594881163
+        },
+        "precision_macro": {
+          "mean": 0.8586454541274114,
+          "std": 0.009496350062424256
+        },
+        "precision_micro": {
+          "mean": 0.8759002770083102,
+          "std": 0.008111662307117044
+        },
+        "precision_weighted": {
+          "mean": 0.8784440007851753,
+          "std": 0.003233114454791162
+        },
+        "recall_macro": {
+          "mean": 0.8574917277683776,
+          "std": 0.002320512728112686
+        },
+        "recall_micro": {
+          "mean": 0.8759002770083102,
+          "std": 0.008111662307117044
+        },
+        "recall_weighted": {
+          "mean": 0.8759002770083102,
+          "std": 0.008111662307117044
+        }
+      }
+    },
+    {
+      "id": "polemo2_in_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-in",
+      "dataset_label": "PolEmo 2.0 In-Domain",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8556786703601108,
+          "std": 0.004635235604066909
+        },
+        "f1_macro": {
+          "mean": 0.8375154490879497,
+          "std": 0.004486819924767198
+        },
+        "f1_micro": {
+          "mean": 0.8556786703601108,
+          "std": 0.004635235604066909
+        },
+        "f1_weighted": {
+          "mean": 0.8568519300366086,
+          "std": 0.003990447442440151
+        },
+        "precision_macro": {
+          "mean": 0.8386220997610376,
+          "std": 0.0038823704139098556
+        },
+        "precision_micro": {
+          "mean": 0.8556786703601108,
+          "std": 0.004635235604066909
+        },
+        "precision_weighted": {
+          "mean": 0.8585996047481501,
+          "std": 0.0037256755097202967
+        },
+        "recall_macro": {
+          "mean": 0.837122919287894,
+          "std": 0.0066868399695315965
+        },
+        "recall_micro": {
+          "mean": 0.8556786703601108,
+          "std": 0.004635235604066909
+        },
+        "recall_weighted": {
+          "mean": 0.8556786703601108,
+          "std": 0.004635235604066909
+        }
+      }
+    },
+    {
+      "id": "polemo2_out_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-out",
+      "dataset_label": "PolEmo 2.0 Out-of-Domain",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7506072874493928,
+          "std": 0.01857501173595863
+        },
+        "f1_macro": {
+          "mean": 0.5731112794760751,
+          "std": 0.029335458457387917
+        },
+        "f1_micro": {
+          "mean": 0.7506072874493928,
+          "std": 0.01857501173595863
+        },
+        "f1_weighted": {
+          "mean": 0.756075373296543,
+          "std": 0.02838193429377558
+        },
+        "precision_macro": {
+          "mean": 0.5901231673557745,
+          "std": 0.019479811480023666
+        },
+        "precision_micro": {
+          "mean": 0.7506072874493928,
+          "std": 0.01857501173595863
+        },
+        "precision_weighted": {
+          "mean": 0.7790055542179137,
+          "std": 0.02297483634369167
+        },
+        "recall_macro": {
+          "mean": 0.609888129519002,
+          "std": 0.117702547078872
+        },
+        "recall_micro": {
+          "mean": 0.7506072874493928,
+          "std": 0.01857501173595863
+        },
+        "recall_weighted": {
+          "mean": 0.7506072874493928,
+          "std": 0.01857501173595863
+        }
+      }
+    },
+    {
+      "id": "polemo2_out_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-out",
+      "dataset_label": "PolEmo 2.0 Out-of-Domain",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7530364372469636,
+          "std": 0.016936437784090576
+        },
+        "f1_macro": {
+          "mean": 0.5708054475646567,
+          "std": 0.020335113025447778
+        },
+        "f1_micro": {
+          "mean": 0.7530364372469636,
+          "std": 0.016936437784090548
+        },
+        "f1_weighted": {
+          "mean": 0.761034273076729,
+          "std": 0.0267227600298766
+        },
+        "precision_macro": {
+          "mean": 0.5928689133971753,
+          "std": 0.018024421472803347
+        },
+        "precision_micro": {
+          "mean": 0.7530364372469636,
+          "std": 0.016936437784090576
+        },
+        "precision_weighted": {
+          "mean": 0.7861899780339017,
+          "std": 0.026332518036017057
+        },
+        "recall_macro": {
+          "mean": 0.5616515020318152,
+          "std": 0.015288183499114004
+        },
+        "recall_micro": {
+          "mean": 0.7530364372469636,
+          "std": 0.016936437784090576
+        },
+        "recall_weighted": {
+          "mean": 0.7530364372469636,
+          "std": 0.016936437784090576
+        }
+      }
+    },
+    {
+      "id": "polemo2_out_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-out",
+      "dataset_label": "PolEmo 2.0 Out-of-Domain",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.6931174089068826,
+          "std": 0.028720694571071154
+        },
+        "f1_macro": {
+          "mean": 0.5410292197759686,
+          "std": 0.03820334740034329
+        },
+        "f1_micro": {
+          "mean": 0.6931174089068826,
+          "std": 0.028720694571071154
+        },
+        "f1_weighted": {
+          "mean": 0.6967503432792428,
+          "std": 0.034267403615104865
+        },
+        "precision_macro": {
+          "mean": 0.5616530832037144,
+          "std": 0.02227441286017946
+        },
+        "precision_micro": {
+          "mean": 0.6931174089068826,
+          "std": 0.028720694571071154
+        },
+        "precision_weighted": {
+          "mean": 0.7296369926237642,
+          "std": 0.02406931877310392
+        },
+        "recall_macro": {
+          "mean": 0.7126206319159339,
+          "std": 0.1341905470087301
+        },
+        "recall_micro": {
+          "mean": 0.6931174089068826,
+          "std": 0.028720694571071154
+        },
+        "recall_weighted": {
+          "mean": 0.6931174089068826,
+          "std": 0.028720694571071154
+        }
+      }
+    },
+    {
+      "id": "polemo2_out_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-out",
+      "dataset_label": "PolEmo 2.0 Out-of-Domain",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.6983805668016194,
+          "std": 0.01335111939096446
+        },
+        "f1_macro": {
+          "mean": 0.5429015327982306,
+          "std": 0.0182925466549854
+        },
+        "f1_micro": {
+          "mean": 0.6983805668016194,
+          "std": 0.01335111939096446
+        },
+        "f1_weighted": {
+          "mean": 0.7105109972486728,
+          "std": 0.012032152080214985
+        },
+        "precision_macro": {
+          "mean": 0.5694141427134718,
+          "std": 0.015196201242059896
+        },
+        "precision_micro": {
+          "mean": 0.6983805668016194,
+          "std": 0.01335111939096446
+        },
+        "precision_weighted": {
+          "mean": 0.7461524746543645,
+          "std": 0.015527517802531294
+        },
+        "recall_macro": {
+          "mean": 0.666923727941625,
+          "std": 0.13841434158492855
+        },
+        "recall_micro": {
+          "mean": 0.6983805668016194,
+          "std": 0.01335111939096446
+        },
+        "recall_weighted": {
+          "mean": 0.6983805668016194,
+          "std": 0.01335111939096446
+        }
+      }
+    },
+    {
+      "id": "polemo2_out_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "allegro/klej-polemo2-out",
+      "dataset_label": "PolEmo 2.0 Out-of-Domain",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.576923076923077,
+          "std": 0.0507084010116411
+        },
+        "f1_macro": {
+          "mean": 0.4512494853212339,
+          "std": 0.03404406709751721
+        },
+        "f1_micro": {
+          "mean": 0.576923076923077,
+          "std": 0.0507084010116411
+        },
+        "f1_weighted": {
+          "mean": 0.603262025448686,
+          "std": 0.04545303436983671
+        },
+        "precision_macro": {
+          "mean": 0.5213758911991657,
+          "std": 0.020253649079305453
+        },
+        "precision_micro": {
+          "mean": 0.576923076923077,
+          "std": 0.0507084010116411
+        },
+        "precision_weighted": {
+          "mean": 0.6899516211768711,
+          "std": 0.02766386300101079
+        },
+        "recall_macro": {
+          "mean": 0.427555566481741,
+          "std": 0.038119308384619556
+        },
+        "recall_micro": {
+          "mean": 0.576923076923077,
+          "std": 0.0507084010116411
+        },
+        "recall_weighted": {
+          "mean": 0.576923076923077,
+          "std": 0.0507084010116411
+        }
+      }
+    },
+    {
+      "id": "baseline_xgboost_tfidf",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "clarin-pl/polemo2-official",
+      "dataset_label": "PolEmo 2.0",
+      "model": "XGBoost+Tfidf",
+      "dataset_version": "0.0.0",
+      "averaged_over": 2,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7573170731707317,
+          "std": 0.0
+        },
+        "f1_macro": {
+          "mean": 0.7383632851951776,
+          "std": 0.0
+        },
+        "f1_micro": {
+          "mean": 0.7573170731707317,
+          "std": 0.0
+        },
+        "f1_weighted": {
+          "mean": 0.7531105273460682,
+          "std": 0.0
+        },
+        "precision_macro": {
+          "mean": 0.7527270564328854,
+          "std": 0.0
+        },
+        "precision_micro": {
+          "mean": 0.7573170731707317,
+          "std": 0.0
+        },
+        "precision_weighted": {
+          "mean": 0.7526286151229844,
+          "std": 0.0
+        },
+        "recall_macro": {
+          "mean": 0.7279708041839421,
+          "std": 0.0
+        },
+        "recall_micro": {
+          "mean": 0.7573170731707317,
+          "std": 0.0
+        },
+        "recall_weighted": {
+          "mean": 0.7573170731707317,
+          "std": 0.0
+        }
+      }
+    },
+    {
+      "id": "polemo2_allegro__herbert-base-cased",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "clarin-pl/polemo2-official",
+      "dataset_label": "PolEmo 2.0",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8819512195121951,
+          "std": 0.004983613839439651
+        },
+        "f1_macro": {
+          "mean": 0.8678288990347102,
+          "std": 0.007875442568614678
+        },
+        "f1_micro": {
+          "mean": 0.8819512195121951,
+          "std": 0.004983613839439659
+        },
+        "f1_weighted": {
+          "mean": 0.8802201570382842,
+          "std": 0.006072677654839747
+        },
+        "precision_macro": {
+          "mean": 0.8722910978925132,
+          "std": 0.004255164989360073
+        },
+        "precision_micro": {
+          "mean": 0.8819512195121951,
+          "std": 0.004983613839439651
+        },
+        "precision_weighted": {
+          "mean": 0.8797769157148071,
+          "std": 0.005970357208341782
+        },
+        "recall_macro": {
+          "mean": 0.8649881723489622,
+          "std": 0.009963903330306311
+        },
+        "recall_micro": {
+          "mean": 0.8819512195121951,
+          "std": 0.004983613839439651
+        },
+        "recall_weighted": {
+          "mean": 0.8819512195121951,
+          "std": 0.004983613839439651
+        }
+      }
+    },
+    {
+      "id": "polemo2_allegro__herbert-large-cased",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "clarin-pl/polemo2-official",
+      "dataset_label": "PolEmo 2.0",
+      "model": "allegro/herbert-large-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.9070731707317073,
+          "std": 0.003989128593608815
+        },
+        "f1_macro": {
+          "mean": 0.89333866536475,
+          "std": 0.004857804450954423
+        },
+        "f1_micro": {
+          "mean": 0.9070731707317073,
+          "std": 0.003989128593608815
+        },
+        "f1_weighted": {
+          "mean": 0.9043856319004437,
+          "std": 0.004072469225323976
+        },
+        "precision_macro": {
+          "mean": 0.9003857552581599,
+          "std": 0.006123798839946669
+        },
+        "precision_micro": {
+          "mean": 0.9070731707317073,
+          "std": 0.003989128593608815
+        },
+        "precision_weighted": {
+          "mean": 0.9040720680614623,
+          "std": 0.004277562557018446
+        },
+        "recall_macro": {
+          "mean": 0.8894205231433168,
+          "std": 0.003916029397169315
+        },
+        "recall_micro": {
+          "mean": 0.9070731707317073,
+          "std": 0.003989128593608815
+        },
+        "recall_weighted": {
+          "mean": 0.9070731707317073,
+          "std": 0.003989128593608815
+        }
+      }
+    },
+    {
+      "id": "polemo2_dkleczek__bert-base-polish-cased-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "clarin-pl/polemo2-official",
+      "dataset_label": "PolEmo 2.0",
+      "model": "dkleczek/bert-base-polish-cased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8704878048780488,
+          "std": 0.012328538493756218
+        },
+        "f1_macro": {
+          "mean": 0.8589253652514686,
+          "std": 0.012468751795123918
+        },
+        "f1_micro": {
+          "mean": 0.8704878048780487,
+          "std": 0.012328538493756216
+        },
+        "f1_weighted": {
+          "mean": 0.869852115181938,
+          "std": 0.01175463130351552
+        },
+        "precision_macro": {
+          "mean": 0.8619592224321345,
+          "std": 0.013784477085883035
+        },
+        "precision_micro": {
+          "mean": 0.8704878048780488,
+          "std": 0.012328538493756218
+        },
+        "precision_weighted": {
+          "mean": 0.8700438632785469,
+          "std": 0.011111868568230583
+        },
+        "recall_macro": {
+          "mean": 0.8567850264522275,
+          "std": 0.011333046857473123
+        },
+        "recall_micro": {
+          "mean": 0.8704878048780488,
+          "std": 0.012328538493756218
+        },
+        "recall_weighted": {
+          "mean": 0.8704878048780488,
+          "std": 0.012328538493756218
+        }
+      }
+    },
+    {
+      "id": "polemo2_dkleczek__bert-base-polish-uncased-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "clarin-pl/polemo2-official",
+      "dataset_label": "PolEmo 2.0",
+      "model": "dkleczek/bert-base-polish-uncased-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8704878048780488,
+          "std": 0.004983613839439651
+        },
+        "f1_macro": {
+          "mean": 0.8583238567504936,
+          "std": 0.004728157865587467
+        },
+        "f1_micro": {
+          "mean": 0.8704878048780488,
+          "std": 0.004983613839439651
+        },
+        "f1_weighted": {
+          "mean": 0.8708038631054653,
+          "std": 0.004875594830778849
+        },
+        "precision_macro": {
+          "mean": 0.8608833907940524,
+          "std": 0.006098244037148453
+        },
+        "precision_micro": {
+          "mean": 0.8704878048780488,
+          "std": 0.004983613839439651
+        },
+        "precision_weighted": {
+          "mean": 0.8717740860742033,
+          "std": 0.004643075162344487
+        },
+        "recall_macro": {
+          "mean": 0.8563172139397695,
+          "std": 0.003971519305292186
+        },
+        "recall_micro": {
+          "mean": 0.8704878048780488,
+          "std": 0.004983613839439651
+        },
+        "recall_weighted": {
+          "mean": 0.8704878048780488,
+          "std": 0.004983613839439651
+        }
+      }
+    },
+    {
+      "id": "polemo2_sentence-transformers__paraphrase-xlm-r-multilingual-v1",
+      "track": "benchmark",
+      "task": "Sentiment Analysis",
+      "dataset": "clarin-pl/polemo2-official",
+      "dataset_label": "PolEmo 2.0",
+      "model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8521951219512195,
+          "std": 0.007026761117506315
+        },
+        "f1_macro": {
+          "mean": 0.8411797556969683,
+          "std": 0.004700220228681235
+        },
+        "f1_micro": {
+          "mean": 0.8521951219512195,
+          "std": 0.007026761117506315
+        },
+        "f1_weighted": {
+          "mean": 0.8516872152600015,
+          "std": 0.005266459938141749
+        },
+        "precision_macro": {
+          "mean": 0.8440644358232587,
+          "std": 0.008152696354930683
+        },
+        "precision_micro": {
+          "mean": 0.8521951219512195,
+          "std": 0.007026761117506315
+        },
+        "precision_weighted": {
+          "mean": 0.852224216213488,
+          "std": 0.004959099570529579
+        },
+        "recall_macro": {
+          "mean": 0.8395456084768967,
+          "std": 0.0036173881729085334
+        },
+        "recall_micro": {
+          "mean": 0.8521951219512195,
+          "std": 0.007026761117506315
+        },
+        "recall_weighted": {
+          "mean": 0.8521951219512195,
+          "std": 0.007026761117506315
+        }
+      }
+    },
+    {
+      "id": "qa_all_Aleksandra__herbert-base-cased-finetuned-squad",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_all",
+      "dataset_label": "Expansio QA · Combined",
+      "model": "Aleksandra/herbert-base-cased-finetuned-squad",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 55.09569377990431,
+          "std": 0.9254350747940069
+        },
+        "HasAns_f1": {
+          "mean": 70.53219134452985,
+          "std": 1.0285213043442538
+        },
+        "NoAns_f1": {
+          "mean": 90.39123630672927,
+          "std": 1.4491126153463707
+        },
+        "exact": {
+          "mean": 70.3864406779661,
+          "std": 0.39421913542952647
+        },
+        "f1": {
+          "mean": 79.13553353493322,
+          "std": 0.29543422969035177
+        }
+      }
+    },
+    {
+      "id": "qa_all_allegro__herbert-base-cased",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_all",
+      "dataset_label": "Expansio QA · Combined",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 56.69059011164275,
+          "std": 1.5837428988194824
+        },
+        "HasAns_f1": {
+          "mean": 72.39703228660248,
+          "std": 1.8552036818717437
+        },
+        "NoAns_f1": {
+          "mean": 92.49869587897759,
+          "std": 1.952317519156526
+        },
+        "exact": {
+          "mean": 72.20338983050847,
+          "std": 0.10599809626719385
+        },
+        "f1": {
+          "mean": 81.10548180221413,
+          "std": 0.2780591311961
+        }
+      }
+    },
+    {
+      "id": "qa_all_clarin-knext__plt5-large-poquad__inference",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_all",
+      "dataset_label": "Expansio QA · Combined",
+      "model": "clarin-knext/plt5-large-poquad__inference",
+      "dataset_version": "0.0.0",
+      "averaged_over": 1,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 49.96012759170654,
+          "std": 0.0
+        },
+        "HasAns_f1": {
+          "mean": 66.3423350024275,
+          "std": 0.0
+        },
+        "NoAns_f1": {
+          "mean": 76.68231611893583,
+          "std": 0.0
+        },
+        "exact": {
+          "mean": 61.536723163841806,
+          "std": 0.0
+        },
+        "f1": {
+          "mean": 70.82182512679928,
+          "std": 0.0
+        }
+      }
+    },
+    {
+      "id": "qa_all_deepset__roberta-base-squad2",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_all",
+      "dataset_label": "Expansio QA · Combined",
+      "model": "deepset/roberta-base-squad2",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 41.57097288676236,
+          "std": 1.269859524123465
+        },
+        "HasAns_f1": {
+          "mean": 56.050778566223265,
+          "std": 1.786635051844616
+        },
+        "NoAns_f1": {
+          "mean": 86.77099634846113,
+          "std": 2.7962009153865277
+        },
+        "exact": {
+          "mean": 61.15254237288136,
+          "std": 0.7042005175540299
+        },
+        "f1": {
+          "mean": 69.35940172747735,
+          "std": 0.5386187151641892
+        }
+      }
+    },
+    {
+      "id": "qa_all_xlm-roberta-base",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_all",
+      "dataset_label": "Expansio QA · Combined",
+      "model": "xlm-roberta-base",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 54.33014354066986,
+          "std": 0.29109588912988565
+        },
+        "HasAns_f1": {
+          "mean": 69.54972712472605,
+          "std": 0.7478189541068764
+        },
+        "NoAns_f1": {
+          "mean": 87.6473656755347,
+          "std": 2.903572081584766
+        },
+        "exact": {
+          "mean": 68.7638418079096,
+          "std": 1.3895456967831459
+        },
+        "f1": {
+          "mean": 77.38999223249984,
+          "std": 1.02984781839262
+        }
+      }
+    },
+    {
+      "id": "qa_kpwr_Aleksandra__herbert-base-cased-finetuned-squad",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_kpwr",
+      "dataset_label": "Expansio QA · KPWr",
+      "model": "Aleksandra/herbert-base-cased-finetuned-squad",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 57.30569948186528,
+          "std": 0.7586295577381524
+        },
+        "HasAns_f1": {
+          "mean": 72.52858362154176,
+          "std": 1.4678373231255633
+        },
+        "NoAns_f1": {
+          "mean": 73.59281437125749,
+          "std": 4.8573173151313185
+        },
+        "exact": {
+          "mean": 60.202342917997875,
+          "std": 0.4286392289137007
+        },
+        "f1": {
+          "mean": 72.71785575700781,
+          "std": 0.5070601192074364
+        }
+      }
+    },
+    {
+      "id": "qa_kpwr_allegro__herbert-base-cased",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_kpwr",
+      "dataset_label": "Expansio QA · KPWr",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 58.911917098445585,
+          "std": 0.28082232368754845
+        },
+        "HasAns_f1": {
+          "mean": 74.58179052014438,
+          "std": 0.48831004966276353
+        },
+        "NoAns_f1": {
+          "mean": 80.1197604790419,
+          "std": 4.922396077874827
+        },
+        "exact": {
+          "mean": 62.68370607028754,
+          "std": 0.7078197669736894
+        },
+        "f1": {
+          "mean": 75.56671169494304,
+          "std": 0.6111014899899665
+        }
+      }
+    },
+    {
+      "id": "qa_kpwr_clarin-knext__plt5-large-poquad__inference",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_kpwr",
+      "dataset_label": "Expansio QA · KPWr",
+      "model": "clarin-knext/plt5-large-poquad__inference",
+      "dataset_version": "0.0.0",
+      "averaged_over": 1,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 52.00777202072539,
+          "std": 0.0
+        },
+        "HasAns_f1": {
+          "mean": 69.01805172091834,
+          "std": 0.0
+        },
+        "NoAns_f1": {
+          "mean": 73.95209580838323,
+          "std": 0.0
+        },
+        "exact": {
+          "mean": 55.91054313099041,
+          "std": 0.0
+        },
+        "f1": {
+          "mean": 69.89556541911504,
+          "std": 0.0
+        }
+      }
+    },
+    {
+      "id": "qa_kpwr_deepset__roberta-base-squad2",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_kpwr",
+      "dataset_label": "Expansio QA · KPWr",
+      "model": "deepset/roberta-base-squad2",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 45.11658031088083,
+          "std": 0.982878132906421
+        },
+        "HasAns_f1": {
+          "mean": 59.27088584544979,
+          "std": 1.1291223597030244
+        },
+        "NoAns_f1": {
+          "mean": 64.85029940119759,
+          "std": 5.179727249978111
+        },
+        "exact": {
+          "mean": 48.626198083067095,
+          "std": 0.4148573201444613
+        },
+        "f1": {
+          "mean": 60.26317771319206,
+          "std": 0.07808123987965324
+        }
+      }
+    },
+    {
+      "id": "qa_kpwr_xlm-roberta-base",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_kpwr",
+      "dataset_label": "Expansio QA · KPWr",
+      "model": "xlm-roberta-base",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 54.365284974093264,
+          "std": 0.9924342647346096
+        },
+        "HasAns_f1": {
+          "mean": 68.14311171966403,
+          "std": 1.0836600039558801
+        },
+        "NoAns_f1": {
+          "mean": 67.90419161676648,
+          "std": 5.501980711148452
+        },
+        "exact": {
+          "mean": 56.773162939297116,
+          "std": 0.6293650401317313
+        },
+        "f1": {
+          "mean": 68.1006200719709,
+          "std": 0.6893148553705842
+        }
+      }
+    },
+    {
+      "id": "qa_nkjp_Aleksandra__herbert-base-cased-finetuned-squad",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_nkjp",
+      "dataset_label": "Expansio QA · NKJP",
+      "model": "Aleksandra/herbert-base-cased-finetuned-squad",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 44.45141065830721,
+          "std": 0.9572684316365191
+        },
+        "HasAns_f1": {
+          "mean": 62.125342321505926,
+          "std": 1.3021620580904065
+        },
+        "NoAns_f1": {
+          "mean": 75.18518518518519,
+          "std": 1.6355112715421896
+        },
+        "exact": {
+          "mean": 53.590308370044056,
+          "std": 0.654337038656957
+        },
+        "f1": {
+          "mean": 66.00877577215938,
+          "std": 0.7261150007440104
+        }
+      }
+    },
+    {
+      "id": "qa_nkjp_allegro__herbert-base-cased",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_nkjp",
+      "dataset_label": "Expansio QA · NKJP",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 48.87147335423198,
+          "std": 2.3961206252536638
+        },
+        "HasAns_f1": {
+          "mean": 65.06557987130635,
+          "std": 2.832786727034146
+        },
+        "NoAns_f1": {
+          "mean": 79.55555555555554,
+          "std": 3.716644060533953
+        },
+        "exact": {
+          "mean": 57.99559471365639,
+          "std": 1.656747898779013
+        },
+        "f1": {
+          "mean": 69.37427308138042,
+          "std": 1.9095622911562053
+        }
+      }
+    },
+    {
+      "id": "qa_nkjp_clarin-knext__plt5-large-poquad__inference",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_nkjp",
+      "dataset_label": "Expansio QA · NKJP",
+      "model": "clarin-knext/plt5-large-poquad__inference",
+      "dataset_version": "0.0.0",
+      "averaged_over": 1,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 52.507836990595614,
+          "std": 0.0
+        },
+        "HasAns_f1": {
+          "mean": 67.62941132417329,
+          "std": 0.0
+        },
+        "NoAns_f1": {
+          "mean": 80.37037037037037,
+          "std": 0.0
+        },
+        "exact": {
+          "mean": 60.79295154185022,
+          "std": 0.0
+        },
+        "f1": {
+          "mean": 71.41802249429789,
+          "std": 0.0
+        }
+      }
+    },
+    {
+      "id": "qa_nkjp_deepset__roberta-base-squad2",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_nkjp",
+      "dataset_label": "Expansio QA · NKJP",
+      "model": "deepset/roberta-base-squad2",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 31.97492163009404,
+          "std": 1.119346148674429
+        },
+        "HasAns_f1": {
+          "mean": 49.920770794964085,
+          "std": 1.557206358729358
+        },
+        "NoAns_f1": {
+          "mean": 70.74074074074075,
+          "std": 5.755655654785207
+        },
+        "exact": {
+          "mean": 43.502202643171806,
+          "std": 1.2961015744427113
+        },
+        "f1": {
+          "mean": 56.11173102113122,
+          "std": 0.7782406911825165
+        }
+      }
+    },
+    {
+      "id": "qa_nkjp_xlm-roberta-base",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_nkjp",
+      "dataset_label": "Expansio QA · NKJP",
+      "model": "xlm-roberta-base",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 44.82758620689655,
+          "std": 2.2496395132299885
+        },
+        "HasAns_f1": {
+          "mean": 60.5731623708149,
+          "std": 3.039027156846127
+        },
+        "NoAns_f1": {
+          "mean": 76.14814814814815,
+          "std": 7.307661762763618
+        },
+        "exact": {
+          "mean": 54.14096916299559,
+          "std": 2.010628379928794
+        },
+        "f1": {
+          "mean": 65.20449074072678,
+          "std": 1.8888026937833884
+        }
+      }
+    },
+    {
+      "id": "qa_wikipedia_Aleksandra__herbert-base-cased-finetuned-squad",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_wikipedia",
+      "dataset_label": "Expansio QA · Wikipedia",
+      "model": "Aleksandra/herbert-base-cased-finetuned-squad",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 32.69938650306749,
+          "std": 2.6172673629081644
+        },
+        "HasAns_f1": {
+          "mean": 45.97291082549113,
+          "std": 3.813226474773568
+        },
+        "NoAns_f1": {
+          "mean": 95.00380807311501,
+          "std": 1.4774145884699426
+        },
+        "exact": {
+          "mean": 82.61134838316046,
+          "std": 0.9675870364340263
+        },
+        "f1": {
+          "mean": 85.25147585668707,
+          "std": 0.6959065512563026
+        }
+      }
+    },
+    {
+      "id": "qa_wikipedia_allegro__herbert-base-cased",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_wikipedia",
+      "dataset_label": "Expansio QA · Wikipedia",
+      "model": "allegro/herbert-base-cased",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 28.34355828220859,
+          "std": 3.9438358158589377
+        },
+        "HasAns_f1": {
+          "mean": 39.396377065830144,
+          "std": 5.203920524012018
+        },
+        "NoAns_f1": {
+          "mean": 96.23762376237623,
+          "std": 1.8504257593636637
+        },
+        "exact": {
+          "mean": 82.7333740085418,
+          "std": 0.8873117493745556
+        },
+        "f1": {
+          "mean": 84.93179922114744,
+          "std": 0.5234554395674152
+        }
+      }
+    },
+    {
+      "id": "qa_wikipedia_clarin-knext__plt5-large-poquad__inference",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_wikipedia",
+      "dataset_label": "Expansio QA · Wikipedia",
+      "model": "clarin-knext/plt5-large-poquad__inference",
+      "dataset_version": "0.0.0",
+      "averaged_over": 1,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 35.2760736196319,
+          "std": 0.0
+        },
+        "HasAns_f1": {
+          "mean": 51.15073590235388,
+          "std": 0.0
+        },
+        "NoAns_f1": {
+          "mean": 76.61843107387662,
+          "std": 0.0
+        },
+        "exact": {
+          "mean": 68.39536302623551,
+          "std": 0.0
+        },
+        "f1": {
+          "mean": 71.55286144244504,
+          "std": 0.0
+        }
+      }
+    },
+    {
+      "id": "qa_wikipedia_deepset__roberta-base-squad2",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_wikipedia",
+      "dataset_label": "Expansio QA · Wikipedia",
+      "model": "deepset/roberta-base-squad2",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 28.773006134969325,
+          "std": 1.215436365408524
+        },
+        "HasAns_f1": {
+          "mean": 41.078063722235505,
+          "std": 1.6241470382362602
+        },
+        "NoAns_f1": {
+          "mean": 92.26199543031228,
+          "std": 1.8480732232265769
+        },
+        "exact": {
+          "mean": 79.63392312385601,
+          "std": 1.4872616179555056
+        },
+        "f1": {
+          "mean": 82.0814208501823,
+          "std": 1.3134529567088395
+        }
+      }
+    },
+    {
+      "id": "qa_wikipedia_xlm-roberta-base",
+      "track": "expansio",
+      "task": "Question Answering",
+      "dataset": "qa_wikipedia",
+      "dataset_label": "Expansio QA · Wikipedia",
+      "model": "xlm-roberta-base",
+      "dataset_version": "0.0.0",
+      "averaged_over": 5,
+      "metrics": {
+        "HasAns_exact": {
+          "mean": 24.355828220858893,
+          "std": 5.244412062327254
+        },
+        "HasAns_f1": {
+          "mean": 32.27233158091532,
+          "std": 6.475203045812358
+        },
+        "NoAns_f1": {
+          "mean": 95.2018278750952,
+          "std": 3.293047602304411
+        },
+        "exact": {
+          "mean": 81.1104331909701,
+          "std": 1.6851027549436508
+        },
+        "f1": {
+          "mean": 82.68503971652129,
+          "std": 1.4137469308481325
+        }
+      }
+    }
+  ]
+}
