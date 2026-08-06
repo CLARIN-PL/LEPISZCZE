@@ -35,6 +35,20 @@ python3 scripts/build_leaderboard.py --check docs/data/leaderboard.json
 Commit the generated `docs/data/leaderboard.json`. GitHub Actions validates its schema before
 deploying the static site.
 
+### Future Legal AI benchmarks
+
+LEPISZCZE is expected to expand with benchmark components developed by two active Legal AI
+projects:
+
+- [JuDDGES](https://github.com/pwr-ai/juddges-app) — judicial-decision gathering, encoding,
+  human-in-the-loop annotation, structured information extraction and evaluation for Polish and
+  England & Wales case law.
+- [AITAX](https://ai.pwr.edu.pl/projects/aitax) — Polish tax-document retrieval, authority-position
+  summarization and grounded drafting of tax-interpretation requests.
+
+These projects are roadmap items rather than current leaderboard tracks. Results will be added
+after versioned datasets, task definitions, metrics and evaluation protocols are published.
+
 
 ## Citation
 
