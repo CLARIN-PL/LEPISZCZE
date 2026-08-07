@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-07",
+  "sources": [
+    "https://huggingface.co/AI-TAX",
+    "https://huggingface.co/JuDDGES"
+  ],
+  "datasets": [
+    {
+      "id": "aitax-gapq-pl",
+      "name": "GapQ-PL",
+      "project": "AITAX",
+      "artifact_type": "benchmark_dataset",
+      "maturity": "benchmark_candidate",
+      "language": "Polish",
+      "scope": "Tax law · clarification question generation",
+      "summary": "A Polish benchmark for generating clarification questions when a tax-interpretation request lacks facts required for a legal assessment.",
+      "size_label": "2,397 documents · 500 human-verified",
+      "featured": true,
+      "validation": {
+        "human_validation": "Three trained annotators reviewed the verified split.",
+        "leaderboard_eligible": false,
+        "missing": [
+          "Frozen evaluation protocol",
+          "Published reference baselines"
+        ]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/AI-TAX/gapq-pl-dataset",
+        "code": "https://github.com/pwr-ai/gapq-dataset"
+      }
+    },
+    {
+      "id": "aitax-factual-state-discovery",
+      "name": "Factual State Discovery",
+      "project": "AITAX",
+      "artifact_type": "benchmark_dataset",
+      "maturity": "benchmark_candidate",
+      "language": "Polish",
+      "scope": "Tax law · conversational fact elicitation",
+      "summary": "An interactive benchmark measuring whether an AI tax advisor can elicit all legally relevant facts of a taxpayer's situation through dialogue.",
+      "size_label": "500 cases · 32,874 atomic facts",
+      "featured": true,
+      "validation": {
+        "human_validation": "Intrinsic label quality was evaluated on a 50-document sample.",
+        "leaderboard_eligible": false,
+        "missing": [
+          "Frozen interactive evaluation protocol",
+          "Expanded ground-truth audit"
+        ]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/AI-TAX/factual-state-discovery-benchmark",
+        "code": "https://github.com/pwr-ai/fsdbench"
+      }
+    },
+    {
+      "id": "aitax-pl-eureka-raw",
+      "name": "Polish KIS Interpretations",
+      "project": "AITAX",
+      "artifact_type": "source_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Tax law · source corpus",
+      "summary": "A source corpus of Polish individual tax interpretations retrieved from the official Eureka collection.",
+      "size_label": "408K documents · gated access",
+      "featured": false,
+      "validation": {
+        "human_validation": "Official source documents; no benchmark annotations.",
+        "leaderboard_eligible": false,
+        "missing": ["A task-specific annotated evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/AI-TAX/pl-eureka-raw"
+      }
+    },
+    {
+      "id": "aitax-pl-eureka-ipbox-raw",
+      "name": "KIS Interpretations · IP Box",
+      "project": "AITAX",
+      "artifact_type": "source_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Tax law · IP Box source corpus",
+      "summary": "A focused subset of Polish KIS interpretations concerning the IP Box tax preference.",
+      "size_label": "19K documents · gated access",
+      "featured": false,
+      "validation": {
+        "human_validation": "Official source documents; no benchmark annotations.",
+        "leaderboard_eligible": false,
+        "missing": ["A task-specific annotated evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/AI-TAX/pl-eureka-ipbox-raw"
+      }
+    },
+    {
+      "id": "juddges-juddges-pl",
+      "name": "JuDDGES-pl",
+      "project": "JuDDGES",
+      "artifact_type": "enriched_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Court judgments · structured enrichment",
+      "summary": "A unified corpus of Polish common and administrative court judgments enriched with uniformly extracted analytical fields.",
+      "size_label": "266K published rows · 43.1 GB",
+      "featured": true,
+      "validation": {
+        "human_validation": "Analytical fields are silver labels without document-level human validation at corpus scale.",
+        "leaderboard_eligible": false,
+        "missing": ["A separate human-validated held-out evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/juddges-pl"
+      }
+    },
+    {
+      "id": "juddges-pl-swiss-franc-loans",
+      "name": "Swiss Franc Loans Judgments",
+      "project": "JuDDGES",
+      "artifact_type": "benchmark_dataset",
+      "maturity": "benchmark_candidate",
+      "language": "Polish",
+      "scope": "Court judgments · information extraction",
+      "summary": "A legal information-extraction dataset covering claims, abusive clauses, remedies and outcomes in Polish Swiss-franc loan litigation.",
+      "size_label": "4,933 training · 666 expert-reviewed",
+      "featured": true,
+      "validation": {
+        "human_validation": "Lawyers reviewed and corrected the annotated subset.",
+        "leaderboard_eligible": false,
+        "missing": [
+          "Frozen test split",
+          "Field-level metrics and reference baselines"
+        ]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-swiss-franc-loans"
+      }
+    },
+    {
+      "id": "juddges-en-appealcourt",
+      "name": "English Appeal Court Judgments",
+      "project": "JuDDGES",
+      "artifact_type": "benchmark_dataset",
+      "maturity": "public_preview",
+      "language": "English",
+      "scope": "Criminal appeals · information extraction",
+      "summary": "A manually curated dataset for extracting 43 structured attributes from England and Wales Court of Appeal criminal judgments.",
+      "size_label": "573 manually annotated judgments",
+      "featured": true,
+      "validation": {
+        "human_validation": "Curators completed reliability checks before producing the final annotated set.",
+        "leaderboard_eligible": false,
+        "missing": [
+          "Complete license metadata",
+          "Published citation and evaluation baselines"
+        ]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/en-appealcourt"
+      }
+    },
+    {
+      "id": "juddges-pl-court-graph",
+      "name": "Polish Court Judgments Graph",
+      "project": "JuDDGES",
+      "artifact_type": "graph_dataset",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Judgments × legal bases · graph ML",
+      "summary": "A bipartite graph connecting Polish judgments with the legal bases they reference, distributed in JSON and PyTorch Geometric formats.",
+      "size_label": "369K nodes · 1.13M edges",
+      "featured": false,
+      "validation": {
+        "human_validation": "Derived from official judgment metadata and legal-base references.",
+        "leaderboard_eligible": false,
+        "missing": ["A frozen graph task and evaluation protocol"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-court-graph",
+        "paper": "https://arxiv.org/abs/2010.01179"
+      }
+    },
+    {
+      "id": "juddges-pl-court-raw",
+      "name": "Polish Court Judgments Raw",
+      "project": "JuDDGES",
+      "artifact_type": "source_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Common courts · source corpus",
+      "summary": "A reusable corpus of judgments collected from the Polish Court Portal.",
+      "size_label": "100K–1M documents",
+      "featured": false,
+      "validation": {
+        "human_validation": "Official source documents; no benchmark annotations.",
+        "leaderboard_eligible": false,
+        "missing": ["A task-specific annotated evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-court-raw"
+      }
+    },
+    {
+      "id": "juddges-pl-nsa",
+      "name": "Polish Administrative Judgments",
+      "project": "JuDDGES",
+      "artifact_type": "source_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Administrative courts · source corpus",
+      "summary": "A large corpus of judgments from Polish administrative courts and the Supreme Administrative Court.",
+      "size_label": "1M–10M documents",
+      "featured": false,
+      "validation": {
+        "human_validation": "Official source documents; no benchmark annotations.",
+        "leaderboard_eligible": false,
+        "missing": ["A task-specific annotated evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-nsa"
+      }
+    },
+    {
+      "id": "juddges-pl-court-raw-enriched",
+      "name": "Polish Court Judgments · Enriched",
+      "project": "JuDDGES",
+      "artifact_type": "enriched_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Common courts · silver-label enrichment",
+      "summary": "Polish common-court judgments with machine-extracted factual, legal and analytical fields.",
+      "size_label": "100K–1M documents",
+      "featured": false,
+      "validation": {
+        "human_validation": "Machine-extracted silver labels.",
+        "leaderboard_eligible": false,
+        "missing": ["A human-validated held-out evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-court-raw-enriched"
+      }
+    },
+    {
+      "id": "juddges-pl-nsa-enriched",
+      "name": "Administrative Judgments · Enriched",
+      "project": "JuDDGES",
+      "artifact_type": "enriched_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Administrative courts · silver-label enrichment",
+      "summary": "Polish administrative judgments enriched with machine-extracted summaries, theses, facts and legal concepts.",
+      "size_label": "1M–10M documents",
+      "featured": false,
+      "validation": {
+        "human_validation": "Machine-extracted silver labels.",
+        "leaderboard_eligible": false,
+        "missing": ["A human-validated held-out evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-nsa-enriched"
+      }
+    },
+    {
+      "id": "juddges-en-court-raw",
+      "name": "England & Wales Court Judgments Raw",
+      "project": "JuDDGES",
+      "artifact_type": "source_corpus",
+      "maturity": "public_dataset",
+      "language": "English",
+      "scope": "England & Wales · source corpus",
+      "summary": "A source corpus of publicly available England and Wales court judgments.",
+      "size_label": "1K–10K documents",
+      "featured": false,
+      "validation": {
+        "human_validation": "Official source documents; no benchmark annotations.",
+        "leaderboard_eligible": false,
+        "missing": ["A task-specific annotated evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/en-court-raw"
+      }
+    },
+    {
+      "id": "juddges-pl-court-instruct",
+      "name": "Polish Court Judgments Instruct",
+      "project": "JuDDGES",
+      "artifact_type": "instruction_dataset",
+      "maturity": "public_preview",
+      "language": "Polish",
+      "scope": "Court judgments · instruction tuning",
+      "summary": "An instruction-formatted derivative of the Polish court judgment corpus for text generation experiments.",
+      "size_label": "100K–1M examples",
+      "featured": false,
+      "validation": {
+        "human_validation": "No benchmark-grade human validation declared.",
+        "leaderboard_eligible": false,
+        "missing": ["License metadata", "Evaluation protocol"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-court-instruct"
+      }
+    },
+    {
+      "id": "juddges-en-court-instruct",
+      "name": "English Court Judgments Instruct",
+      "project": "JuDDGES",
+      "artifact_type": "instruction_dataset",
+      "maturity": "public_preview",
+      "language": "English",
+      "scope": "Court judgments · instruction tuning",
+      "summary": "An instruction-formatted derivative of the England and Wales judgment corpus.",
+      "size_label": "1K–10K examples",
+      "featured": false,
+      "validation": {
+        "human_validation": "No benchmark-grade human validation declared.",
+        "leaderboard_eligible": false,
+        "missing": ["License metadata", "Evaluation protocol"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/en-court-instruct"
+      }
+    },
+    {
+      "id": "juddges-en-appealcourt-coded-instruct",
+      "name": "Appeal Court Coded Instruct v0.2",
+      "project": "JuDDGES",
+      "artifact_type": "instruction_dataset",
+      "maturity": "public_preview",
+      "language": "English",
+      "scope": "Criminal appeals · instruction tuning",
+      "summary": "An instruction dataset derived from coded England and Wales Court of Appeal judgments.",
+      "size_label": "621 examples",
+      "featured": false,
+      "validation": {
+        "human_validation": "Derived research artifact; validation scope is not yet documented for benchmark use.",
+        "leaderboard_eligible": false,
+        "missing": ["Evaluation protocol", "Reference baselines"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/en-appealcourt-coded-instruct_v02"
+      }
+    },
+    {
+      "id": "juddges-pl-appealcourt-criminal",
+      "name": "Polish Criminal Appeal Judgments",
+      "project": "JuDDGES",
+      "artifact_type": "source_corpus",
+      "maturity": "public_dataset",
+      "language": "Polish",
+      "scope": "Criminal appeals · focused corpus",
+      "summary": "A focused collection of Polish appellate criminal judgments for information-extraction research.",
+      "size_label": "6,050 documents",
+      "featured": false,
+      "validation": {
+        "human_validation": "No annotation layer is declared.",
+        "leaderboard_eligible": false,
+        "missing": ["A human-annotated evaluation set"]
+      },
+      "links": {
+        "dataset": "https://huggingface.co/datasets/JuDDGES/pl-appealcourt-criminal"
+      }
+    }
+  ]
+}

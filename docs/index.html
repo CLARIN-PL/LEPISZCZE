@@ -60,7 +60,7 @@
           <a href="#benchmark">Benchmark</a>
           <a href="#datasets">Datasets</a>
           <a href="leaderboard/">Leaderboard</a>
-          <a href="#future-work">Future work</a>
+          <a href="#dataset-pipeline">Dataset pipeline</a>
           <a href="#resources">Resources</a>
           <a href="#citation">Citation</a>
         </nav>
@@ -267,68 +267,56 @@
         </div>
       </section>
 
-      <section class="section future-section" id="future-work">
+      <section class="section pipeline-section" id="dataset-pipeline" aria-labelledby="pipeline-title">
         <div class="shell">
-          <div class="section-heading future-heading">
+          <div class="section-heading pipeline-heading">
             <div>
-              <p class="kicker">Future work · Legal AI</p>
-              <h2>From Polish NLP<br />to legal intelligence.</h2>
+              <p class="kicker">Dataset pipeline · Legal AI</p>
+              <h2 id="pipeline-title">Research data,<br />with visible maturity.</h2>
             </div>
             <p>
-              LEPISZCZE is expanding toward specialized Legal AI evaluation. JuDDGES and AITAX
-              are active projects expected to contribute new Polish legal datasets, tasks and
-              reproducible benchmark protocols.
+              LEPISZCZE tracks datasets developed through AITAX and JuDDGES before they enter the
+              official benchmark. Public corpora, previews and benchmark candidates remain clearly
+              separated from comparable leaderboard results.
             </p>
           </div>
 
-          <div class="future-grid">
-            <article class="future-card future-juddges">
-              <div class="future-card-topline">
-                <span class="future-status"><i aria-hidden="true"></i> Future benchmark</span>
-                <span>Judicial decisions</span>
-              </div>
-              <h3>JuDDGES</h3>
-              <p>
-                Judicial Decision Data Gathering, Encoding, and Sharing combines court-decision
-                datasets with human-in-the-loop annotation, structured information extraction and
-                evaluation across Polish and England &amp; Wales case law.
-              </p>
-              <div class="future-scope">
-                <strong>Planned LEPISZCZE contribution</strong>
-                <span>Legal information extraction · judgment analysis · cross-jurisdiction evaluation</span>
-              </div>
-              <a href="https://github.com/pwr-ai/juddges-app" aria-label="Explore the JuDDGES project on GitHub">
-                Explore JuDDGES <span aria-hidden="true">↗</span>
-              </a>
-            </article>
-
-            <article class="future-card future-aitax">
-              <div class="future-card-topline">
-                <span class="future-status"><i aria-hidden="true"></i> Future benchmark</span>
-                <span>Tax law · 2024–2027</span>
-              </div>
-              <h3>AITAX</h3>
-              <p>
-                An active AI tax-advisory project covering factual-state definition, semantic
-                retrieval of similar cases, authority-position summarization and generation of
-                draft tax-interpretation requests.
-              </p>
-              <div class="future-scope">
-                <strong>Planned LEPISZCZE contribution</strong>
-                <span>Tax-case retrieval · legal summarization · grounded document drafting</span>
-              </div>
-              <a href="https://ai.pwr.edu.pl/projects/aitax" aria-label="Explore the AITAX project">
-                Explore AITAX <span aria-hidden="true">↗</span>
-              </a>
-            </article>
+          <div class="pipeline-overview" aria-label="Dataset pipeline summary">
+            <div><strong data-pipeline-stat="datasets">—</strong><span>tracked datasets</span></div>
+            <div><strong data-pipeline-stat="candidates">—</strong><span>benchmark candidates</span></div>
+            <div><strong>2</strong><span>contributing projects</span></div>
           </div>
 
-          <div class="future-note">
-            <strong>Roadmap, not current results</strong>
+          <div class="pipeline-legend" aria-label="Dataset maturity levels">
+            <div><span class="status-dot status-candidate" aria-hidden="true"></span><strong>Benchmark candidate</strong><p>Public data with a defined task and a visible path to reproducible evaluation.</p></div>
+            <div><span class="status-dot status-preview" aria-hidden="true"></span><strong>Public preview</strong><p>Useful for research, but metadata, annotations or the evaluation protocol may still change.</p></div>
+            <div><span class="status-dot status-public" aria-hidden="true"></span><strong>Public dataset</strong><p>A reusable corpus or derived asset that is not presented as a leaderboard test set.</p></div>
+          </div>
+
+          <div class="pipeline-subheading">
+            <div><p class="kicker">Closest to evaluation</p><h3>Featured datasets</h3></div>
+            <p>Each card states why the dataset matters and which gates still prevent official ranking.</p>
+          </div>
+
+          <div class="pipeline-status" data-pipeline-status role="status">Loading dataset registry…</div>
+          <div class="pipeline-grid" data-pipeline-featured hidden></div>
+
+          <div class="catalogue-heading">
+            <div><p class="kicker">Complete registry</p><h3>AITAX and JuDDGES collections</h3></div>
+            <div class="catalogue-filters" data-pipeline-filters aria-label="Filter dataset registry">
+              <button type="button" data-filter="all" aria-pressed="true">All</button>
+              <button type="button" data-filter="AITAX" aria-pressed="false">AITAX</button>
+              <button type="button" data-filter="JuDDGES" aria-pressed="false">JuDDGES</button>
+            </div>
+          </div>
+          <div class="pipeline-catalogue" data-pipeline-catalogue hidden></div>
+
+          <div class="pipeline-note">
+            <strong>Promotion gate</strong>
             <p>
-              JuDDGES and AITAX are not included in the current leaderboard. They will become
-              benchmark components after their datasets, task definitions, metrics and versioned
-              evaluation protocols are published.
+              A dataset joins the official leaderboard only after its version and test split are
+              frozen, licensing is complete, leakage risks are reviewed, metrics and baselines are
+              published, and the evaluation can be reproduced from a versioned protocol.
             </p>
           </div>
         </div>
@@ -410,7 +398,7 @@
             <p>A comprehensive benchmark for Polish natural language processing.</p>
           </div>
           <div class="footer-links">
-            <div><strong>Project</strong><a href="#benchmark">Benchmark</a><a href="#datasets">Datasets</a><a href="leaderboard/">Leaderboard</a><a href="#future-work">Future work</a><a href="#citation">Citation</a></div>
+            <div><strong>Project</strong><a href="#benchmark">Benchmark</a><a href="#datasets">Datasets</a><a href="leaderboard/">Leaderboard</a><a href="#dataset-pipeline">Dataset pipeline</a><a href="#citation">Citation</a></div>
             <div><strong>External</strong><a href="https://github.com/CLARIN-PL/LEPISZCZE">GitHub ↗</a><a href="https://huggingface.co/clarin-pl">Hugging Face ↗</a><a href="https://wandb.ai/embeddings/LEPISZCZE">W&amp;B ↗</a></div>
             <div><strong>Contact</strong><span>Łukasz Augustyniak</span><a href="mailto:lukasz.augustyniak@pwr.edu.pl">lukasz.augustyniak@pwr.edu.pl</a></div>
           </div>
@@ -422,5 +410,6 @@
       </div>
     </footer>
     <script src="assets/site.js" defer></script>
+    <script src="assets/dataset-pipeline.js" defer></script>
   </body>
 </html>
