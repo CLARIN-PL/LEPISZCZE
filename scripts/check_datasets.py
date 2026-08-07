@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-
 SCHEMA_VERSION = 1
 PROJECTS = {"AITAX", "JuDDGES"}
 ARTIFACT_TYPES = {

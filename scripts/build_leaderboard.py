@@ -10,7 +10,6 @@ import re
 from pathlib import Path
 from typing import Any, Iterable
 
-
 SCHEMA_VERSION = 2
 SOURCE_REPOSITORY = "https://github.com/CLARIN-PL/embeddings"
 DEFAULT_SOURCE_COMMIT = "a434193a871c7d1bccdb5fd9106be5a950e38aad"
@@ -190,7 +189,9 @@ def write_snapshot(snapshot: dict[str, Any], output: Path) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument("--source-dir", type=Path, help="Directory containing historical result JSON files")
+    mode.add_argument(
+        "--source-dir", type=Path, help="Directory containing historical result JSON files"
+    )
     mode.add_argument("--check", type=Path, help="Validate an existing public snapshot")
     parser.add_argument(
         "--output",
