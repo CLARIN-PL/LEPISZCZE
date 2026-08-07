@@ -1,29 +1,48 @@
-name: CI
-on: pull_request
+name: Python CI
+
+on:
+  pull_request:
+    paths: &python_paths
+      - "lepiszcze/**"
+      - "experiments/**/*.py"
+      - "tests/**"
+      - "scripts/**/*.py"
+      - "pyproject.toml"
+      - "poetry.lock"
+      - ".github/workflows/python_poetry.yml"
+  push:
+    branches: [main]
+    paths: *python_paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: python-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint:
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: [ 3.9.6 ]
-        poetry-version: [ 1.4.2 ]
-        os: [ ubuntu-20.04 ]
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        working-directory: ./lepiszcze
+    name: Code quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install poetry
-        uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: ${{ matrix.poetry-version }}
-      - name: Install deps
-        run: poetry install -vv
-      - name: Check
-        run: poetry run poe check
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
+      - name: Install Poetry
+        run: pipx install poetry==1.4.2
+
+      - name: Set up Python with Poetry cache
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.9"
+          cache: poetry
+          cache-dependency-path: poetry.lock
+
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi
+
+      - name: Run code-quality checks
+        run: poetry run poe check

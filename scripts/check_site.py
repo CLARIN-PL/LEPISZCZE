@@ -8,7 +8,6 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
-
 PROJECT_PREFIX = "/LEPISZCZE/"
 
 
