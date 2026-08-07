@@ -6,6 +6,7 @@ on:
     paths:
       - "docs/**"
       - "scripts/build_leaderboard.py"
+      - "scripts/check_datasets.py"
       - "scripts/check_site.py"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
@@ -36,16 +37,22 @@ jobs:
           test -f docs/assets/site.js
           test -f docs/assets/leaderboard.css
           test -f docs/assets/leaderboard.js
+          test -f docs/assets/dataset-pipeline.js
           test -f docs/assets/og.png
+          test -f docs/data/datasets.json
 
       - name: Validate leaderboard snapshot
         run: python3 scripts/build_leaderboard.py --check docs/data/leaderboard.json
+
+      - name: Validate dataset registry
+        run: python3 scripts/check_datasets.py docs/data/datasets.json
 
       - name: Validate static site
         run: |
           python3 scripts/check_site.py docs
           node --check docs/assets/site.js
           node --check docs/assets/leaderboard.js
+          node --check docs/assets/dataset-pipeline.js
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5

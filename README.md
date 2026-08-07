@@ -35,10 +35,9 @@ python3 scripts/build_leaderboard.py --check docs/data/leaderboard.json
 Commit the generated `docs/data/leaderboard.json`. GitHub Actions validates its schema before
 deploying the static site.
 
-### Future Legal AI benchmarks
+### Legal AI dataset pipeline
 
-LEPISZCZE is expected to expand with benchmark components developed by two active Legal AI
-projects:
+LEPISZCZE maintains a public registry of datasets developed through two active Legal AI projects:
 
 - [JuDDGES](https://github.com/pwr-ai/juddges-app) — judicial-decision gathering, encoding,
   human-in-the-loop annotation, structured information extraction and evaluation for Polish and
@@ -46,8 +45,17 @@ projects:
 - [AITAX](https://ai.pwr.edu.pl/projects/aitax) — Polish tax-document retrieval, authority-position
   summarization and grounded drafting of tax-interpretation requests.
 
-These projects are roadmap items rather than current leaderboard tracks. Results will be added
-after versioned datasets, task definitions, metrics and evaluation protocols are published.
+The registry distinguishes source corpora, enriched corpora, instruction datasets and benchmark
+datasets. It also separates public datasets, public previews and benchmark candidates from official
+leaderboard components. A dataset is promoted only after its version and test split are frozen,
+licensing and leakage review are complete, metrics and baselines are published, and evaluation is
+reproducible from a versioned protocol.
+
+Registry data lives in `docs/data/datasets.json` and is validated during every Pages deployment:
+
+```bash
+python3 scripts/check_datasets.py docs/data/datasets.json
+```
 
 
 ## Citation
