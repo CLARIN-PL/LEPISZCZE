@@ -250,10 +250,10 @@ button { font: inherit; }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding-bottom: 64px; }
 .brand-footer { margin-bottom: 20px; }
 .footer-top > div > p { max-width: 360px; color: #8f9bb2; font-size: 13px; line-height: 1.7; }
-.footer-links { display: grid; grid-template-columns: repeat(2,1fr); gap: 30px; }
+.footer-links { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
 .footer-links div { display: flex; flex-direction: column; gap: 12px; }
 .footer-links strong { margin-bottom: 6px; color: #6f7c98; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
-.footer-links a { color: #c2cce0; font-size: 13px; }
+.footer-links a, .footer-links span { color: #c2cce0; font-size: 13px; overflow-wrap: anywhere; }
 .footer-links a:hover { color: var(--white); }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.12); color: #68758f; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
 
@@ -320,6 +320,7 @@ button { font: inherit; }
   .repro-note { grid-template-columns: 1fr; gap: 10px; }
   .citation-card pre { min-width: 620px; padding: 58px 24px 28px; }
   .footer-top { grid-template-columns: 1fr; gap: 38px; }
+  .footer-links { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 8px; }
 }
 
