@@ -180,9 +180,8 @@ button { font: inherit; }
 .dataset-row p { margin: 0; color: #8995ad; font-size: 12px; }
 .dataset-task { color: #b5bfd3; font-size: 13px; }
 .dataset-row a { color: var(--mint); font-size: 12px; font-weight: 750; }
-.more-datasets { border-bottom: 1px solid rgba(255,255,255,.14); }
-.more-datasets summary { display: flex; justify-content: space-between; padding: 26px 0; cursor: pointer; color: var(--blue); font-size: 13px; font-weight: 750; list-style: none; }
-.more-datasets summary::-webkit-details-marker { display: none; }
+.dataset-directory { padding: 30px 0 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+.dataset-directory > h3 { margin: 0 0 18px; color: var(--blue); font-size: 13px; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
 .more-datasets-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; padding-bottom: 28px; background: rgba(255,255,255,.12); }
 .more-datasets-grid a, .more-datasets-grid .dataset-static { display: flex; justify-content: space-between; gap: 18px; padding: 22px; background: #15213e; }
 .more-datasets-grid .dataset-static:last-child:nth-child(odd) { grid-column: 1 / -1; }
