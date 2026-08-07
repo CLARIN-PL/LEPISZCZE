@@ -32,6 +32,7 @@
 .leaderboard-heading > p { color: var(--muted); font-size: 17px; line-height: 1.75; }
 .leaderboard-panel { min-height: 430px; border: 1px solid var(--line); background: var(--paper); }
 .leaderboard-status { display: flex; min-height: 430px; align-items: center; justify-content: center; gap: 12px; color: var(--muted); font-size: 14px; }
+.leaderboard-status[hidden], .leaderboard-content[hidden] { display: none !important; }
 .leaderboard-status.is-error { padding: 30px; color: var(--red-dark); text-align: center; }
 .status-spinner { width: 18px; height: 18px; border: 2px solid rgba(16, 27, 54, .14); border-top-color: var(--red); border-radius: 50%; animation: leaderboard-spin .8s linear infinite; }
 @keyframes leaderboard-spin { to { transform: rotate(360deg); } }
