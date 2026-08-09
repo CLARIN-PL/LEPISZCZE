@@ -1,8 +1,14 @@
 name: Python CI
 
 on:
+  # Deliberately unfiltered: a filter that gates pull requests hides breakage
+  # from changes that touch none of the paths below (tooling, other workflows,
+  # repo config). Every pull request runs the checks; the poetry cache keeps it
+  # to a few minutes.
   pull_request:
-    paths: &python_paths
+  push:
+    branches: [main]
+    paths:
       - "lepiszcze/**"
       - "experiments/**/*.py"
       - "tests/**"
@@ -10,9 +16,6 @@ on:
       - "pyproject.toml"
       - "poetry.lock"
       - ".github/workflows/python_poetry.yml"
-  push:
-    branches: [main]
-    paths: *python_paths
   workflow_dispatch:
 
 permissions:

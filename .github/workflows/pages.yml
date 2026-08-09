@@ -1,16 +1,18 @@
 name: Deploy GitHub Pages
 
 on:
+  # Deliberately unfiltered: the job takes ~30s, and changes that break it
+  # (tooling, other workflows, repo config) routinely touch none of the paths
+  # below. Every pull request validates the site.
   pull_request:
-    paths: &pages_paths
+  push:
+    branches: [main]
+    paths:
       - "docs/**"
       - "scripts/build_leaderboard.py"
       - "scripts/check_datasets.py"
       - "scripts/check_site.py"
       - ".github/workflows/pages.yml"
-  push:
-    branches: [main]
-    paths: *pages_paths
   workflow_dispatch:
 
 permissions:
