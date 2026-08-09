@@ -8,8 +8,6 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
-PROJECT_PREFIX = "/LEPISZCZE/"
-
 
 class PageParser(HTMLParser):
     """Collect navigable references and element IDs from one HTML page."""
@@ -35,12 +33,10 @@ def parse_page(path: Path) -> PageParser:
 
 def resolve_local_target(root: Path, page: Path, link_path: str) -> Path:
     decoded = unquote(link_path)
-    if decoded.startswith(PROJECT_PREFIX):
-        target = root / decoded.removeprefix(PROJECT_PREFIX)
-    elif decoded == PROJECT_PREFIX.removesuffix("/"):
-        target = root
-    elif decoded.startswith("/"):
-        raise ValueError(f"absolute path must start with {PROJECT_PREFIX}")
+    # The site is served from the root of its own domain, so an absolute path
+    # resolves against the site root rather than a project subdirectory.
+    if decoded.startswith("/"):
+        target = root / decoded.removeprefix("/")
     else:
         target = page.parent / decoded
 
@@ -69,11 +65,7 @@ def check_site(root: Path) -> tuple[int, int]:
             if url.scheme or url.netloc or link.startswith(("mailto:", "tel:")):
                 continue
             checked_links += 1
-            try:
-                target = resolve_local_target(root, page, url.path)
-            except ValueError as error:
-                errors.append(f"{page.relative_to(root)}: {link}: {error}")
-                continue
+            target = resolve_local_target(root, page, url.path)
             if root not in target.parents and target != root:
                 errors.append(f"{page.relative_to(root)}: {link}: resolves outside site root")
                 continue

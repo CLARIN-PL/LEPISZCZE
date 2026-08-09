@@ -45,6 +45,8 @@ jobs:
           test -f docs/assets/dataset-pipeline.js
           test -f docs/assets/og.png
           test -f docs/data/datasets.json
+          # Removing this file clears the custom domain in the Pages settings.
+          test "$(cat docs/CNAME)" = "lepiszcze.clarin-pl.eu"
 
       - name: Validate leaderboard snapshot
         run: python3 scripts/build_leaderboard.py --check docs/data/leaderboard.json
