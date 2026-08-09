@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clarin-pl.github.io/LEPISZCZE/sitemap.xml
+Sitemap: https://lepiszcze.clarin-pl.eu/sitemap.xml
